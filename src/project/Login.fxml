@@ -11,11 +11,11 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane prefHeight="570.0" prefWidth="786.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="600.0" maxWidth="950.0" prefHeight="550.0" prefWidth="924.0" style="-fx-background-color: #B9E0FD;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="180.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="400.0" minWidth="10.0" prefWidth="400.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="180.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="550.0" minWidth="10.0" prefWidth="544.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="170.0" />
   </columnConstraints>
   <rowConstraints>
       <RowConstraints maxHeight="90.0" minHeight="20.0" prefHeight="90.0" vgrow="SOMETIMES" />
@@ -26,22 +26,22 @@
     <RowConstraints maxHeight="75.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" text="ID" textFill="yellow" textOverrun="CLIP" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <Label alignment="CENTER" contentDisplay="CENTER" text="아이디" textFill="BLUE" textOverrun="CLIP" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <Label alignment="TOP_LEFT" text="PASSWORD" textFill="yellow" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <Label alignment="TOP_LEFT" text="비밀번호" textFill="BLUE" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <Label text="LOGIN" textFill="yellow" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+      <Label text="퍼스트 병원 로그인" textFill="BLUE" GridPane.columnIndex="1" GridPane.halignment="CENTER">
          <font>
             <Font size="48.0" />
          </font>
       </Label>
-      <TextField fx:id="lid" maxHeight="50.0" promptText="Please enter your ID" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <TextField fx:id="lid" maxHeight="50.0" promptText="아이디 입력" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <font>
             <Font size="18.0" />
          </font>
@@ -49,7 +49,7 @@
             <Insets bottom="20.0" />
          </GridPane.margin>
       </TextField>
-      <PasswordField fx:id="lpw" maxHeight="50.0" promptText="Please enter your PASSWORD" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <PasswordField fx:id="lpw" maxHeight="50.0" promptText="비밀번호 입력" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <font>
             <Font size="18.0" />
          </font>
@@ -59,12 +59,15 @@
       </PasswordField>
       <HBox prefHeight="100.0" prefWidth="200.0" spacing="100.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
          <children>
-            <Button mnemonicParsing="false" style="-fx-background-color: #020715;" text="Sign In" textFill="YELLOW">
+            <Button mnemonicParsing="false" style="-fx-background-color: #CFFFE5;" text="로그인" textFill="BLUE">
                <font>
                   <Font size="18.0" />
                </font>
+               <HBox.margin>
+                  <Insets left="65.0" />
+               </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" style="-fx-background-color: #020715;" text="Sign Up" textFill="YELLOW">
+            <Button mnemonicParsing="false" style="-fx-background-color: #CFFFE5;" text="회원가입" textFill="BLUE">
                <font>
                   <Font size="18.0" />
                </font>
