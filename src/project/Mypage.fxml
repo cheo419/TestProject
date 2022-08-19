@@ -22,7 +22,7 @@
             <Font size="41.0" />
          </font>
       </Label>
-      <Button maxHeight="70.0" mnemonicParsing="false" style="-fx-background-color: #CFFFE5;" text="예약 확인" textFill="BLUE" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+      <Button fx:id="btnOk" maxHeight="70.0" mnemonicParsing="false" style="-fx-background-color: #CFFFE5;" text="예약 확인" textFill="BLUE" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets right="100.0" />
          </GridPane.margin>
@@ -30,7 +30,7 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <Button maxHeight="70.0" mnemonicParsing="false" style="-fx-background-color: #CFFFE5;" text="진료 예약" textFill="BLUE" GridPane.rowIndex="1">
+      <Button fx:id="btnRes" maxHeight="70.0" mnemonicParsing="false" style="-fx-background-color: #CFFFE5;" text="진료 예약" textFill="BLUE" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets left="100.0" />
          </GridPane.margin>

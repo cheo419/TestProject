@@ -24,11 +24,11 @@
       </Label>
       <TableView prefHeight="599.0" prefWidth="1071.0" GridPane.rowIndex="1">
         <columns>
-          <TableColumn prefWidth="85.0" style="-fx-background-color: #CFFFE5;" text="이름" />
-          <TableColumn prefWidth="128.0" style="-fx-background-color: white;" text="전화번호" />
-            <TableColumn prefWidth="116.0" style="-fx-background-color: #cfffe5;" text="아이디" />
-            <TableColumn prefWidth="139.0" style="-fx-background-color: white;" text="비밀번호" />
-            <TableColumn prefWidth="447.0" style="-fx-background-color: #cfffe5;" text="예약내역" />
+          <TableColumn fx:id="nameCol" prefWidth="85.0" style="-fx-background-color: #CFFFE5;" text="이름" />
+          <TableColumn fx:id="numberCol" prefWidth="128.0" style="-fx-background-color: white;" text="전화번호" />
+            <TableColumn fx:id="idCol" prefWidth="116.0" style="-fx-background-color: #cfffe5;" text="아이디" />
+            <TableColumn fx:id="pwCol" prefWidth="139.0" style="-fx-background-color: white;" text="비밀번호" />
+            <TableColumn fx:id="resCol" prefWidth="447.0" style="-fx-background-color: #cfffe5;" text="예약내역" />
         </columns>
       </TableView>
    </children>

@@ -60,19 +60,19 @@
             <Insets left="100.0" />
          </GridPane.margin>
       </Label>
-      <TextField maxHeight="50.0" maxWidth="450.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <TextField fx:id="lName" maxHeight="50.0" maxWidth="450.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <font>
             <Font size="24.0" />
          </font></TextField>
-      <TextField maxHeight="50.0" maxWidth="450.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <TextField fx:id="lId" maxHeight="50.0" maxWidth="450.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <font>
             <Font size="24.0" />
          </font></TextField>
-      <PasswordField maxHeight="50.0" maxWidth="450.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <PasswordField fx:id="lPw" maxHeight="50.0" maxWidth="450.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <font>
             <Font size="24.0" />
          </font></PasswordField>
-      <PasswordField maxHeight="50.0" maxWidth="450.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+      <PasswordField fx:id="lPwOk" maxHeight="50.0" maxWidth="450.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
          <font>
             <Font size="24.0" />
          </font></PasswordField>
@@ -89,7 +89,7 @@
             <Insets left="100.0" />
          </GridPane.margin>
       </Label>
-      <TextField maxHeight="50.0" maxWidth="450.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <TextField fx:id="lNumber" maxHeight="50.0" maxWidth="450.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <font>
             <Font size="24.0" />
          </font></TextField>

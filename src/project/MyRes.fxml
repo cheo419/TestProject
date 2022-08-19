@@ -44,9 +44,9 @@
          <GridPane.margin>
             <Insets left="20.0" />
          </GridPane.margin></Label>
-      <ComboBox maxHeight="30.0" maxWidth="200.0" prefWidth="150.0" style="-fx-background-color: white;" visibleRowCount="0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <ComboBox maxHeight="30.0" maxWidth="200.0" prefWidth="150.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-      <DatePicker maxHeight="30.0" maxWidth="200.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <ComboBox fx:id="comDepart" maxHeight="30.0" maxWidth="200.0" prefWidth="150.0" style="-fx-background-color: white;" visibleRowCount="0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <ComboBox fx:id="comTime" maxHeight="30.0" maxWidth="200.0" prefWidth="150.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <DatePicker fx:id="comDate" maxHeight="30.0" maxWidth="200.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <Label text="진료 예약" textFill="BLUE" GridPane.columnSpan="2" GridPane.halignment="CENTER">
          <font>
             <Font name="System Bold" size="48.0" />
