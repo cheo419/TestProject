@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -8,14 +10,13 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane prefHeight="662.0" prefWidth="916.0" style="-fx-background-color: #B9E0FD;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-fx:controller="project.LoginController">
+<GridPane prefHeight="662.0" prefWidth="916.0" style="-fx-background-color: #B9E0FD;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.LoginController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
   <rowConstraints>
-      <RowConstraints maxHeight="328.0" minHeight="10.0" prefHeight="71.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="594.0" minHeight="10.0" prefHeight="594.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="328.0" minHeight="10.0" prefHeight="71.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="594.0" minHeight="10.0" prefHeight="594.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
       <Label text="관리자 페이지" textFill="BLUE" GridPane.halignment="CENTER">
@@ -32,5 +33,12 @@ fx:controller="project.LoginController">
             <TableColumn fx:id="resCol" prefWidth="447.0" style="-fx-background-color: #cfffe5;" text="예약내역" />
         </columns>
       </TableView>
+      <Button mnemonicParsing="false" onAction="#backLogin" style="-fx-background-color: CFFFE5;" text="로그인 화면으로" textFill="BLUE" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+         <font>
+            <Font size="13.0" />
+         </font>
+         <GridPane.margin>
+            <Insets right="5.0" top="5.0" />
+         </GridPane.margin></Button>
    </children>
 </GridPane>

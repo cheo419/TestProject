@@ -96,4 +96,10 @@ public class LoginController extends Controller implements Initializable{
 		loginServ.manageLogin(root);
 	}
 	
+	// 관리자 페이지에서 다시 로그인 화면으로
+	
+	public void backLogin() {
+		loginServ.backLogin(root);
+	}
+	
 }

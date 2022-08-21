@@ -152,6 +152,13 @@ public class LoginServiceImpl implements LoginService{
 		}
 	}
 
+	@Override
+	public void backLogin(Parent root) {
+		// TODO Auto-generated method stub
+		Stage s = (Stage) root.getScene().getWindow();
+		comServ.showWindow(s, "../Login.fxml");
+	}
+
 	
 	
 }

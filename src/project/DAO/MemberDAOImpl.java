@@ -56,7 +56,6 @@ public class MemberDAOImpl implements MemberDAO {
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
-			e.printStackTrace();
 		}
 		return false;
 	}
@@ -139,7 +138,6 @@ public class MemberDAOImpl implements MemberDAO {
 			
 		} catch (Exception e) {
 			// TODO: handle exception
-			e.printStackTrace();
 		}
 		return false;
 	}
