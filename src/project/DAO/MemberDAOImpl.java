@@ -56,7 +56,7 @@ public class MemberDAOImpl implements MemberDAO {
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
-			System.out.println("정렬갯수가 맞지않음");
+			e.printStackTrace();
 		}
 		return false;
 	}
@@ -139,7 +139,7 @@ public class MemberDAOImpl implements MemberDAO {
 			
 		} catch (Exception e) {
 			// TODO: handle exception
-			System.err.println("예약정렬이 뭔가 잘못되었습니다");
+			e.printStackTrace();
 		}
 		return false;
 	}
