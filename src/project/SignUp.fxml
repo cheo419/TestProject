@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane prefHeight="714.0" prefWidth="1084.0" style="-fx-background-color: #B9E0FD;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane prefHeight="714.0" prefWidth="1084.0" style="-fx-background-color: #B9E0FD;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.MemberShipController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="250.0" />
@@ -25,7 +25,7 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Label text="이름 :" textFill="BLUE" GridPane.rowIndex="1">
+      <Label text="아이디 :" textFill="BLUE" GridPane.rowIndex="1">
          <font>
             <Font size="36.0" />
          </font>
@@ -36,7 +36,7 @@
             <Insets left="100.0" />
          </GridPane.margin>
       </Label>
-      <Label text="아이디 : " textFill="BLUE" GridPane.rowIndex="3">
+      <Label text="비밀번호 확인 :" textFill="BLUE" GridPane.rowIndex="3">
          <font>
             <Font size="36.0" />
          </font>
@@ -44,7 +44,7 @@
             <Insets left="100.0" />
          </GridPane.margin>
       </Label>
-      <Label text="비밀번호 :" textFill="BLUE" GridPane.rowIndex="4">
+      <Label text="이름 :" textFill="BLUE" GridPane.rowIndex="4">
          <font>
             <Font size="36.0" />
          </font>
@@ -52,7 +52,7 @@
             <Insets left="100.0" />
          </GridPane.margin>
       </Label>
-      <Label text="비밀번호 확인 :" textFill="BLUE" GridPane.rowIndex="5">
+      <Label text="전화번호 :" textFill="BLUE" GridPane.rowIndex="5">
          <font>
             <Font size="36.0" />
          </font>
@@ -60,28 +60,28 @@
             <Insets left="100.0" />
          </GridPane.margin>
       </Label>
-      <TextField fx:id="lName" maxHeight="50.0" maxWidth="450.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <TextField fx:id="lId" maxHeight="50.0" maxWidth="450.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <font>
             <Font size="24.0" />
          </font></TextField>
-      <TextField fx:id="lId" maxHeight="50.0" maxWidth="450.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <TextField fx:id="lNumber" maxHeight="50.0" maxWidth="450.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
          <font>
             <Font size="24.0" />
          </font></TextField>
-      <PasswordField fx:id="lPw" maxHeight="50.0" maxWidth="450.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <PasswordField fx:id="lPw" maxHeight="50.0" maxWidth="450.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <font>
             <Font size="24.0" />
          </font></PasswordField>
-      <PasswordField fx:id="lPwOk" maxHeight="50.0" maxWidth="450.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+      <PasswordField fx:id="lPwOk" maxHeight="50.0" maxWidth="450.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <font>
             <Font size="24.0" />
          </font></PasswordField>
-      <Button mnemonicParsing="false" style="-fx-background-color: #CFFFE5;" text="확인" textFill="BLUE" GridPane.columnIndex="1" GridPane.rowIndex="6">
+      <Button mnemonicParsing="false" onAction="#memberShipProc" style="-fx-background-color: #CFFFE5;" text="확인" textFill="BLUE" GridPane.columnIndex="1" GridPane.rowIndex="6">
          <font>
             <Font size="36.0" />
          </font>
       </Button>
-      <Label text="전화번호 :" textFill="BLUE" GridPane.rowIndex="2">
+      <Label text="비밀번호 :" textFill="BLUE" GridPane.rowIndex="2">
          <font>
             <Font size="36.0" />
          </font>
@@ -89,7 +89,7 @@
             <Insets left="100.0" />
          </GridPane.margin>
       </Label>
-      <TextField fx:id="lNumber" maxHeight="50.0" maxWidth="450.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <TextField fx:id="lName" maxHeight="50.0" maxWidth="450.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <font>
             <Font size="24.0" />
          </font></TextField>

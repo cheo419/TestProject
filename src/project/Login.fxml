@@ -11,7 +11,8 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="600.0" maxWidth="950.0" prefHeight="550.0" prefWidth="924.0" style="-fx-background-color: #B9E0FD;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane prefHeight="550.0" prefWidth="924.0" style="-fx-background-color: #B9E0FD;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
+fx:controller="project.LoginController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="180.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="550.0" minWidth="10.0" prefWidth="544.0" />
@@ -59,7 +60,7 @@
       </PasswordField>
       <HBox prefHeight="100.0" prefWidth="200.0" spacing="100.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
          <children>
-            <Button mnemonicParsing="false" style="-fx-background-color: #CFFFE5;" text="로그인" textFill="BLUE">
+            <Button mnemonicParsing="false" onAction="#LoginProc" style="-fx-background-color: #CFFFE5;" text="로그인" textFill="BLUE">
                <font>
                   <Font size="18.0" />
                </font>
@@ -67,7 +68,7 @@
                   <Insets left="65.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" style="-fx-background-color: #CFFFE5;" text="회원가입" textFill="BLUE">
+            <Button mnemonicParsing="false" onAction="#signOk" style="-fx-background-color: #CFFFE5;" text="회원가입" textFill="BLUE">
                <font>
                   <Font size="18.0" />
                </font>
@@ -80,5 +81,13 @@
             <Insets left="65.0" />
          </padding>
       </HBox>
+      <Button onAction="#manageOk" mnemonicParsing="false" style="-fx-background-color: white;" text="관리자" textFill="BLUE" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="BOTTOM">
+         <GridPane.margin>
+            <Insets bottom="10.0" right="10.0" />
+         </GridPane.margin>
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
    </children>
 </GridPane>

@@ -1,30 +1,18 @@
 package project;
 
 public class Member {
+	// 정보
+	private String id;
+	private String pw;
+	private String userName;
+	private String phoneNumber;
 	
-	private String name;		// 회원명
-	private String phoneNum;	// 회원전화번호
-	private String id;			// 회원아이디
-	private String pw;			// 회원비밀번호
-	
-	private int depart;			// 예약한 진료과명
-	private String date;		// 예약 날짜
-	private int time;			// 예약 시간
+	// 예약
+	private int jinryo;
+	private String date;
+	private int time;
 	
 	
-	
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getPhoneNum() {
-		return phoneNum;
-	}
-	public void setPhoneNum(String phoneNum) {
-		this.phoneNum = phoneNum;
-	}
 	public String getId() {
 		return id;
 	}
@@ -37,11 +25,25 @@ public class Member {
 	public void setPw(String pw) {
 		this.pw = pw;
 	}
-	public int getDepart() {
-		return depart;
+	public String getUserName() {
+		return userName;
 	}
-	public void setDepart(int depart) {
-		this.depart = depart;
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+	
+	// 예약
+	public int getJinryo() {
+		return jinryo;
+	}
+	public void setJinryo(int jinryo) {
+		this.jinryo = jinryo;
 	}
 	public String getDate() {
 		return date;
@@ -56,11 +58,4 @@ public class Member {
 		this.time = time;
 	}
 	
-	
-	
-	
-	
-	
-	
-
 }
