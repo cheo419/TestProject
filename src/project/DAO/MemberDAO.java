@@ -9,13 +9,12 @@ public interface MemberDAO {
 	
 	public boolean checkLogin(String id, String pw); // 로그인
 	
-	public Member select(String id); // 로그인 내용 저장
+	public Member select(String id); // 유저의 예약내용 출력
 	
 	public boolean insertRes (Member m); // 예약
 	
 	public List<Member> selectAdmin(); // 관리자 예약출력
 
-//	public List<Member> selectUser();	// 유저의 예약출력
 }
 
 

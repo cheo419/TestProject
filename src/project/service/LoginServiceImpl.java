@@ -2,6 +2,7 @@ package project.service;
 
 import project.LoginController;
 import project.Member;
+import project.MyResController;
 import project.DAO.MemberDAO;
 import project.DAO.MemberDAOImpl;
 import javafx.event.ActionEvent;
@@ -16,12 +17,14 @@ public class LoginServiceImpl implements LoginService{
 	MemberDAO dao;
 	CommonService comServ;
 	LoginController loginController;
+	MyResController myResController;
 
 	public LoginServiceImpl() {
 		// TODO Auto-generated constructor stub
 		dao = new MemberDAOImpl();
 		comServ = new CommonServiceImpl();
 		loginController = new LoginController();
+		myResController = new MyResController();
 	}
 
 	// 로그인 버튼 눌렀을 때
@@ -39,7 +42,8 @@ public class LoginServiceImpl implements LoginService{
 			System.out.println("로그인할때 입력한 아이디값:"+id);
 
 			loginController.setId(id);	// 로그인할때 쓴 아이디값을 -> 로그인컨트롤러->되돌아와서 resCheck저장
-
+			myResController.setId(id);
+			
 			Stage myPage = (Stage) root.getScene().getWindow();
 			root = comServ.showWindow(myPage, "../Mypage.fxml");
 		} else {

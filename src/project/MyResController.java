@@ -25,7 +25,7 @@ public class MyResController extends Controller implements Initializable{
 	private LoginService loginServ;
 	private CommonService commonServ;
 	MemberDAO dao;
-//	static String id;
+	static String id;
 	
 	@FXML private TableView<Member> myResTable;
 	@FXML private TableColumn<Member, String>  nameCol;
@@ -33,13 +33,20 @@ public class MyResController extends Controller implements Initializable{
 	@FXML private TableColumn<Member, String>  idCol;
 	@FXML private TableColumn<Member, String>  pwCol;
 	@FXML private TableColumn<Member, String>  resCol;
+	
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getId() {
+		return id;
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		dao = new MemberDAOImpl();
-		List<Member> memberList = dao.selectAdmin();
+		Member m= dao.select(id);
 		
-		myResTable.setItems(getProduct(memberList));
+		myResTable.setItems(getProduct(m));
 
 		nameCol.setCellValueFactory 		   
 		(new PropertyValueFactory<Member, String>("userName")); 
@@ -54,9 +61,9 @@ public class MyResController extends Controller implements Initializable{
 		
 	}
 
-	private ObservableList<Member> getProduct(List<Member> memberList) {
+	private ObservableList<Member> getProduct(Member m) {
 		ObservableList<Member> adminList =
-				FXCollections.observableArrayList(memberList);
+				FXCollections.observableArrayList(m);
 		return adminList;
 	}
 
