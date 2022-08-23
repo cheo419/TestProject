@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 
 <GridPane prefHeight="224.0" prefWidth="792.0" style="-fx-background-color: #B9E0FD;" xmlns="http://javafx.com/javafx/8" 
-xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.LoginController">
+xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.MyResController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
@@ -23,13 +23,13 @@ xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.LoginController">
             <Font size="24.0" />
          </font>
       </Label>
-      <TableView prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+      <TableView fx:id="myResTable" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
         <columns>
-          <TableColumn fx:id="nameCol" prefWidth="75.0" style="-fx-background-color: #cfffe5;" text="아이디" />
-          <TableColumn fx:id="numberCol" prefWidth="101.0" style="-fx-background-color: white;" text="비밀번호" />
-            <TableColumn fx:id="idCol" prefWidth="85.0" style="-fx-background-color: #cfffe5;" text="이름" />
-            <TableColumn fx:id="pwCol" prefWidth="127.0" style="-fx-background-color: white;" text="전화번호" />
-            <TableColumn fx:id="resCol" prefWidth="403.0" style="-fx-background-color: #cfffe5;" text="예약 날짜 및 시간" />
+          <TableColumn fx:id="nameCol" prefWidth="75.0" style="-fx-background-color: #cfffe5;" text="이름" />
+          <TableColumn fx:id="numberCol" prefWidth="101.0" style="-fx-background-color: white;" text="전화번호" />
+            <TableColumn fx:id="idCol" prefWidth="85.0" style="-fx-background-color: #cfffe5;" text="아이디" />
+            <TableColumn fx:id="pwCol" prefWidth="127.0" style="-fx-background-color: white;" text="비밀번호" />
+            <TableColumn fx:id="resCol" prefWidth="403.0" style="-fx-background-color: #cfffe5;" text="예약내용" />
         </columns>
       </TableView>
    </children>

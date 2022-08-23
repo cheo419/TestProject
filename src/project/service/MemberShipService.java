@@ -1,6 +1,5 @@
 package project.service;
 
-import javafx.scene.Parent;
 
 public interface MemberShipService {
 	

@@ -12,7 +12,15 @@ public class Member {
 	private String date;
 	private int time;
 	
+	private String res;
 	
+	
+	public String getRes() {
+		return res;
+	}
+	public void setRes(String res) {
+		this.res = res;
+	}
 	public String getId() {
 		return id;
 	}

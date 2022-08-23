@@ -14,7 +14,6 @@ import javafx.stage.Stage;
 public class CommonServiceImpl implements CommonService{
 
 	// 새로운 화면 보이기
-	
 	@Override
 	public Parent showWindow(Stage s, String formPath) {
 		// TODO Auto-generated method stub
@@ -41,7 +40,6 @@ public class CommonServiceImpl implements CommonService{
 	}
 
 	// 에러박스
-	
 	@Override
 	public void errorBox(String title, String header, String content) {
 		// TODO Auto-generated method stub
@@ -51,13 +49,11 @@ public class CommonServiceImpl implements CommonService{
 		alert.setContentText(content);
 		alert.showAndWait();
 	}
-
 	@Override
 	public void errorBox(String header, String content) {
 		// TODO Auto-generated method stub
 		errorBox("error", header, content);
 	}
-
 	@Override
 	public void errorBox(String content) {
 		// TODO Auto-generated method stub
@@ -65,7 +61,6 @@ public class CommonServiceImpl implements CommonService{
 	}
 
 	// 화면 닫기
-	
 	@Override
 	public void WindowClose(ActionEvent event) {
 		// TODO Auto-generated method stub

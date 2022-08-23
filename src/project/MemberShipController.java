@@ -20,6 +20,7 @@ public class MemberShipController extends Controller implements Initializable{
 	private CommonService comServ;
 	private MemberShipService membershipServ;
 	private MemberDAO dao;
+	Member member = new Member();
 
 	@Override
 	public void setRoot(Parent root) {
@@ -33,12 +34,12 @@ public class MemberShipController extends Controller implements Initializable{
 		comServ = new CommonServiceImpl();
 		membershipServ = new MemberShipServiceImpl();
 		dao = new MemberDAOImpl();
+
 	}
 
 	// signup 회원가입 화면 확인 버튼
-	
 	public void memberShipProc() {
-		Member member = new Member();
+
 		TextField txtId = (TextField) root.lookup("#lId");
 		PasswordField txtPw = (PasswordField) root.lookup("#lPw");
 		PasswordField txtPwOk = (PasswordField) root.lookup("#lPwOk");
@@ -64,7 +65,6 @@ public class MemberShipController extends Controller implements Initializable{
 			return;
 		}
 
-
 		member.setId(txtId.getText());
 		member.setPw(txtPw.getText());
 		member.setUserName(txtName.getText());
@@ -80,8 +80,27 @@ public class MemberShipController extends Controller implements Initializable{
 
 		Stage stage = (Stage) root.getScene().getWindow();
 		stage.close();
-
 	}
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
