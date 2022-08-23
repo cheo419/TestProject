@@ -1,6 +1,7 @@
 package project.DAO;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,7 +18,6 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	// 오라클 연결
 	public MemberDAOImpl() {
-		// TODO Auto-generated constructor stub
 		comServ = new CommonServiceImpl();
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -27,14 +27,12 @@ public class MemberDAOImpl implements MemberDAO {
 			
 			con = DriverManager.getConnection(url, user, pass);
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 	}
 	
 	// 회원가입
 	public boolean insertMember(Member m) {
-		// TODO Auto-generated method stub
 		try {
 			String sql = "insert into firstmember (userName,phoneNum,id,pw) values(?,?,?,?)";
 			PreparedStatement pstmt = con.prepareStatement(sql);
@@ -50,14 +48,13 @@ public class MemberDAOImpl implements MemberDAO {
 				return true;
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return false;
 	}
 
 	// 로그인
 	public boolean checkLogin(String id, String pw) {
-		// TODO Auto-generated method stub
 		try {
 			String sql = "select count(*) from firstmember where id=? and pw=?";
 			PreparedStatement pstmt = con.prepareStatement(sql);
@@ -72,7 +69,6 @@ public class MemberDAOImpl implements MemberDAO {
 				return true;
 			}
 		}catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 		return false;
@@ -80,7 +76,6 @@ public class MemberDAOImpl implements MemberDAO {
 
 	// 로그인 내용 저장
 	public Member select(String id) {
-		// TODO Auto-generated method stub
 		try {
 			String sql = "select * from firstmember where id=?";
 			PreparedStatement pstmt = con.prepareStatement(sql);
@@ -102,7 +97,6 @@ public class MemberDAOImpl implements MemberDAO {
 				return m;
 			}			
 		}catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 		return null;
@@ -111,7 +105,6 @@ public class MemberDAOImpl implements MemberDAO {
 	// 예약
 	@Override         
 	public boolean insertRes(Member m) {
-		// TODO Auto-generated method stub
 		try {
 			String sql = "update firstmember set "
 					+ "resJinryo= ?,resDate=?,resTime=? "
@@ -130,7 +123,7 @@ public class MemberDAOImpl implements MemberDAO {
 			}
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return false;
 	}
@@ -138,7 +131,7 @@ public class MemberDAOImpl implements MemberDAO {
 	// 관리자 예약내역
 		@Override
 		public List<Member> selectAdmin() {
-			List<Member> memberList = new ArrayList<Member>();
+			List<Member> memberList = new ArrayList<Member>();	// 모든회원정보 List
 			try {
 				String sql = "select * from firstmember";
 				PreparedStatement pstmt = con.prepareStatement(sql);
@@ -150,55 +143,62 @@ public class MemberDAOImpl implements MemberDAO {
 					m.setPhoneNumber(rs.getString(2));
 					m.setId(rs.getString(3));
 					m.setPw(rs.getString(4));
-					m.setJinryo(rs.getInt(5));
-					m.setDate(rs.getString(6));
-					m.setTime(rs.getInt(7));
-					
-					System.out.println("유저이름:"+m.getUserName());
-					
-					String depart = null;
-					switch(m.getJinryo()) {
-					case 1:
-						depart="정형외과";
-						break;
-					case 2:
-						depart="이비인후과";
-						break;
-					case 3:
-						depart="내과";
-						break;
+					if(rs.getInt(5)!=0) {
+						m.setJinryo(rs.getInt(5));
+					}
+					Date date1 = rs.getDate(6);
+					if(date1 != null) {
+						m.setDate(rs.getString(6));
+					}
+					if(rs.getInt(7)!=0) {
+						m.setTime(rs.getInt(7));
 					}
 					
-					StringBuffer date = new StringBuffer(rs.getString(6));
-					date.setLength(10);
-					
-					String time = null;
-					switch(m.getTime()) {
-					case 1:
-						time="9시 30분";
-						break;
-					case 2:
-						time="10시 30분";
-						break;
-					case 3:
-						time="11시 30분";
-						break;
-					case 4:
-						time="13시 30분";
-						break;
-					case 5:
-						time="14시 30분";
-						break;
-					case 6:
-						time="15시 30분";
-						break;
+					if(m.getDate() == null) {	// 진료예약내용이없으면(date값 없으면)
+						m.setRes("예약내역 없음");	// 진료예약내용에 "예약내역없음" 출력
+					}else {						// 진료예약내용 있으면(date값이 있으면)
+						String depart = null;
+						switch(m.getJinryo()) {
+						case 1:
+							depart="정형외과";
+							break;
+						case 2:
+							depart="이비인후과";
+							break;
+						case 3:
+							depart="내과";
+							break;
+						}
+						
+						StringBuffer date = new StringBuffer(rs.getString(6));
+						date.setLength(10);
+						
+						String time = null;
+						switch(m.getTime()) {
+						case 1:
+							time="9시 30분";
+							break;
+						case 2:
+							time="10시 30분";
+							break;
+						case 3:
+							time="11시 30분";
+							break;
+						case 4:
+							time="13시 30분";
+							break;
+						case 5:
+							time="14시 30분";
+							break;
+						case 6:
+							time="15시 30분";
+							break;
+						}
+						m.setRes("진료과 : "+depart 	// Res에 진료과,날짜,시간 내용합쳐서저장.
+								+" / 날짜 : "+date
+								+" / 시간 : "+time);
 					}
-					
-					m.setRes("진료과 : "+depart 
-							+" / 날짜 : "+date
-							+" / 시간 : "+time);
-					
-					memberList.add(m);
+					memberList.add(m);				// 모든 회원정보 리스트에 저장.
 				}			
 			}catch (Exception e) {
 				e.printStackTrace();

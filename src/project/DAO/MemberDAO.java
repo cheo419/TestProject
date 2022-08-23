@@ -22,8 +22,8 @@ public interface MemberDAO {
 /*
 
 create table firstmember (
-    userName varchar2(10) not null,
-    phoneNum varchar2(20) not null,
+    userName varchar2(50) not null,
+    phoneNum varchar2(50) not null,
     id varchar2(20) not null,
     pw varchar2(20) not null,
     
