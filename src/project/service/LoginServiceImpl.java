@@ -230,7 +230,7 @@ public class LoginServiceImpl implements LoginService{
 
 	// 관리자에서 로그인 화면으로
 	@Override
-	public void backLogin(Parent root,ActionEvent event) {
+	public void backLogin(Parent root) {
 		// TODO Auto-generated method stub
 		Stage s = (Stage) root.getScene().getWindow();
 		comServ.showWindow(s, "../Login.fxml");

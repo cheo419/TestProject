@@ -23,6 +23,6 @@ public interface LoginService {
 	
 	public void manageLogin(Parent root,ActionEvent event); // 관리자 로그인 모든 예약 출력 화면
 
-	public void backLogin(Parent root,ActionEvent event); // 관리자 화면에서 로그인 화면으로
+	public void backLogin(Parent root); // 관리자 화면에서 로그인 화면으로
 	
 }

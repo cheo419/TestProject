@@ -16,13 +16,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import project.DAO.MemberDAO;
 import project.DAO.MemberDAOImpl;
 import project.service.LoginService;
+import project.service.LoginServiceImpl;
 
 public class ManageController extends Controller implements Initializable{
 
 	private Parent root;
 	private LoginService loginServ;
 	MemberDAO dao;
-//	static String id;
+	//	static String id;
 
 	@FXML private TableView<Member> manageTable;
 	@FXML private TableColumn<Member, String>  nameCol;
@@ -49,6 +50,8 @@ public class ManageController extends Controller implements Initializable{
 		(new PropertyValueFactory<Member, String>("pw"));
 		resCol.setCellValueFactory	   
 		(new PropertyValueFactory<Member, String>("res")); 
+		
+		loginServ = new LoginServiceImpl();
 
 	}
 
@@ -63,14 +66,14 @@ public class ManageController extends Controller implements Initializable{
 				FXCollections.observableArrayList(memberList);
 		return adminList;
 	}
-	
-	
-	
-	// 관리자 페이지에서 다시 로그인 화면으로
-		public void backLogin(ActionEvent event) {
-			loginServ.backLogin(root,event);
-		}
 
-	
+
+
+	// 관리자 페이지에서 다시 로그인 화면으로
+	public void backLogin() {
+		loginServ.backLogin(root);
+	}
+
+
 
 }
