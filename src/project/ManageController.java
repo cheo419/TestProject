@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -23,7 +22,6 @@ public class ManageController extends Controller implements Initializable{
 	private Parent root;
 	private LoginService loginServ;
 	MemberDAO dao;
-	//	static String id;
 
 	@FXML private TableView<Member> manageTable;
 	@FXML private TableColumn<Member, String>  nameCol;
@@ -31,6 +29,7 @@ public class ManageController extends Controller implements Initializable{
 	@FXML private TableColumn<Member, String>  idCol;
 	@FXML private TableColumn<Member, String>  pwCol;
 	@FXML private TableColumn<Member, String>  resCol;
+	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -50,6 +49,12 @@ public class ManageController extends Controller implements Initializable{
 		(new PropertyValueFactory<Member, String>("pw"));
 		resCol.setCellValueFactory	   
 		(new PropertyValueFactory<Member, String>("res")); 
+
+		// 테이블뷰에서 선택된 행
+		manageTable.setOnMouseClicked(e->{
+			manageTable.getSelectionModel().getSelectedItem().getId();
+			System.out.println(manageTable.getSelectionModel().getSelectedItem().getId());
+		});
 		
 		loginServ = new LoginServiceImpl();
 
@@ -66,8 +71,6 @@ public class ManageController extends Controller implements Initializable{
 				FXCollections.observableArrayList(memberList);
 		return adminList;
 	}
-
-
 
 	// 관리자 페이지에서 다시 로그인 화면으로
 	public void backLogin() {
