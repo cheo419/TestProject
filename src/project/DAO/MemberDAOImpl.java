@@ -100,10 +100,10 @@ public class MemberDAOImpl implements MemberDAO {
 				if(rs.getInt(7)!=0) {
 					m.setTime(rs.getInt(7));
 				}
-				
+
 				if(m.getDate() == null) {	// 진료예약내용이없으면(date값 없으면)
 					m.setRes("예약내역 없음");	// 진료예약내용에 "예약내역없음" 출력
-				}else {						// 진료예약내용 있으면(date값이 있으면)
+				} else {						// 진료예약내용 있으면(date값이 있으면)
 					String depart = null;
 					switch(m.getJinryo()) {
 					case 1:
@@ -152,6 +152,7 @@ public class MemberDAOImpl implements MemberDAO {
 		return m;
 	}
 
+	// 필요한가?
 	// 예약
 	@Override         
 	public boolean insertRes(Member m) {
@@ -193,6 +194,7 @@ public class MemberDAOImpl implements MemberDAO {
 				m.setPhoneNumber(rs.getString(2));
 				m.setId(rs.getString(3));
 				m.setPw(rs.getString(4));
+				
 				if(rs.getInt(5)!=0) {
 					m.setJinryo(rs.getInt(5));
 				}

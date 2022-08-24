@@ -113,56 +113,6 @@ public class LoginServiceImpl implements LoginService{
 		comServ.showWindow(membershipForm, "../MyRes.fxml");
 	}
 
-	// 진료과선택
-	@Override
-	public int myResJinryo(Parent root) {
-		// TODO Auto-generated method stub
-		ComboBox<String> cmbJinryo = (ComboBox<String>) root.lookup("#cmbJinryo");
-
-		if(cmbJinryo == null) {
-			return -1;
-		}
-		String value1 = cmbJinryo.getValue().toString();
-
-		if(value1.equals("정형외과")) {
-			return 1;
-		} else if(value1.equals("이비인후과")) {
-			return 2;
-		} else if(value1.equals("내과")) {
-			return 3;
-		} else {
-			return -2;
-		}
-
-	}
-
-	// 진료시간선택
-	@Override
-	public int myResTime(Parent root) {
-		// TODO Auto-generated method stub
-		ComboBox<String> cmbTime = (ComboBox<String>) root.lookup("#cmbTime");
-
-		if(cmbTime == null) {
-			return -1;
-		}
-		String value2 = cmbTime.getValue().toString();
-		if(value2.equals("09:30")) {
-			return 1;
-		} else if(value2.equals("10:30")) {
-			return 2;
-		} else if(value2.equals("11:30")) {
-			return 3;
-		} else if(value2.equals("13:30")) {
-			return 4;
-		} else if(value2.equals("14:30")) {
-			return 5;
-		} else if(value2.equals("15:30")) {
-			return 6;
-		} else {
-			return -2;
-		}
-	}
-
 	// 내 예약 출력
 	public void resOk(Parent root,ActionEvent event) {
 		Stage membershipForm = new Stage();

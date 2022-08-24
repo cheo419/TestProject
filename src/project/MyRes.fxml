@@ -8,11 +8,10 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<GridPane prefHeight="572.0" prefWidth="718.0" style="-fx-background-color: #B9E0FD;" 
-xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
-fx:controller="project.LoginController">
+<GridPane prefHeight="600.0" prefWidth="760.0" style="-fx-background-color: NAVY;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.LoginController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -25,39 +24,57 @@ fx:controller="project.LoginController">
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Label text="진료과 선택" textFill="BLUE" GridPane.rowIndex="1">
+      <Label text="진료과 선택 ▼" textFill="WHITE" GridPane.rowIndex="1">
          <font>
             <Font name="System Italic" size="36.0" />
          </font>
          <GridPane.margin>
-            <Insets left="20.0" />
+            <Insets left="50.0" />
          </GridPane.margin></Label>
-      <Label text="날짜 선택" textFill="BLUE" GridPane.rowIndex="2">
+      <Label text="날짜 선택 ▦" textFill="WHITE" GridPane.rowIndex="2">
          <font>
             <Font name="System Italic" size="36.0" />
          </font>
          <GridPane.margin>
-            <Insets left="20.0" />
+            <Insets left="50.0" />
          </GridPane.margin></Label>
-      <Label text="진료 시간 선택" textFill="BLUE" GridPane.rowIndex="3">
+      <Label text="진료 시간 선택 ▼" textFill="WHITE" GridPane.rowIndex="3">
          <font>
             <Font name="System Italic" size="36.0" />
          </font>
          <GridPane.margin>
-            <Insets left="20.0" />
+            <Insets left="50.0" />
          </GridPane.margin></Label>
-      <ComboBox fx:id="cmbJinryo" maxHeight="30.0" maxWidth="200.0" prefWidth="150.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <ComboBox fx:id="cmbTime" maxHeight="30.0" maxWidth="200.0" prefWidth="150.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-      <DatePicker fx:id="cmbDate" maxHeight="30.0" maxWidth="200.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <Label text="진료 예약" textFill="BLUE" GridPane.columnSpan="2" GridPane.halignment="CENTER">
+      <ComboBox fx:id="cmbJinryo" prefHeight="35.0" prefWidth="220.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <ComboBox fx:id="cmbTime" prefHeight="35.0" prefWidth="220.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <DatePicker fx:id="cmbDate" prefHeight="35.0" prefWidth="210.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <Label text="🚑 진료 예약" textFill="WHITE" GridPane.columnSpan="2" GridPane.halignment="CENTER">
          <font>
             <Font name="System Bold" size="48.0" />
          </font>
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
       </Label>
-      <Button mnemonicParsing="false" onAction="#resCheck" style="-fx-background-color: #CFFFE5;" text="확인" textFill="BLUE" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+      <Button mnemonicParsing="false" onAction="#resCheck" prefWidth="100.0" style="-fx-background-color: LIGHTSKYBLUE;" text="확인" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
+         <GridPane.margin>
+            <Insets bottom="20.0" right="40.0" />
+         </GridPane.margin>
       </Button>
+      <Button mnemonicParsing="false" onAction="#backMyPage" prefWidth="100.0" style="-fx-background-color: LIGHTSKYBLUE;" text="취소" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="20.0" left="40.0" />
+         </GridPane.margin>
+      </Button>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MEDIUMTURQUOISE" height="600.0" stroke="BLACK" strokeType="INSIDE" width="20.0" GridPane.halignment="LEFT" GridPane.valignment="TOP" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MEDIUMTURQUOISE" height="600.0" stroke="BLACK" strokeType="INSIDE" width="20.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MEDIUMTURQUOISE" height="20.0" stroke="BLACK" strokeType="INSIDE" width="760.0" GridPane.halignment="LEFT" GridPane.valignment="TOP" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MEDIUMTURQUOISE" height="20.0" stroke="BLACK" strokeType="INSIDE" width="760.0" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
    </children>
 </GridPane>

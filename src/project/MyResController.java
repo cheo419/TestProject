@@ -79,6 +79,10 @@ public class MyResController extends Controller implements Initializable{
 		stage.close();
 	}
 	
-	
+	// 내 예약 확인 페이지에서 마이페지이로
+		public void backMypage2() {
+			Stage s = (Stage) root.getScene().getWindow();
+			s.close();
+		}
 
 }

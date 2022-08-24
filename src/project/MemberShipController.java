@@ -82,8 +82,13 @@ public class MemberShipController extends Controller implements Initializable{
 		stage.close();
 	}
 
+	// 회원가입 취소버튼
+	public void memberShipCancle() {
+		Stage stage = (Stage) root.getScene().getWindow();
+		stage.close();
+	}
 
-	
+
 
 
 

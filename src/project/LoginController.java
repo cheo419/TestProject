@@ -100,6 +100,19 @@ public class LoginController extends Controller implements Initializable{
 	public void manageLogin(ActionEvent event) {
 		loginServ.manageLogin(root,event);
 	}
+	
+	// 관리자 로그인 화면에서 뒤로 가기(=로그인화면으로)
+	public void backL() {
+		Stage s = (Stage) root.getScene().getWindow();
+		commonServ.showWindow(s, "../Login.fxml");
+	}
+	
+	// 진료예약에서 취소하면 마이페이지로
+	public void backMyPage() {
+		Stage s = (Stage) root.getScene().getWindow();
+		s.close();
+	}
+	
 
 	
 

@@ -9,10 +9,6 @@ public interface LoginService {
 	
 	public void res(Parent root); // 마이페이지 화면
 	
-	public int myResJinryo(Parent root); // 진료과선택
-	
-	public int myResTime(Parent root); // 진료시간선택
-	
 	public void resOk(Parent root,ActionEvent event); // 내 예약 출력
 	
 	public void Logout(Parent root); // 로그아웃

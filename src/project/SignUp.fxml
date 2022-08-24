@@ -8,11 +8,10 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<GridPane prefHeight="714.0" prefWidth="1084.0" style="-fx-background-color: #B9E0FD;" 
-xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
-fx:controller="project.MemberShipController">
+<GridPane prefHeight="750.0" prefWidth="1100.0" style="-fx-background-color: NAVY;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.MemberShipController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="250.0" />
@@ -27,7 +26,7 @@ fx:controller="project.MemberShipController">
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Label text="아이디 :" textFill="BLUE" GridPane.rowIndex="1">
+      <Label text="아이디 :" textFill="WHITE" GridPane.rowIndex="1">
          <font>
             <Font size="36.0" />
          </font>
@@ -38,7 +37,7 @@ fx:controller="project.MemberShipController">
             <Insets left="100.0" />
          </GridPane.margin>
       </Label>
-      <Label text="비밀번호 확인 :" textFill="BLUE" GridPane.rowIndex="3">
+      <Label text="비밀번호 확인 :" textFill="WHITE" GridPane.rowIndex="3">
          <font>
             <Font size="36.0" />
          </font>
@@ -46,7 +45,7 @@ fx:controller="project.MemberShipController">
             <Insets left="100.0" />
          </GridPane.margin>
       </Label>
-      <Label text="이름 :" textFill="BLUE" GridPane.rowIndex="4">
+      <Label text="이름 :" textFill="WHITE" GridPane.rowIndex="4">
          <font>
             <Font size="36.0" />
          </font>
@@ -54,7 +53,7 @@ fx:controller="project.MemberShipController">
             <Insets left="100.0" />
          </GridPane.margin>
       </Label>
-      <Label text="전화번호 :" textFill="BLUE" GridPane.rowIndex="5">
+      <Label text="전화번호 :" textFill="WHITE" GridPane.rowIndex="5">
          <font>
             <Font size="36.0" />
          </font>
@@ -78,12 +77,15 @@ fx:controller="project.MemberShipController">
          <font>
             <Font size="24.0" />
          </font></PasswordField>
-      <Button mnemonicParsing="false" onAction="#memberShipProc" style="-fx-background-color: #CFFFE5;" text="확인" textFill="BLUE" GridPane.columnIndex="1" GridPane.rowIndex="6">
+      <Button mnemonicParsing="false" onAction="#memberShipProc" prefWidth="115.0" style="-fx-background-color: LIGHTSKYBLUE;" text="확인" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="6">
          <font>
-            <Font size="36.0" />
+            <Font size="29.0" />
          </font>
+         <GridPane.margin>
+            <Insets bottom="18.0" />
+         </GridPane.margin>
       </Button>
-      <Label text="비밀번호 :" textFill="BLUE" GridPane.rowIndex="2">
+      <Label text="비밀번호 :" textFill="WHITE" GridPane.rowIndex="2">
          <font>
             <Font size="36.0" />
          </font>
@@ -95,10 +97,22 @@ fx:controller="project.MemberShipController">
          <font>
             <Font size="24.0" />
          </font></TextField>
-      <Label text="회원가입" textFill="BLUE" GridPane.columnSpan="2" GridPane.halignment="CENTER">
+      <Label text="🔔 회원가입 🔔" textFill="WHITE" GridPane.columnSpan="2" GridPane.halignment="CENTER">
          <font>
             <Font size="48.0" />
          </font>
       </Label>
+      <Button mnemonicParsing="false" onAction="#memberShipCancle" style="-fx-background-color: LIGHTSKYBLUE;" text="취소" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="6">
+         <GridPane.margin>
+            <Insets bottom="18.0" left="280.0" />
+         </GridPane.margin>
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Button>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="750.0" stroke="BLACK" strokeType="INSIDE" width="15.0" GridPane.halignment="LEFT" GridPane.valignment="TOP" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="750.0" stroke="BLACK" strokeType="INSIDE" width="15.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="1100.0" GridPane.halignment="LEFT" GridPane.valignment="TOP" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="1100.0" GridPane.rowIndex="6" GridPane.valignment="BOTTOM" />
    </children>
 </GridPane>
