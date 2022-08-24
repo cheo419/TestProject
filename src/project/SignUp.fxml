@@ -65,10 +65,6 @@
          <font>
             <Font size="24.0" />
          </font></TextField>
-      <TextField fx:id="lNumber" maxHeight="50.0" maxWidth="450.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
-         <font>
-            <Font size="24.0" />
-         </font></TextField>
       <PasswordField fx:id="lPw" maxHeight="50.0" maxWidth="450.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <font>
             <Font size="24.0" />
@@ -77,6 +73,14 @@
          <font>
             <Font size="24.0" />
          </font></PasswordField>
+      <TextField fx:id="lName" maxHeight="50.0" maxWidth="450.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+         <font>
+            <Font size="24.0" />
+         </font></TextField>
+      <TextField fx:id="lNumber" maxHeight="50.0" maxWidth="450.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+         <font>
+            <Font size="24.0" />
+         </font></TextField>
       <Button mnemonicParsing="false" onAction="#memberShipProc" prefWidth="115.0" style="-fx-background-color: LIGHTSKYBLUE;" text="확인" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="6">
          <font>
             <Font size="29.0" />
@@ -93,10 +97,6 @@
             <Insets left="100.0" />
          </GridPane.margin>
       </Label>
-      <TextField fx:id="lName" maxHeight="50.0" maxWidth="450.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
-         <font>
-            <Font size="24.0" />
-         </font></TextField>
       <Label text="🔔 회원가입 🔔" textFill="WHITE" GridPane.columnSpan="2" GridPane.halignment="CENTER">
          <font>
             <Font size="48.0" />
