@@ -9,9 +9,11 @@ import project.service.CommonService;
 import project.service.CommonServiceImpl;
 import project.service.MemberShipService;
 import project.service.MemberShipServiceImpl;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -21,6 +23,12 @@ public class MemberShipController extends Controller implements Initializable{
 	private MemberShipService membershipServ;
 	private MemberDAO dao;
 	Member member = new Member();
+	
+	@FXML private TextField lId;
+	@FXML private PasswordField lPw;
+	@FXML private PasswordField lPwOk;
+	@FXML private TextField lName;
+	@FXML private TextField lNumber;
 
 	@Override
 	public void setRoot(Parent root) {
@@ -32,6 +40,11 @@ public class MemberShipController extends Controller implements Initializable{
 		comServ = new CommonServiceImpl();
 		membershipServ = new MemberShipServiceImpl();
 		dao = new MemberDAOImpl();
+		
+		lId.setOnAction(e -> lPw.requestFocus());
+		lPw.setOnAction(e -> lPwOk.requestFocus());
+		lPwOk.setOnAction(e -> lName.requestFocus());
+		lName.setOnAction(e -> lNumber.requestFocus());
 
 	}
 
@@ -43,6 +56,9 @@ public class MemberShipController extends Controller implements Initializable{
 		PasswordField txtPwOk = (PasswordField) root.lookup("#lPwOk");
 		TextField txtName = (TextField) root.lookup("#lName");
 		TextField txtNumber = (TextField) root.lookup("#lNumber");
+		
+	
+		
 
 		String[] txtEmpty = {txtId.getText(), 
 				txtPw.getText()};
