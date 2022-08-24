@@ -152,7 +152,7 @@ public class MemberDAOImpl implements MemberDAO {
 		return m;
 	}
 
-	// 진료 예약하기
+	// 진료 예약하기 (DB에 진료예약정보 저장되면 true)
 	@Override         
 	public boolean insertRes(Member m) {
 		try {
@@ -312,6 +312,27 @@ public class MemberDAOImpl implements MemberDAO {
 			}
 
 		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	// 회원가입시에 같은 아이디가있는지 검색 (동일한 아이디 있으면 true)
+	@Override
+	public boolean findSameId(String id) {
+		try {
+			String sql = "select count(*) from firstmember where id=?";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+
+			ResultSet rs = pstmt.executeQuery();
+
+			rs.next();
+			int result = rs.getInt(1);
+			if(result == 1) {
+				return true;
+			}
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
 		return false;

@@ -72,11 +72,21 @@ public class MemberShipController extends Controller implements Initializable{
 			}
 		}
 
+		String id = txtId.getText();
 		String pw = txtPw.getText();
 		String pwOk = txtPwOk.getText();
+		
+		// 회원가입시에 같은 아이디가있는지 검색 (동일한 아이디 있으면 true)
+		if(dao.findSameId(id)) {
+			comServ.errorBox("회원가입 오류","동일한 아이디로 회원이 존재합니다.","다른 아이디로 시도해주세요.");
+			txtId.requestFocus();
+			return;
+		}
 
+		// 입력한 암호가 다를경우 
 		if(membershipServ.comparePw(pw, pwOk)){
-			comServ.errorBox("암호가 다릅니다.");
+			comServ.errorBox("회원가입 오류","입력하신 암호가 다릅니다.");
+			txtPw.requestFocus();
 			return;
 		}
 

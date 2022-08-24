@@ -17,8 +17,9 @@ public interface LoginService {
 	
 	public void manageOk(Parent root); // 관리자 비밀번호창 열기
 	
-	public void manageLogin(Parent root,ActionEvent event); // 관리자 로그인 모든 예약 출력 화면
+	public void manageLogin(Parent root); // 관리자 로그인 모든 예약 출력 화면
 
 	public void backLogin(Parent root); // 관리자 화면에서 로그인 화면으로
+	
 	
 }
