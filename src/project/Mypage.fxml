@@ -34,7 +34,7 @@
             <Font size="27.0" />
          </font>
       </Button>
-      <Button maxHeight="70.0" mnemonicParsing="false" onAction="#res" style="-fx-background-color: LIGHTSKYBLUE;" text="진료 예약" textFill="WHITE" GridPane.rowIndex="1">
+      <Button fx:id="myResBtn" maxHeight="70.0" mnemonicParsing="false" onAction="#res" style="-fx-background-color: LIGHTSKYBLUE;" text="진료 예약" textFill="WHITE" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets bottom="40.0" left="140.0" />
          </GridPane.margin>

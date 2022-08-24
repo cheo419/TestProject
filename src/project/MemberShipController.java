@@ -24,13 +24,11 @@ public class MemberShipController extends Controller implements Initializable{
 
 	@Override
 	public void setRoot(Parent root) {
-		// TODO Auto-generated method stub
 		this.root = root;
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 		comServ = new CommonServiceImpl();
 		membershipServ = new MemberShipServiceImpl();
 		dao = new MemberDAOImpl();

@@ -14,6 +14,8 @@ public interface MemberDAO {
 	public boolean insertRes (Member m); // 예약
 	
 	public List<Member> selectAdmin(); // 관리자 예약출력
+	
+	public boolean checkRes(String id); //  유저의 예약여부확인 (버튼비활성화): 예약내역있음true
 
 }
 

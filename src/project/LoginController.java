@@ -29,7 +29,7 @@ public class LoginController extends Controller implements Initializable{
 		commonServ = new CommonServiceImpl();
 		dao = new MemberDAOImpl();
 	}
-	
+
 	// 로그인할때 입력된 아이디값을 저장하고 되돌려줌.
 	public void setId(String id) {
 		this.id = id;
@@ -63,6 +63,8 @@ public class LoginController extends Controller implements Initializable{
 	// 마이페이지 진료예약 및 콤보박스 저장
 	public void res() {
 		System.out.println(id);
+		Stage myPage = (Stage) root.getScene().getWindow();
+		myPage.close();	
 		Stage membershipForm = new Stage();
 		Parent form = commonServ.showWindow(membershipForm, "../MyRes.fxml");
 		String[] items = {"정형외과", "이비인후과", "내과"};
@@ -87,8 +89,8 @@ public class LoginController extends Controller implements Initializable{
 
 
 	// 진료예약 확인 (입력된 내용 확인)
-	public void resCheck(ActionEvent event) {
-		loginServ.resCheck(root,event);
+	public void resCheck() {
+		loginServ.resCheck(root);
 	}
 
 	// 로그인 화면 관리자 버튼(로그인 비밀번호 쳐야하는 페이지 오픈)
@@ -100,20 +102,28 @@ public class LoginController extends Controller implements Initializable{
 	public void manageLogin(ActionEvent event) {
 		loginServ.manageLogin(root,event);
 	}
-	
+
 	// 관리자 로그인 화면에서 뒤로 가기(=로그인화면으로)
 	public void backL() {
 		Stage s = (Stage) root.getScene().getWindow();
 		commonServ.showWindow(s, "../Login.fxml");
 	}
-	
+
 	// 진료예약에서 취소하면 마이페이지로
 	public void backMyPage() {
 		Stage s = (Stage) root.getScene().getWindow();
 		s.close();
-	}
-	
 
-	
+		// 진료예약페이지 닫힘
+		Stage myPage = (Stage) root.getScene().getWindow();
+		myPage.close();	
+
+		// 마이페이지(진료예약,예약확인버튼 있는페이지) 다시 띄우기 
+		Stage membershipForm = new Stage(); 
+		root=commonServ.showWindow(membershipForm, "../Mypage.fxml");
+	}
+
+
+
 
 }

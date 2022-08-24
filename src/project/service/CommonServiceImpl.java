@@ -16,7 +16,6 @@ public class CommonServiceImpl implements CommonService{
 	// 새로운 화면 보이기
 	@Override
 	public Parent showWindow(Stage s, String formPath) {
-		// TODO Auto-generated method stub
 		FXMLLoader loader = new FXMLLoader
 				(getClass().getResource(formPath));
 		
@@ -26,7 +25,6 @@ public class CommonServiceImpl implements CommonService{
 			root = loader.load();
 			s.setScene(new Scene(root));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -42,7 +40,6 @@ public class CommonServiceImpl implements CommonService{
 	// 에러박스
 	@Override
 	public void errorBox(String title, String header, String content) {
-		// TODO Auto-generated method stub
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle(title);
 		alert.setHeaderText(header);
@@ -51,19 +48,16 @@ public class CommonServiceImpl implements CommonService{
 	}
 	@Override
 	public void errorBox(String header, String content) {
-		// TODO Auto-generated method stub
 		errorBox("error", header, content);
 	}
 	@Override
 	public void errorBox(String content) {
-		// TODO Auto-generated method stub
 		errorBox("error", "error header", content);
 	}
 
 	// 화면 닫기
 	@Override
 	public void WindowClose(ActionEvent event) {
-		// TODO Auto-generated method stub
 		Parent root = (Parent) event.getSource();
 		Stage stage = (Stage) root.getScene().getWindow();
 		stage.close();

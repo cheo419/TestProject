@@ -7,6 +7,7 @@ import project.DAO.MemberDAO;
 import project.DAO.MemberDAOImpl;
 import javafx.event.ActionEvent;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
@@ -20,7 +21,6 @@ public class LoginServiceImpl implements LoginService{
 	MyResController myResController;
 
 	public LoginServiceImpl() {
-		// TODO Auto-generated constructor stub
 		dao = new MemberDAOImpl();
 		comServ = new CommonServiceImpl();
 		loginController = new LoginController();
@@ -30,7 +30,6 @@ public class LoginServiceImpl implements LoginService{
 	// 로그인 버튼 눌렀을 때
 	@Override
 	public void LoginProc(Parent root) {
-		// TODO Auto-generated method stub
 		TextField idTxt = (TextField) root.lookup("#lId");
 		PasswordField pwTxt = (PasswordField) root.lookup("#lPw");
 
@@ -44,8 +43,20 @@ public class LoginServiceImpl implements LoginService{
 			loginController.setId(id);	// 로그인할때 쓴 아이디값을 -> 로그인컨트롤러->되돌아와서 resCheck저장
 			myResController.setId(id);
 			
-			Stage myPage = (Stage) root.getScene().getWindow();
-			root = comServ.showWindow(myPage, "../Mypage.fxml");
+			// 로그인 후 아이디비번쓰는 창 닫음
+			Stage myPage = (Stage) root.getScene().getWindow(); 
+			myPage.close();	
+			
+			// 마이페이지(진료예약,예약확인버튼 있는페이지) 다시 띄우기 (새창띄워서 버튼비활성화하기위함)
+			Stage membershipForm = new Stage(); 
+			root=comServ.showWindow(membershipForm, "../Mypage.fxml");
+			
+			// 예약된 내역이있는지 boolean으로 체크하고 버튼비활성화 처리
+			if(dao.checkRes(id)){
+				System.out.println("예약내용있음");
+				Button myResBtn = (Button) root.lookup("#myResBtn");
+				myResBtn.setDisable(true);
+			}
 		} else {
 			comServ.errorBox("로그인", "로그인 여부", "로그인에 실패했습니다.");
 		}
@@ -122,13 +133,12 @@ public class LoginServiceImpl implements LoginService{
 	// 로그아웃
 	@Override
 	public void Logout(Parent root) {
-		// TODO Auto-generated method stub
 		Stage s = (Stage) root.getScene().getWindow();
 		comServ.showWindow(s, "../Login.fxml");
 	}
 
 	// 내 예약출력화면에서 확인하면 닫기
-	public void resCheck(Parent root,ActionEvent event) {
+	public void resCheck(Parent root) {
 		System.out.println("loginController.getId():"+loginController.getId());
 		String id = loginController.getId(); // 로그인할때 썼던 아이디값을 받아옴.
 
@@ -149,14 +159,27 @@ public class LoginServiceImpl implements LoginService{
 
 		if(dao.insertRes(m)) {
 			comServ.errorBox("진료예약", "진료예약성공", "진료예약이 정상적으로 이루어졌습니다.");
-			comServ.WindowClose(event);
+			
+			// 진료예약성공 후 진료과,예약날짜,시간선택하는 창 닫음
+			Stage myPage = (Stage) root.getScene().getWindow();
+			myPage.close();	
+			
+			// 마이페이지(진료예약,예약확인버튼 있는페이지) 다시 띄우기 (새창띄워서 버튼비활성화하기위함)
+			Stage membershipForm = new Stage(); ////////////////
+			root=comServ.showWindow(membershipForm, "../Mypage.fxml");
+			
+			// 예약된 내역이있는지 boolean으로 체크하고 버튼비활성화 처리
+			if(dao.checkRes(id)){
+				System.out.println("예약내용있음");
+				Button myResBtn = (Button) root.lookup("#myResBtn");
+				myResBtn.setDisable(true);
+			}
+			
 		} else {
 			comServ.errorBox("DB 에러", "DB 문제 발생", "DB 입력에 문제가 발생했습니다.");
 			return;
 		}
 
-		Stage stage = (Stage) root.getScene().getWindow();
-		stage.close();
 	}
 	// 관리자 비밀번호창 열기
 	@Override
@@ -185,10 +208,11 @@ public class LoginServiceImpl implements LoginService{
 	// 관리자에서 로그인 화면으로
 	@Override
 	public void backLogin(Parent root) {
-		// TODO Auto-generated method stub
 		Stage s = (Stage) root.getScene().getWindow();
 		comServ.showWindow(s, "../Login.fxml");
 	}
+
+
 
 
 

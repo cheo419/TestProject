@@ -13,7 +13,7 @@ public interface LoginService {
 	
 	public void Logout(Parent root); // 로그아웃
 	
-	public void resCheck(Parent root,ActionEvent event); // 내 예약출력화면에서 확인하면 닫기
+	public void resCheck(Parent root); // 내 예약출력화면에서 확인하면 닫기
 	
 	public void manageOk(Parent root); // 관리자 비밀번호창 열기
 	

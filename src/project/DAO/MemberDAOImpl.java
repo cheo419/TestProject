@@ -257,6 +257,27 @@ public class MemberDAOImpl implements MemberDAO {
 		}
 		return memberList;
 	}
+	
+	 //  유저의 예약여부확인 (버튼비활성화): 예약내역있음true
+		@Override
+		public boolean checkRes(String id) {	//  유저의 예약여부확인 (버튼비활성화): 예약내역있음true
+			try {
+				String sql = "select count(resJinryo) from firstmember where id=?";
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, id);
+
+				ResultSet rs = pstmt.executeQuery();
+
+				rs.next();
+				int result = rs.getInt(1);
+				if(result == 1) {
+					return true;
+				}
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+			return false;
+		}
 
 
 
