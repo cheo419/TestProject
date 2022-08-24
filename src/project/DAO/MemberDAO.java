@@ -16,6 +16,10 @@ public interface MemberDAO {
 	public List<Member> selectAdmin(); // 관리자 예약출력
 	
 	public boolean checkRes(String id); //  유저의 예약여부확인 (버튼비활성화): 예약내역있음true
+	
+	public boolean deleteUser (String id); // 관리자페이지에서 테이블뷰에서 선택된 회원 강제탈퇴
+	
+	public boolean deleteUserRes (String id); // 관리자페이지에서 테이블뷰에서 선택된 회원 예약내역 삭제
 
 }
 
@@ -34,6 +38,11 @@ create table firstmember (
     
 );
 
+
+select count(resJinryo) from firstmember where id='nj';
+
+select count(*) from firstmember where resJinryo='3' and resDate='20220824' and resTime='5';
+
 drop table firstmember;
 
 select * from firstmember;
@@ -44,5 +53,7 @@ insert into firstmember (userName,phoneNum,id,pw) values ('김나진','010-0000-
 
 update firstmember set resJinryo= '1',resDate='20220819',resTime='1' where id='nj';
 
+delete from firstmember where id='nj4';
 
+update firstmember set resJinryo= '',resDate='',resTime='' where id='nj';
 */

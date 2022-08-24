@@ -279,6 +279,45 @@ public class MemberDAOImpl implements MemberDAO {
 			return false;
 		}
 
+		// 관리자페이지에서 테이블뷰에서 선택된 회원 강제탈퇴
+		@Override
+		public boolean deleteUser(String id) {
+			try {
+				String sql = "delete from firstmember where id=?";
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, id);
+
+				int result = pstmt.executeUpdate();
+				if(result >= 1) {
+					return true;
+				}
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+			return false;
+		}
+
+		// 관리자페이지에서 테이블뷰에서 선택된 회원 예약내역 삭제
+		@Override
+		public boolean deleteUserRes(String id) {
+			try {
+				String sql = "update firstmember set resJinryo= '',resDate='',resTime='' where id=?";
+				PreparedStatement pstmt = con.prepareStatement(sql);
+
+				pstmt.setString(1, id);
+
+				int result = pstmt.executeUpdate();
+
+				if(result >= 1) {
+					return true;
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return false;
+		}
+
 
 
 }
