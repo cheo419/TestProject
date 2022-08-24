@@ -20,20 +20,20 @@ import project.service.CommonService;
 import project.service.LoginService;
 
 public class MyResController extends Controller implements Initializable{
-	
+
 	private Parent root;
 	private LoginService loginServ;
 	private CommonService commonServ;
 	MemberDAO dao;
 	static String id;
-	
+
 	@FXML private TableView<Member> myResTable;
 	@FXML private TableColumn<Member, String>  nameCol;
 	@FXML private TableColumn<Member, String> numberCol;
 	@FXML private TableColumn<Member, String>  idCol;
 	@FXML private TableColumn<Member, String>  pwCol;
 	@FXML private TableColumn<Member, String>  resCol;
-	
+
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -45,7 +45,7 @@ public class MyResController extends Controller implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		dao = new MemberDAOImpl();
 		Member m= dao.select(id);
-		
+
 		myResTable.setItems(getProduct(m));
 
 		nameCol.setCellValueFactory 		   
@@ -58,7 +58,7 @@ public class MyResController extends Controller implements Initializable{
 		(new PropertyValueFactory<Member, String>("pw"));
 		resCol.setCellValueFactory	   
 		(new PropertyValueFactory<Member, String>("res")); 
-		
+
 	}
 
 	private ObservableList<Member> getProduct(Member m) {
@@ -70,19 +70,25 @@ public class MyResController extends Controller implements Initializable{
 	@Override
 	public void setRoot(Parent root) {
 		this.root = root;
-		
+
 	}
 
 	public void resCheck(Parent root, ActionEvent event) {
-		
+
 		Stage stage = (Stage) root.getScene().getWindow();
 		stage.close();
 	}
-	
+
 	// 내 예약 확인 페이지에서 마이페지이로
-		public void backMypage2() {
-			Stage s = (Stage) root.getScene().getWindow();
-			s.close();
-		}
+	public void backMypage2() {
+		Stage s = (Stage) root.getScene().getWindow();
+		s.close();
+	}
+	
+	// 내 예약 내역화면 예약 정보 삭제
+	public void deleteMyRes() {
+		
+	}
+
 
 }

@@ -10,9 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane prefHeight="672.0" prefWidth="1061.0" style="-fx-background-color: NAVY;" 
-xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
-fx:controller="project.ManageController">
+<GridPane prefHeight="672.0" prefWidth="1061.0" style="-fx-background-color: NAVY;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.ManageController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
@@ -45,7 +43,7 @@ fx:controller="project.ManageController">
          <GridPane.margin>
             <Insets right="15.0" top="15.0" />
          </GridPane.margin></Button>
-      <Button mnemonicParsing="false" onAction="#deleteRes" style="-fx-background-color: LIGHTSKYBLUE;" text="선택회원 예약삭제" textFill="WHITE" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+      <Button mnemonicParsing="false" onAction="#deleteRes" style="-fx-background-color: LIGHTSKYBLUE;" text="선택 회원 예약 취소" textFill="WHITE" GridPane.halignment="LEFT" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets left="15.0" top="15.0" />
          </GridPane.margin>
@@ -53,7 +51,7 @@ fx:controller="project.ManageController">
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button mnemonicParsing="false" onAction="#deleteUser" style="-fx-background-color: LIGHTSKYBLUE;" text="선택회원 정보삭제" textFill="WHITE" GridPane.halignment="LEFT">
+      <Button mnemonicParsing="false" onAction="#deleteUser" style="-fx-background-color: LIGHTSKYBLUE;" text="선택 회원 삭제" textFill="WHITE" GridPane.halignment="LEFT">
          <GridPane.margin>
             <Insets left="15.0" top="20.0" />
          </GridPane.margin>
