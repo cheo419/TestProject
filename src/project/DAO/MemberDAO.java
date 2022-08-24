@@ -11,15 +11,16 @@ public interface MemberDAO {
 	
 	public Member select(String id); // 유저의 예약내용 출력
 	
-	public boolean insertRes (Member m); // 예약
+	public boolean insertRes (Member m); // 진료 예약하기
 	
 	public List<Member> selectAdmin(); // 관리자 예약출력
 	
-	public boolean checkRes(String id); //  유저의 예약여부확인 (버튼비활성화): 예약내역있음true
+	public boolean checkRes(String id); //  예약여부확인 (예약하기 버튼 비활성화,예약내역 삭제시): 예약내역있음true
 	
 	public boolean deleteUser (String id); // 관리자페이지에서 테이블뷰에서 선택된 회원 강제탈퇴
 	
-	public boolean deleteUserRes (String id); // 관리자페이지에서 테이블뷰에서 선택된 회원 예약내역 삭제
+	public boolean deleteUserRes (String id); // (관리자페이지,유저페이지)테이블뷰에서 선택된 예약내역 삭제
+	
 
 }
 

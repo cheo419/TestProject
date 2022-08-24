@@ -42,15 +42,15 @@ public class LoginServiceImpl implements LoginService{
 
 			loginController.setId(id);	// 로그인할때 쓴 아이디값을 -> 로그인컨트롤러->되돌아와서 resCheck저장
 			myResController.setId(id);
-			
+
 			// 로그인 후 아이디비번쓰는 창 닫음
 			Stage myPage = (Stage) root.getScene().getWindow(); 
 			myPage.close();	
-			
+
 			// 마이페이지(진료예약,예약확인버튼 있는페이지) 다시 띄우기 (새창띄워서 버튼비활성화하기위함)
 			Stage membershipForm = new Stage(); 
 			root=comServ.showWindow(membershipForm, "../Mypage.fxml");
-			
+
 			// 예약된 내역이있는지 boolean으로 체크하고 버튼비활성화 처리
 			if(dao.checkRes(id)){
 				System.out.println("예약내용있음");
@@ -81,7 +81,7 @@ public class LoginServiceImpl implements LoginService{
 			return 4;
 		}
 	}
-	
+
 	// 데이트피커 (예약날짜)
 	public String getDatePicker(Parent root) {
 
@@ -90,7 +90,7 @@ public class LoginServiceImpl implements LoginService{
 		String value = cmbDate.getValue().toString();
 		return value;
 	}
-	
+
 	// 콤보박스 (예약시간)
 	public int getComboBoxTime(Parent root) {
 
@@ -124,8 +124,14 @@ public class LoginServiceImpl implements LoginService{
 		comServ.showWindow(membershipForm, "../MyRes.fxml");
 	}
 
-	// 내 예약 출력
+	// 내 예약내역보기 
 	public void resOk(Parent root,ActionEvent event) {
+		// 내 예약내역확인 페이지 클릭하면 마이페이지 창 닫음
+		// 혹시 예약내역확인페이지에서 예약내역삭제하면 마이페이지 다시띄워서
+		// 예약하기 버튼 활성화를 위함.
+		Stage myPage = (Stage) root.getScene().getWindow();
+		myPage.close();	
+		
 		Stage membershipForm = new Stage();
 		comServ.showWindow(membershipForm, "../MyResPage.fxml");
 	}
@@ -159,22 +165,22 @@ public class LoginServiceImpl implements LoginService{
 
 		if(dao.insertRes(m)) {
 			comServ.errorBox("진료예약", "진료예약성공", "진료예약이 정상적으로 이루어졌습니다.");
-			
+
 			// 진료예약성공 후 진료과,예약날짜,시간선택하는 창 닫음
 			Stage myPage = (Stage) root.getScene().getWindow();
 			myPage.close();	
-			
+
 			// 마이페이지(진료예약,예약확인버튼 있는페이지) 다시 띄우기 (새창띄워서 버튼비활성화하기위함)
 			Stage membershipForm = new Stage(); ////////////////
 			root=comServ.showWindow(membershipForm, "../Mypage.fxml");
-			
+
 			// 예약된 내역이있는지 boolean으로 체크하고 버튼비활성화 처리
 			if(dao.checkRes(id)){
 				System.out.println("예약내용있음");
 				Button myResBtn = (Button) root.lookup("#myResBtn");
 				myResBtn.setDisable(true);
 			}
-			
+
 		} else {
 			comServ.errorBox("DB 에러", "DB 문제 발생", "DB 입력에 문제가 발생했습니다.");
 			return;

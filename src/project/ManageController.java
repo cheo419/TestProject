@@ -2,6 +2,7 @@ package project;
 
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -11,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -41,15 +43,16 @@ public class ManageController extends Controller implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		comServ = new CommonServiceImpl();
-
+		comServ = new CommonServiceImpl();	
+		loginServ = new LoginServiceImpl();
 		dao = new MemberDAOImpl();
-		List<Member> memberList = dao.selectAdmin();
+		
+		List<Member> memberList = dao.selectAdmin();	// 관리자 예약출력으로 모든 저장된 값을 리스트로 저장
 
 		manageTable.setItems(getProduct(memberList));
 
-
-		nameCol.setCellValueFactory 		   
+		// 각 칼럼과 매칭되는 클래스 변수명을 지정해 준다
+		nameCol.setCellValueFactory    
 		(new PropertyValueFactory<Member, String>("userName")); 
 		numberCol.setCellValueFactory 		   
 		(new PropertyValueFactory<Member, String>("phoneNumber")); 
@@ -65,15 +68,11 @@ public class ManageController extends Controller implements Initializable{
 			seleted= manageTable.getSelectionModel().getSelectedItem().getId();
 			System.out.println(manageTable.getSelectionModel().getSelectedItem().getId());
 		});
-
-		loginServ = new LoginServiceImpl();
-
 	}
 
 	@Override
 	public void setRoot(Parent root) {
 		this.root = root;
-
 	}
 
 	private ObservableList<Member> getProduct(List<Member> memberList) {
@@ -87,52 +86,102 @@ public class ManageController extends Controller implements Initializable{
 		loginServ.backLogin(root);
 	}
 
-	// 관리자 페이지에서 선택된 예약 삭제
+	// 관리자 페이지에서 선택된 행의 회원 예약내역 삭제
 	public void deleteRes() {
 		System.out.println("예약삭제버튼클릭");
-		System.out.println("선택된 회원아이디: "+seleted);
+		System.out.println("예약내역 삭제시키려는 회원아이디: "+seleted);
 
-		// 삭제되어 테이블뷰 업데이트를 위해 창 닫기
-		Stage myPage = (Stage) root.getScene().getWindow();
-		myPage.close();
+		// 삭제하려는 행이 선택된경우
+		if(seleted!=null) {
 
-		// 관리자페이지에서 테이블뷰에서 선택된 회원 예약내역 삭제
-		if(dao.deleteUserRes(seleted)){
-			System.out.println("아이디: "+seleted+"의 회원님 예약내역삭제");
+			// 예약내역삭제 전에 정말로 삭제할것인지 경고창 (잘못누른경우 취소할 수 있도록) 
+			Alert alertWarn = new Alert(AlertType.CONFIRMATION);
+			alertWarn.setTitle(seleted+"회원님의 예약내역삭제");
+			alertWarn.setHeaderText(seleted+"회원님의 예약내역을 삭제합니다.");
+			alertWarn.setContentText("삭제 복구가 불가능합니다. 삭제하시겠습니까?");
+			Optional<ButtonType>result = alertWarn.showAndWait();
 
+			// 예약내역 삭제하기 경고창에서 확인버튼 눌러 삭제 진행
+			if(result.get()==ButtonType.OK) {
+				// 예약여부확인 : 예약내역있음true
+				if(dao.checkRes(seleted)) {
+					// 삭제되어 테이블뷰 업데이트를 위해 창 닫기
+					Stage myPage = (Stage) root.getScene().getWindow();
+					myPage.close();
+
+					// 관리자페이지에서 테이블뷰에서 선택된 회원 예약내역 삭제
+					if(dao.deleteUserRes(seleted)){
+						System.out.println("아이디: "+seleted+"의 회원님 예약내역삭제");
+
+						Alert alert = new Alert(AlertType.INFORMATION);
+						alert.setContentText("아이디: "+seleted+"의 회원님의 예약내역이 삭제되었습니다.");
+						alert.showAndWait();	//알림창 띄우고 잠시 기다리기
+					}
+					//  예약내역삭제된 후 수정된 내용으로 창 다시 띄우기
+					Stage membershipForm = new Stage();
+					root=comServ.showWindow(membershipForm, "../ManagePage.fxml");
+				} else {
+					// 예약여부확인했는데 false : 예약내역없음
+					Alert alert = new Alert(AlertType.INFORMATION);
+					alert.setContentText("선택된 회원아이디: "+seleted+"는 삭제할 예약내역이 없습니다.");
+					alert.show();	
+				}
+			} else { 	// 예약내역 삭제하기 경고창에서 취소버튼 눌러 탈퇴진행되지 않음.
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setContentText("아이디: "+seleted+"의 회원님이 예약내역삭제가 취소되었습니다.");
+				alert.show();	
+			}
+		} else {	//삭제하려는 행이 선택되지 않은 경우
 			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setContentText("아이디: "+seleted+"의 회원님의 예약내역이 삭제되었습니다.");
-			alert.showAndWait();	//알림창 띄우고 잠시 기다리기
+			alert.setContentText("선택된 행이 없습니다. 행을 선택 후 삭제해주세요.");
+			alert.show();
 		}
-
-		//  예약내역삭제된 후 수정된 내용으로 창 다시 띄우기
-		Stage membershipForm = new Stage();
-		root=comServ.showWindow(membershipForm, "../ManagePage.fxml");
-
 	}
 
-
-	// 관리자 페이지에서 선택된 회원 전부다 삭제
+	// 관리자 페이지에서 선택된 회원 강제 탈퇴시키기
 	public void deleteUser() {
 		System.out.println("삭제버튼클릭");
 		System.out.println("선택된 회원아이디: "+seleted);
 
-		// 삭제되어 테이블뷰 업데이트를 위해 창 닫기
-		Stage myPage = (Stage) root.getScene().getWindow();
-		myPage.close();
+		// 삭제하려는 행이 선택된경우
+		if(seleted!=null) {
 
-		// 관리자페이지에서 테이블뷰에서 선택된 회원 강제탈퇴
-		if(dao.deleteUser(seleted)){
-			System.out.println("아이디: "+seleted+"의 회원님 강제탈퇴");
+			// 회원강제탈퇴 전에 정말로 탈퇴시킬것인지 경고창 (잘못누른경우 취소할 수 있도록) 
+			Alert alertWarn = new Alert(AlertType.CONFIRMATION);
+			alertWarn.setTitle(seleted+"회원님의 강제탈퇴");
+			alertWarn.setHeaderText(seleted+"회원님을 강제탈퇴 시킵니다.");
+			alertWarn.setContentText("탈퇴시 복구가 불가능합니다. 탈퇴시키겠습니까?");
+			Optional<ButtonType>result = alertWarn.showAndWait();
 
+			// 강제탈퇴 경고창에서 확인버튼 눌러 강제탈퇴 진행
+			if(result.get()==ButtonType.OK) {
+
+				// 강제탈퇴시 테이블뷰 업데이트를 위해 창 닫기
+				Stage myPage = (Stage) root.getScene().getWindow();
+				myPage.close();
+
+				// 관리자페이지에서 테이블뷰에서 선택된 회원 강제탈퇴
+				if(dao.deleteUser(seleted)){
+					System.out.println("아이디: "+seleted+"의 회원님 강제탈퇴");
+
+					Alert alert = new Alert(AlertType.INFORMATION);
+					alert.setContentText("아이디: "+seleted+"의 회원님이 강제탈퇴되었습니다.");
+					alert.showAndWait();	//알림창 띄우고 잠시 기다리기
+				}
+				//  삭제된 후 수정된 내용으로 창 다시 띄우기
+				Stage membershipForm = new Stage();
+				root=comServ.showWindow(membershipForm, "../ManagePage.fxml");
+				
+			} else { 	// 강제탈퇴 경고창에서 취소버튼 눌러 탈퇴진행되지 않음.
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setContentText("아이디: "+seleted+"의 회원님이 강제탈퇴가 취소되었습니다.");
+				alert.show();	
+			}
+		} else {	//삭제하려는 행이 선택되지 않은 경우
 			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setContentText("아이디: "+seleted+"의 회원님이 강제탈퇴되었습니다.");
-			alert.showAndWait();	//알림창 띄우고 잠시 기다리기
+			alert.setContentText("선택된 행이 없습니다. 행을 선택 후 삭제해주세요.");
+			alert.show();
 		}
-
-		//  삭제된 후 수정된 내용으로 창 다시 띄우기
-		Stage membershipForm = new Stage();
-		root=comServ.showWindow(membershipForm, "../ManagePage.fxml");
 	}
 
 

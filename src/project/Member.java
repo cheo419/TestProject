@@ -2,17 +2,19 @@ package project;
 
 public class Member {
 	// 정보
-	private String id;
-	private String pw;
-	private String userName;
-	private String phoneNumber;
+	private String id;			// 아이디
+	private String pw;			// 비밀번호
+	private String userName;	// 이름
+	private String phoneNumber;	// 전화번호
 	
 	// 예약
-	private int jinryo;
-	private String date;
-	private int time;
+	private int jinryo;		// 예약진료과
+	private String date;	//	예약날짜
+	private int time;		// 예약시간
 	
-	private String res;
+	private String res;		// 예약진료과 + 예약날짜 + 예약시간 ( 예약내역 출력시 세가지 값 묶어서 사용 )
+	
+	
 	
 	
 	public String getRes() {

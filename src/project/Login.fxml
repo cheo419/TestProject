@@ -71,7 +71,7 @@
             <Font size="17.0" />
          </font>
       </Button>
-      <Button mnemonicParsing="false" onAction="#LoginProc" prefHeight="50.0" style="-fx-background-color: LIGHTSKYBLUE;" text="로그인" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.valignment="TOP">
+      <Button fx:id="loginBtn" mnemonicParsing="false" onAction="#LoginProc" prefHeight="50.0" style="-fx-background-color: LIGHTSKYBLUE;" text="로그인" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.valignment="TOP">
          <font>
             <Font size="24.0" />
          </font>

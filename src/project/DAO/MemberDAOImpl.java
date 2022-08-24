@@ -152,8 +152,7 @@ public class MemberDAOImpl implements MemberDAO {
 		return m;
 	}
 
-	// 필요한가?
-	// 예약
+	// 진료 예약하기
 	@Override         
 	public boolean insertRes(Member m) {
 		try {
@@ -194,7 +193,7 @@ public class MemberDAOImpl implements MemberDAO {
 				m.setPhoneNumber(rs.getString(2));
 				m.setId(rs.getString(3));
 				m.setPw(rs.getString(4));
-				
+
 				if(rs.getInt(5)!=0) {
 					m.setJinryo(rs.getInt(5));
 				}
@@ -257,66 +256,68 @@ public class MemberDAOImpl implements MemberDAO {
 		}
 		return memberList;
 	}
-	
-	 //  유저의 예약여부확인 (버튼비활성화): 예약내역있음true
-		@Override
-		public boolean checkRes(String id) {	//  유저의 예약여부확인 (버튼비활성화): 예약내역있음true
-			try {
-				String sql = "select count(resJinryo) from firstmember where id=?";
-				PreparedStatement pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, id);
 
-				ResultSet rs = pstmt.executeQuery();
+	//  예약여부확인 (예약하기 버튼 비활성화,예약내역 삭제시): 예약내역있음true
+	@Override
+	public boolean checkRes(String id) {
+		try {
+			String sql = "select count(resJinryo) from firstmember where id=?";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
 
-				rs.next();
-				int result = rs.getInt(1);
-				if(result == 1) {
-					return true;
-				}
-			}catch (Exception e) {
-				e.printStackTrace();
+			ResultSet rs = pstmt.executeQuery();
+
+			rs.next();
+			int result = rs.getInt(1);
+			if(result == 1) {
+				return true;
 			}
-			return false;
+		}catch (Exception e) {
+			e.printStackTrace();
 		}
+		return false;
+	}
 
-		// 관리자페이지에서 테이블뷰에서 선택된 회원 강제탈퇴
-		@Override
-		public boolean deleteUser(String id) {
-			try {
-				String sql = "delete from firstmember where id=?";
-				PreparedStatement pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, id);
+	// 관리자페이지에서 테이블뷰에서 선택된 회원 강제탈퇴
+	@Override
+	public boolean deleteUser(String id) {
+		try {
+			String sql = "delete from firstmember where id=?";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
 
-				int result = pstmt.executeUpdate();
-				if(result >= 1) {
-					return true;
-				}
-			}catch (Exception e) {
-				e.printStackTrace();
+			int result = pstmt.executeUpdate();
+			if(result >= 1) {
+				return true;
 			}
-			return false;
+		}catch (Exception e) {
+			e.printStackTrace();
 		}
+		return false;
+	}
 
-		// 관리자페이지에서 테이블뷰에서 선택된 회원 예약내역 삭제
-		@Override
-		public boolean deleteUserRes(String id) {
-			try {
-				String sql = "update firstmember set resJinryo= '',resDate='',resTime='' where id=?";
-				PreparedStatement pstmt = con.prepareStatement(sql);
+	// (관리자페이지,유저페이지)테이블뷰에서 선택된 예약내역 삭제
+	@Override
+	public boolean deleteUserRes(String id) {
+		try {
+			String sql = "update firstmember set resJinryo= '',resDate='',resTime='' where id=?";
+			PreparedStatement pstmt = con.prepareStatement(sql);
 
-				pstmt.setString(1, id);
+			pstmt.setString(1, id);
 
-				int result = pstmt.executeUpdate();
+			int result = pstmt.executeUpdate();
 
-				if(result >= 1) {
-					return true;
-				}
-
-			} catch (Exception e) {
-				e.printStackTrace();
+			if(result >= 1) {
+				return true;
 			}
-			return false;
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		return false;
+	}
+
+
 
 
 

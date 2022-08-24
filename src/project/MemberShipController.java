@@ -12,6 +12,7 @@ import project.service.MemberShipServiceImpl;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -29,6 +30,7 @@ public class MemberShipController extends Controller implements Initializable{
 	@FXML private PasswordField lPwOk;
 	@FXML private TextField lName;
 	@FXML private TextField lNumber;
+	@FXML private Button signUpOk;
 
 	@Override
 	public void setRoot(Parent root) {
@@ -41,11 +43,13 @@ public class MemberShipController extends Controller implements Initializable{
 		membershipServ = new MemberShipServiceImpl();
 		dao = new MemberDAOImpl();
 		
+		// 회원가입시 텍스트 입력칸에서 엔터 입력시 다음 입력칸으로 포커스 이동. 마지막엔 확인버튼 눌림.
 		lId.setOnAction(e -> lPw.requestFocus());
 		lPw.setOnAction(e -> lPwOk.requestFocus());
 		lPwOk.setOnAction(e -> lName.requestFocus());
 		lName.setOnAction(e -> lNumber.requestFocus());
-
+		lNumber.setOnAction(e -> signUpOk.requestFocus());
+		signUpOk.setOnKeyPressed(e -> memberShipProc());
 	}
 
 	// signup 회원가입 화면 확인 버튼
@@ -56,9 +60,6 @@ public class MemberShipController extends Controller implements Initializable{
 		PasswordField txtPwOk = (PasswordField) root.lookup("#lPwOk");
 		TextField txtName = (TextField) root.lookup("#lName");
 		TextField txtNumber = (TextField) root.lookup("#lNumber");
-		
-	
-		
 
 		String[] txtEmpty = {txtId.getText(), 
 				txtPw.getText()};
@@ -83,7 +84,6 @@ public class MemberShipController extends Controller implements Initializable{
 		member.setPw(txtPw.getText());
 		member.setUserName(txtName.getText());
 		member.setPhoneNumber(txtNumber.getText());
-
 
 		if(dao.insertMember(member)) {
 			comServ.errorBox("회원가입", "회원가입성공", "회원가입이 정상적으로 이루어졌습니다.");
