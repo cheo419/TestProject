@@ -1,12 +1,12 @@
-package project;
+package project.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import project.service.CommonServiceImpl;
 import project.service.LoginServiceImpl;
-import project.DAO.MemberDAO;
-import project.DAO.MemberDAOImpl;
+import project.dao.MemberDAO;
+import project.dao.MemberDAOImpl;
 import project.service.CommonService;
 import project.service.LoginService;
 import javafx.event.ActionEvent;
@@ -64,7 +64,7 @@ public class CommonController extends Controller implements Initializable{
 		Stage myPage = (Stage) root.getScene().getWindow();
 		myPage.close();	
 		Stage membershipForm = new Stage();
-		Parent form = commonServ.showWindow(membershipForm, "../MyRes.fxml");
+		Parent form = commonServ.showWindow(membershipForm, "../fxml/MyRes.fxml");
 		String[] items = {"정형외과", "이비인후과", "내과"};
 
 		ComboBox<String> cmbjinryo = (ComboBox<String>) form.lookup("#cmbJinryo");
@@ -101,7 +101,7 @@ public class CommonController extends Controller implements Initializable{
 		
 		// 마이페이지(진료예약,예약확인버튼 있는페이지) 다시 띄우기 
 		Stage membershipForm = new Stage(); 
-		root=commonServ.showWindow(membershipForm, "../Mypage.fxml");
+		root=commonServ.showWindow(membershipForm, "../fxml/Mypage.fxml");
 	}
 
 	

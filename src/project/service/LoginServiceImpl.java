@@ -1,11 +1,11 @@
 package project.service;
 
-import project.CommonController;
-import project.LoginPageController;
+import project.controller.CommonController;
+import project.controller.LoginPageController;
 import project.Member;
-import project.MyResController;
-import project.DAO.MemberDAO;
-import project.DAO.MemberDAOImpl;
+import project.controller.MyResController;
+import project.dao.MemberDAO;
+import project.dao.MemberDAOImpl;
 import javafx.event.ActionEvent;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
@@ -52,7 +52,7 @@ public class LoginServiceImpl implements LoginService{
 
 			// 마이페이지(진료예약,예약확인버튼 있는페이지) 다시 띄우기 (새창띄워서 버튼비활성화하기위함)
 			Stage membershipForm = new Stage(); 
-			root=comServ.showWindow(membershipForm, "../Mypage.fxml");
+			root=comServ.showWindow(membershipForm, "../fxml/Mypage.fxml");
 
 			// 예약된 내역이있는지 boolean으로 체크하고 버튼비활성화 처리
 			if(dao.checkRes(id)){
@@ -136,14 +136,14 @@ public class LoginServiceImpl implements LoginService{
 		myPage.close();	
 
 		Stage membershipForm = new Stage();
-		comServ.showWindow(membershipForm, "../MyResPage.fxml");
+		comServ.showWindow(membershipForm, "../fxml/MyResPage.fxml");
 	}
 
 	// 로그아웃
 	@Override
 	public void Logout(Parent root) {
 		Stage s = (Stage) root.getScene().getWindow();
-		comServ.showWindow(s, "../Login.fxml");
+		comServ.showWindow(s, "../fxml/Login.fxml");
 	}
 	
 	// 각 진료과(콤보박스),진료날짜(데이트피커),진료시간(콤보박스)에 입력값이 없으면 boolean으로 false 
@@ -230,7 +230,7 @@ public class LoginServiceImpl implements LoginService{
 
 				// 마이페이지(진료예약,예약확인버튼 있는페이지) 다시 띄우기 (새창띄워서 버튼비활성화하기위함)
 				Stage membershipForm = new Stage(); ////////////////
-				root=comServ.showWindow(membershipForm, "../Mypage.fxml");
+				root=comServ.showWindow(membershipForm, "../fxml/Mypage.fxml");
 
 				// 예약된 내역이있는지 boolean으로 체크하고 버튼비활성화 처리
 				if(dao.checkRes(id)){
@@ -249,7 +249,7 @@ public class LoginServiceImpl implements LoginService{
 	@Override
 	public void manageOk(Parent root) {
 		Stage s = (Stage) root.getScene().getWindow();
-		comServ.showWindow(s, "../ManagePw.fxml");
+		comServ.showWindow(s, "../fxml/ManagePw.fxml");
 	}
 	// 관리자 로그인 모든 예약 출력 화면
 	@Override
@@ -265,7 +265,7 @@ public class LoginServiceImpl implements LoginService{
 			alert.showAndWait();
 
 			Stage s = (Stage) root.getScene().getWindow();
-			comServ.showWindow(s, "../ManagePage.fxml");
+			comServ.showWindow(s, "../fxml/ManagePage.fxml");
 		} else {
 			comServ.errorBox("관리자 로그인 실패","잘못 입력 되었습니다.","다시 시도해주세요.");
 		}
@@ -274,7 +274,7 @@ public class LoginServiceImpl implements LoginService{
 	@Override
 	public void backLogin(Parent root) {
 		Stage s = (Stage) root.getScene().getWindow();
-		comServ.showWindow(s, "../Login.fxml");
+		comServ.showWindow(s, "../fxml/Login.fxml");
 	}
 
 

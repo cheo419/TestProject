@@ -2,7 +2,7 @@ package project.service;
 
 import java.io.IOException;
 
-import project.Controller;
+import project.controller.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

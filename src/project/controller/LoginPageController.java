@@ -1,12 +1,12 @@
-package project;
+package project.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import project.service.CommonServiceImpl;
 import project.service.LoginServiceImpl;
-import project.DAO.MemberDAO;
-import project.DAO.MemberDAOImpl;
+import project.dao.MemberDAO;
+import project.dao.MemberDAOImpl;
 import project.service.CommonService;
 import project.service.LoginService;
 import javafx.event.ActionEvent;
@@ -63,7 +63,7 @@ public class LoginPageController extends Controller implements Initializable{
 	// <기본 로그인페이지>회원가입 화면 켜기
 	public void signOk() {
 		Stage membershipForm = new Stage();
-		commonServ.showWindow(membershipForm, "../SignUp.fxml");
+		commonServ.showWindow(membershipForm, "../fxml/SignUp.fxml");
 	}
 
 	// <기본 로그인 화면> 관리자 버튼(로그인 비밀번호 쳐야하는 페이지 오픈)

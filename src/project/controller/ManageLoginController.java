@@ -1,12 +1,12 @@
-package project;
+package project.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import project.service.CommonServiceImpl;
 import project.service.LoginServiceImpl;
-import project.DAO.MemberDAO;
-import project.DAO.MemberDAOImpl;
+import project.dao.MemberDAO;
+import project.dao.MemberDAOImpl;
 import project.service.CommonService;
 import project.service.LoginService;
 import javafx.fxml.FXML;
@@ -51,7 +51,7 @@ public class ManageLoginController extends Controller implements Initializable{
 	// <관리자 로그인 화면(관리자 비밀번호 입력창)>에서 뒤로 가기(=로그인화면으로)
 	public void backL() {
 		Stage s = (Stage) root.getScene().getWindow();
-		commonServ.showWindow(s, "../Login.fxml");
+		commonServ.showWindow(s, "../fxml/Login.fxml");
 	}
 
 

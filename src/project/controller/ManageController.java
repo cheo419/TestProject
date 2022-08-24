@@ -1,4 +1,4 @@
-package project;
+package project.controller;
 
 import java.net.URL;
 import java.util.List;
@@ -17,8 +17,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import project.DAO.MemberDAO;
-import project.DAO.MemberDAOImpl;
+import project.dao.MemberDAO;
+import project.dao.MemberDAOImpl;
+import project.Member;
 import project.service.CommonService;
 import project.service.CommonServiceImpl;
 import project.service.LoginService;
@@ -119,7 +120,7 @@ public class ManageController extends Controller implements Initializable{
 					}
 					//  예약내역삭제된 후 수정된 내용으로 창 다시 띄우기
 					Stage membershipForm = new Stage();
-					root=comServ.showWindow(membershipForm, "../ManagePage.fxml");
+					root=comServ.showWindow(membershipForm, "../fxml/ManagePage.fxml");
 				} else {
 					// 예약여부확인했는데 false : 예약내역없음
 					Alert alert = new Alert(AlertType.INFORMATION);
@@ -170,7 +171,7 @@ public class ManageController extends Controller implements Initializable{
 				}
 				//  삭제된 후 수정된 내용으로 창 다시 띄우기
 				Stage membershipForm = new Stage();
-				root=comServ.showWindow(membershipForm, "../ManagePage.fxml");
+				root=comServ.showWindow(membershipForm, "../fxml/ManagePage.fxml");
 				
 			} else { 	// 강제탈퇴 경고창에서 취소버튼 눌러 탈퇴진행되지 않음.
 				Alert alert = new Alert(AlertType.INFORMATION);

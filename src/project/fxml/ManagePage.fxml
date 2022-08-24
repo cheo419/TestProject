@@ -10,7 +10,10 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane prefHeight="672.0" prefWidth="1061.0" style="-fx-background-color: NAVY;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.ManageController">
+<GridPane prefHeight="672.0" prefWidth="1061.0" 
+style="-fx-background-color: NAVY;" xmlns="http://javafx.com/javafx/8" 
+xmlns:fx="http://javafx.com/fxml/1" 
+fx:controller="project.controller.ManageController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>

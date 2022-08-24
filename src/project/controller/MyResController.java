@@ -1,4 +1,4 @@
-package project;
+package project.controller;
 
 import java.net.URL;
 import java.util.List;
@@ -19,8 +19,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import project.DAO.MemberDAO;
-import project.DAO.MemberDAOImpl;
+import project.dao.MemberDAO;
+import project.dao.MemberDAOImpl;
+import project.Member;
 import project.service.CommonService;
 import project.service.CommonServiceImpl;
 import project.service.LoginService;
@@ -99,7 +100,7 @@ public class MyResController extends Controller implements Initializable{
 
 		// 마이페이지(진료예약,예약확인버튼 있는페이지) 다시 띄우기 
 		Stage membershipForm = new Stage(); 
-		root=commonServ.showWindow(membershipForm, "../Mypage.fxml");
+		root=commonServ.showWindow(membershipForm, "../fxml/Mypage.fxml");
 
 		// 예약된 내역이있는지 boolean으로 체크하고 버튼비활성화 처리
 		if(dao.checkRes(id)){
@@ -142,7 +143,7 @@ public class MyResController extends Controller implements Initializable{
 
 					//  예약내역삭제된 후 수정된 내용으로 예약내역보기창 다시 띄우기
 					Stage membershipForm = new Stage();
-					root=commonServ.showWindow(membershipForm, "../MyResPage.fxml");
+					root=commonServ.showWindow(membershipForm, "../fxml/MyResPage.fxml");
 				} else {
 					// 예약여부확인했는데 false : 예약내역없음
 					Alert alert = new Alert(AlertType.INFORMATION);

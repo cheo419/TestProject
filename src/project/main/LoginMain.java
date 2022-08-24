@@ -1,4 +1,4 @@
-package project;
+package project.main;
 
 import project.service.CommonService;
 import project.service.CommonServiceImpl;
@@ -9,7 +9,7 @@ public class LoginMain extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		CommonService comServ = new CommonServiceImpl();
-		comServ.showWindow(primaryStage, "../Login.fxml");
+		comServ.showWindow(primaryStage, "../fxml/Login.fxml");
 	}
 
 	public static void main(String[] args) {

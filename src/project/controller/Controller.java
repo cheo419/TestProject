@@ -1,4 +1,4 @@
-package project;
+package project.controller;
 
 import javafx.scene.Parent;
 
