@@ -24,7 +24,7 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Label text="진료과 선택 ▼" textFill="WHITE" GridPane.rowIndex="1">
+      <Label text="진료과 선택 ▽" textFill="WHITE" GridPane.rowIndex="1">
          <font>
             <Font name="System Italic" size="36.0" />
          </font>
@@ -38,7 +38,7 @@
          <GridPane.margin>
             <Insets left="50.0" />
          </GridPane.margin></Label>
-      <Label text="진료 시간 선택 ▼" textFill="WHITE" GridPane.rowIndex="3">
+      <Label text="진료 시간 선택 ▽" textFill="WHITE" GridPane.rowIndex="3">
          <font>
             <Font name="System Italic" size="36.0" />
          </font>

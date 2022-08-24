@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane prefHeight="316.0" prefWidth="920.0" style="-fx-background-color: NAVY;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.MyResController">
+<GridPane prefHeight="343.0" prefWidth="1079.0" style="-fx-background-color: NAVY;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.MyResController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
@@ -24,13 +24,13 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <TableView fx:id="myResTable" prefHeight="249.0" prefWidth="965.0" style="-fx-background-color: LIGHTCYAN;" GridPane.rowIndex="1">
+      <TableView fx:id="myResTable" prefHeight="244.0" prefWidth="1055.0" style="-fx-background-color: LIGHTCYAN;" GridPane.rowIndex="1">
         <columns>
-          <TableColumn fx:id="nameCol" prefWidth="75.0" style="-fx-background-color: LIGHTSKYBLUE; -fx-font-size: 15px;" text="이름" />
-          <TableColumn fx:id="numberCol" prefWidth="101.0" style="-fx-background-color: LIGHTSKYBLUE; -fx-font-size: 15px;" text="전화번호" />
-            <TableColumn fx:id="idCol" prefWidth="85.0" style="-fx-background-color: LIGHTSKYBLUE; -fx-font-size: 15px;" text="아이디" />
-            <TableColumn fx:id="pwCol" prefWidth="149.0" style="-fx-background-color: LIGHTSKYBLUE; -fx-font-size: 15px;" text="비밀번호" />
-            <TableColumn fx:id="resCol" prefWidth="509.0" style="-fx-background-color: LIGHTSKYBLUE; -fx-font-size: 15px;" text="예약내용" />
+          <TableColumn fx:id="nameCol" prefWidth="90.0" style="-fx-background-color: LIGHTSKYBLUE; -fx-font-size: 15px;" text="이름" />
+          <TableColumn fx:id="numberCol" prefWidth="187.0" style="-fx-background-color: LIGHTSKYBLUE; -fx-font-size: 15px;" text="전화번호" />
+            <TableColumn fx:id="idCol" prefWidth="94.0" style="-fx-background-color: LIGHTSKYBLUE; -fx-font-size: 15px;" text="아이디" />
+            <TableColumn fx:id="pwCol" prefWidth="131.0" style="-fx-background-color: LIGHTSKYBLUE; -fx-font-size: 15px;" text="비밀번호" />
+            <TableColumn fx:id="resCol" prefWidth="576.0" style="-fx-background-color: LIGHTSKYBLUE; -fx-font-size: 15px;" text="예약내용" />
         </columns>
       </TableView>
       <Button mnemonicParsing="false" onAction="#backMypage2" style="-fx-background-color: LIGHTSTEELBLUE;" text="뒤로가기" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.valignment="TOP">

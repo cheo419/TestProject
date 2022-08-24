@@ -76,7 +76,16 @@ public class ManageController extends Controller implements Initializable{
 	public void backLogin() {
 		loginServ.backLogin(root);
 	}
+	
+	// 관리자 페이지에서 선택된 예약 삭제
+	public void deleteRes() {
+		
+	}
 
+	// 관리자 페이지에서 선택된 회원 전부다 삭제
+	public void deleteUser() {
+		
+	}
 
 
 }
