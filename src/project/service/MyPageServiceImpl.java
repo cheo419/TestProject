@@ -4,7 +4,6 @@ import project.controller.LoginController;
 import project.controller.MyResCheckController;
 import project.dao.MemberDAO;
 import project.dao.MemberDAOImpl;
-import javafx.event.ActionEvent;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
 
@@ -28,7 +27,7 @@ public class MyPageServiceImpl implements MyPageService{
 	}
 
 	// MyPage<마이페이지> 에서 MyResCheck<내 예약정보 보기 페이지>
-	public void resOk(Parent root,ActionEvent event) {
+	public void resOk(Parent root) {
 		// 내 예약내역확인 페이지 클릭하면 마이페이지 창 닫음
 		// 혹시 예약내역확인페이지에서 예약내역삭제하면 마이페이지 다시띄워서
 		// 예약하기 버튼 활성화를 위함.

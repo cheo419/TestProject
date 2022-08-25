@@ -1,7 +1,7 @@
 package project.service;
 
 
-public interface MemberShipService {
+public interface SignUpService {
 	
 	// 비어있으면 진행 안되게
 	public boolean isEmpty(String str); 

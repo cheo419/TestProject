@@ -3,8 +3,14 @@ package project.service;
 import project.controller.LoginController;
 import project.Member;
 import project.controller.MyResCheckController;
+import project.controller.MyResController;
 import project.dao.MemberDAO;
 import project.dao.MemberDAOImpl;
+
+import java.time.LocalDate;
+import java.time.chrono.ChronoLocalDate;
+import java.time.format.DateTimeFormatter;
+
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -15,13 +21,13 @@ public class MyResServiceImpl implements MyResService{
 	MemberDAO dao;
 	CommonService comServ;
 	LoginController loginController;
-	MyResCheckController myResCheckController;
+	MyResController myResController;
 
 	public MyResServiceImpl() {
 		dao = new MemberDAOImpl();
 		comServ = new CommonServiceImpl();
 		loginController = new LoginController();
-		myResCheckController = new MyResCheckController();
+		myResController = new MyResController();
 	}
 
 	// MyRes<내 진료예약 정보입력 페이지> [확인 버튼] 기능 : 입력 오류 체크 및 저장
@@ -41,7 +47,7 @@ public class MyResServiceImpl implements MyResService{
 		if(datePicker(root)) {
 			date = getDatePicker(root);
 		} else {
-			comServ.errorBox("날짜 입력오류","날짜가 입력되지 않았습니다","예약하실 날짜를 선택하세요.");
+			comServ.errorBox("날짜 입력오류","날짜가 입력되지 않았거나 잘못선택 되었습니다.","예약하실 날짜를 선택하세요.");
 			return;
 		}
 		int time;
@@ -59,6 +65,8 @@ public class MyResServiceImpl implements MyResService{
 
 		String id = loginController.getId(); // 로그인할때 썼던 아이디값을 받아옴.
 		System.out.println("로그인시입력한 아이디값을 받아옴:"+id);
+		
+
 
 		m.setId(id);	// 로그인할때 썼던 아이디값을 Member id값으로 저장
 		System.out.println("가져와서 member에저장된 id값 "+m.getId());
@@ -72,7 +80,7 @@ public class MyResServiceImpl implements MyResService{
 			myPage.close();	
 
 			// 마이페이지(진료예약,예약확인버튼 있는페이지) 다시 띄우기 (새창띄워서 버튼비활성화하기위함)
-			Stage membershipForm = new Stage(); ////////////////
+			Stage membershipForm = new Stage(); 
 			root=comServ.showWindow(membershipForm, "../fxml/Mypage.fxml");
 
 			// 예약된 내역이있는지 boolean으로 체크하고 버튼비활성화 처리
@@ -141,6 +149,10 @@ public class MyResServiceImpl implements MyResService{
 			return 7;
 		}
 	}
+	
+	
+
+
 	
 	// 각 진료과(콤보박스),진료날짜(데이트피커),진료시간(콤보박스)에 입력값이 없으면 boolean으로 false 
 	public boolean jComboBox(Parent root) {

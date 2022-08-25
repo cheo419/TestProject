@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.control.DateCell?>
 
 <GridPane prefHeight="600.0" prefWidth="760.0" 
 style="-fx-background-color: NAVY;" xmlns="http://javafx.com/javafx/8" 
@@ -53,6 +54,7 @@ fx:controller="project.controller.MyResController">
       <ComboBox fx:id="cmbJinryo" prefHeight="35.0" prefWidth="220.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       <ComboBox fx:id="cmbTime" prefHeight="35.0" prefWidth="220.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
       <DatePicker fx:id="cmbDate" prefHeight="35.0" prefWidth="210.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <DateCell fx:id="cmbDateCell" ></DateCell>
       <Label text="🚑 진료 예약" textFill="WHITE" GridPane.columnSpan="2" GridPane.halignment="CENTER">
          <font>
             <Font name="System Bold" size="48.0" />

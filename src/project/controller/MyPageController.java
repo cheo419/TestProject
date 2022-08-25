@@ -58,8 +58,8 @@ public class MyPageController extends Controller implements Initializable{
 		}
 	}
 	// [예약확인 버튼]
-	public void resOk(ActionEvent event) {
-		myPageServ.resOk(root,event);
+	public void resOk() {
+		myPageServ.resOk(root);
 	}
 
 	

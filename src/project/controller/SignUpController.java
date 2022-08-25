@@ -8,8 +8,8 @@ import project.dao.MemberDAOImpl;
 import project.Member;
 import project.service.CommonService;
 import project.service.CommonServiceImpl;
-import project.service.MemberShipService;
-import project.service.MemberShipServiceImpl;
+import project.service.SignUpService;
+import project.service.SignUpServiceImpl;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -20,8 +20,8 @@ import javafx.stage.Stage;
 
 public class SignUpController extends Controller implements Initializable{
 	private Parent root;
-	private CommonService comServ;
-	private MemberShipService membershipServ;
+	private CommonService commonServ;
+	private SignUpService signUpServ;
 	private MemberDAO dao;
 	
 	private Member member;	// 입력되는 회원정보 저장
@@ -38,8 +38,8 @@ public class SignUpController extends Controller implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		member = new Member();
-		comServ = new CommonServiceImpl();
-		membershipServ = new MemberShipServiceImpl();
+		commonServ = new CommonServiceImpl();
+		signUpServ = new SignUpServiceImpl();
 		dao = new MemberDAOImpl();
 		
 		// 회원가입시 텍스트 입력칸에서 엔터 입력시 다음 입력칸으로 포커스 이동. 마지막엔 확인버튼 눌림.
@@ -64,14 +64,21 @@ public class SignUpController extends Controller implements Initializable{
 		PasswordField txtPwOk = (PasswordField) root.lookup("#lPwOk");
 		TextField txtName = (TextField) root.lookup("#lName");
 		TextField txtNumber = (TextField) root.lookup("#lNumber");
+		
+		txtId.requestFocus();
 
-		String[] txtEmpty = {txtId.getText(), 
-				txtPw.getText()};
-		String[] txtEmptyName = {"이름","아이디","암호"};
+		String[] txtEmpty = 
+			{txtId.getText(), 
+			txtPw.getText(),
+			txtPwOk.getText(),
+			txtName.getText(),
+			txtNumber.getText()
+			};
+		String[] txtEmptyName = {"아이디","비밀번호","비밀번호 확인","이름","전화번호"};
 
 		for(int i=0;i<txtEmpty.length;i++) {
-			if(membershipServ.isEmpty(txtEmpty[i])) {
-				comServ.errorBox(txtEmptyName[i] + " 입력창이 비어 있습니다");
+			if(signUpServ.isEmpty(txtEmpty[i])) {
+				commonServ.errorBox("회원가입 오류",txtEmptyName[i] + " 입력창이 비어 있습니다","회원가입이 되지 않았습니다. 다시 시도 해주세요.");
 				return;
 			}
 		}
@@ -82,14 +89,14 @@ public class SignUpController extends Controller implements Initializable{
 		
 		// 회원가입시에 같은 아이디가있는지 검색 (동일한 아이디 있으면 true)
 		if(dao.findSameId(id)) {
-			comServ.errorBox("회원가입 오류","동일한 아이디로 회원이 존재합니다.","다른 아이디로 시도해주세요.");
+			commonServ.errorBox("회원가입 오류","동일한 아이디로 회원이 존재합니다.","다른 아이디로 시도해주세요.");
 			txtId.requestFocus();
 			return;
 		}
 
 		// 입력한 암호가 다를경우 
-		if(membershipServ.comparePw(pw, pwOk)){
-			comServ.errorBox("회원가입 오류","입력하신 암호가 다릅니다.");
+		if(signUpServ.comparePw(pw, pwOk)){
+			commonServ.errorBox("회원가입 오류","입력하신 암호가 다릅니다.");
 			txtPw.requestFocus();
 			return;
 		}
@@ -100,9 +107,9 @@ public class SignUpController extends Controller implements Initializable{
 		member.setPhoneNumber(txtNumber.getText());
 
 		if(dao.insertMember(member)) {
-			comServ.errorBox("회원가입", "회원가입성공", "회원가입이 정상적으로 이루어졌습니다.");
+			commonServ.errorBox("회원가입", "회원가입성공", "회원가입이 정상적으로 이루어졌습니다.");
 		} else {
-			comServ.errorBox("DB 에러", "DB 문제 발생", "DB 입력에 문제가 발생했습니다.");
+			commonServ.errorBox("DB 에러", "DB 문제 발생", "DB 입력에 문제가 발생했습니다.");
 			return;
 		}
 		// 회원가입 정보 입력 창 닫기

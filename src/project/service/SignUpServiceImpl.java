@@ -2,7 +2,7 @@ package project.service;
 
 
 
-public class MemberShipServiceImpl implements MemberShipService{
+public class SignUpServiceImpl implements SignUpService{
 
 	// 비어있으면 진행 안되게
 	@Override
@@ -12,6 +12,9 @@ public class MemberShipServiceImpl implements MemberShipService{
 		}
 		return false;
 	}
+	
+	
+	
 
 	// 비밀번호 확인
 	@Override
