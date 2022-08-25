@@ -1,25 +1,30 @@
 package project.service;
 
-import javafx.event.ActionEvent;
 import javafx.scene.Parent;
 
 public interface LoginService {
 	
-	public void LoginProc(Parent root); // 로그인 버튼 눌렀을 때
+	// Login<첫 기본로그인 페이지> 에서 MyPage<마이페이지> [로그인 버튼] 기능: 아이디 비밀번호 입력오류 체크
+	public void LoginProc(Parent root); 
 	
-	public void res(Parent root); // 마이페이지 화면
+	// Login<첫 기본로그인 페이지> 에서 ManageLogin<관리자로그인 페이지>
+	public void manageOk(Parent root); 
 	
-	public void resOk(Parent root,ActionEvent event); // 내 예약 출력
 	
-	public void Logout(Parent root); // 로그아웃
-	
-	public void resCheck(Parent root); // 내 예약출력화면에서 확인하면 닫기
-	
-	public void manageOk(Parent root); // 관리자 비밀번호창 열기
-	
-	public void manageLogin(Parent root); // 관리자 로그인 모든 예약 출력 화면
 
-	public void backLogin(Parent root); // 관리자 화면에서 로그인 화면으로
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+
 	
 	
 }

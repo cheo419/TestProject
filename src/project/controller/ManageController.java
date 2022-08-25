@@ -22,13 +22,13 @@ import project.dao.MemberDAOImpl;
 import project.Member;
 import project.service.CommonService;
 import project.service.CommonServiceImpl;
-import project.service.LoginService;
-import project.service.LoginServiceImpl;
+import project.service.ManageService;
+import project.service.ManageServiceImpl;
 
 public class ManageController extends Controller implements Initializable{
 
 	private Parent root;
-	private LoginService loginServ;
+	private ManageService manageServ;
 	private CommonService comServ;
 	private MemberDAO dao;
 
@@ -46,7 +46,7 @@ public class ManageController extends Controller implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		comServ = new CommonServiceImpl();	
-		loginServ = new LoginServiceImpl();
+		manageServ = new ManageServiceImpl();
 		dao = new MemberDAOImpl();
 		
 		List<Member> memberList = dao.selectAdmin();	// 관리자 예약출력으로 모든 저장된 값을 리스트로 저장
@@ -86,7 +86,7 @@ public class ManageController extends Controller implements Initializable{
 
 	// [로그인화면으로 버튼] 관리자 페이지에서 다시 처음 로그인 화면으로
 	public void backLogin() {
-		loginServ.backLogin(root);
+		manageServ.backLogin(root);
 	}
 
 	// [선택회원 예약취소 버튼] 관리자 페이지에서 선택된 행의 회원 예약내역 삭제

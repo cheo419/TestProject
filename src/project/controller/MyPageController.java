@@ -4,9 +4,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import project.service.CommonServiceImpl;
-import project.service.LoginServiceImpl;
+import project.service.MyPageService;
+import project.service.MyPageServiceImpl;
 import project.service.CommonService;
-import project.service.LoginService;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -15,14 +15,14 @@ import javafx.stage.Stage;
 
 public class MyPageController extends Controller implements Initializable{
 	private Parent root;
-	private LoginService loginServ;
+	private MyPageService myPageServ;
 	private CommonService commonServ;
 	
 	// <마이페이지> (버튼: 진료예약, 예약확인, 로그아웃)
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		loginServ = new LoginServiceImpl();
+		myPageServ = new MyPageServiceImpl();
 		commonServ = new CommonServiceImpl();
 		
 	}
@@ -34,7 +34,7 @@ public class MyPageController extends Controller implements Initializable{
 
 	// [로그아웃 버튼]
 	public void Logout() {
-		loginServ.Logout(root);
+		myPageServ.Logout(root);
 	}
 	
 	// [진료예약 버튼] (진료과,날짜,시간 선택하는 페이지를 띄우는 버튼)
@@ -59,7 +59,7 @@ public class MyPageController extends Controller implements Initializable{
 	}
 	// [예약확인 버튼]
 	public void resOk(ActionEvent event) {
-		loginServ.resOk(root,event);
+		myPageServ.resOk(root,event);
 	}
 
 	
