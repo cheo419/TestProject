@@ -13,7 +13,9 @@
 <GridPane prefHeight="343.0" prefWidth="1079.0" 
 style="-fx-background-color: NAVY;" xmlns="http://javafx.com/javafx/8" 
 xmlns:fx="http://javafx.com/fxml/1" 
-fx:controller="project.controller.MyResController">
+
+fx:controller="project.controller.MyResCheckController">
+
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>

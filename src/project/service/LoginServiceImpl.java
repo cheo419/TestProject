@@ -1,9 +1,8 @@
 package project.service;
 
-import project.controller.CommonController;
-import project.controller.LoginPageController;
+import project.controller.LoginController;
 import project.Member;
-import project.controller.MyResController;
+import project.controller.MyResCheckController;
 import project.dao.MemberDAO;
 import project.dao.MemberDAOImpl;
 import javafx.event.ActionEvent;
@@ -20,14 +19,14 @@ import javafx.stage.Stage;
 public class LoginServiceImpl implements LoginService{
 	MemberDAO dao;
 	CommonService comServ;
-	LoginPageController loginController;
-	MyResController myResController;
+	LoginController loginController;
+	MyResCheckController myResCheckController;
 
 	public LoginServiceImpl() {
 		dao = new MemberDAOImpl();
 		comServ = new CommonServiceImpl();
-		loginController = new LoginPageController();
-		myResController = new MyResController();
+		loginController = new LoginController();
+		myResCheckController = new MyResCheckController();
 	}
 
 	// 로그인 버튼 눌렀을 때
@@ -44,7 +43,7 @@ public class LoginServiceImpl implements LoginService{
 			System.out.println("로그인할때 입력한 아이디값:"+id);
 
 			loginController.setId(id);	// 로그인할때 쓴 아이디값을 -> 로그인컨트롤러->되돌아와서 resCheck저장
-			myResController.setId(id);
+			myResCheckController.setId(id);
 
 			// 로그인 후 아이디비번쓰는 창 닫음
 			Stage myPage = (Stage) root.getScene().getWindow(); 
@@ -136,7 +135,7 @@ public class LoginServiceImpl implements LoginService{
 		myPage.close();	
 
 		Stage membershipForm = new Stage();
-		comServ.showWindow(membershipForm, "../fxml/MyResPage.fxml");
+		comServ.showWindow(membershipForm, "../fxml/MyResCheck.fxml");
 	}
 
 	// 로그아웃
@@ -249,7 +248,7 @@ public class LoginServiceImpl implements LoginService{
 	@Override
 	public void manageOk(Parent root) {
 		Stage s = (Stage) root.getScene().getWindow();
-		comServ.showWindow(s, "../fxml/ManagePw.fxml");
+		comServ.showWindow(s, "../fxml/ManageLogin.fxml");
 	}
 	// 관리자 로그인 모든 예약 출력 화면
 	@Override
@@ -265,7 +264,7 @@ public class LoginServiceImpl implements LoginService{
 			alert.showAndWait();
 
 			Stage s = (Stage) root.getScene().getWindow();
-			comServ.showWindow(s, "../fxml/ManagePage.fxml");
+			comServ.showWindow(s, "../fxml/Manage.fxml");
 		} else {
 			comServ.errorBox("관리자 로그인 실패","잘못 입력 되었습니다.","다시 시도해주세요.");
 		}

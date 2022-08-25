@@ -15,16 +15,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class MemberShipController extends Controller implements Initializable{
+public class SignUpController extends Controller implements Initializable{
 	private Parent root;
 	private CommonService comServ;
 	private MemberShipService membershipServ;
 	private MemberDAO dao;
-	Member member = new Member();
+	
+	private Member member;	// 입력되는 회원정보 저장
 	
 	@FXML private TextField lId;
 	@FXML private PasswordField lPw;
@@ -32,14 +32,12 @@ public class MemberShipController extends Controller implements Initializable{
 	@FXML private TextField lName;
 	@FXML private TextField lNumber;
 	@FXML private Button signUpOk;
-
-	@Override
-	public void setRoot(Parent root) {
-		this.root = root;
-	}
+	
+	// <회원가입 페이지> (입력: 아이디,비밀번호,비밀번호확인,이름,전화번호) (버튼: 확인,취소)
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		member = new Member();
 		comServ = new CommonServiceImpl();
 		membershipServ = new MemberShipServiceImpl();
 		dao = new MemberDAOImpl();
@@ -52,8 +50,13 @@ public class MemberShipController extends Controller implements Initializable{
 		lNumber.setOnAction(e -> signUpOk.requestFocus());
 		signUpOk.setOnKeyPressed(e -> memberShipProc());
 	}
+	
+	@Override
+	public void setRoot(Parent root) {
+		this.root = root;
+	}
 
-	// signup 회원가입 화면 확인 버튼
+	// [확인 버튼] 입력칸 모두 입력 후 회원가입하는 버튼
 	public void memberShipProc() {
 
 		TextField txtId = (TextField) root.lookup("#lId");
@@ -102,12 +105,12 @@ public class MemberShipController extends Controller implements Initializable{
 			comServ.errorBox("DB 에러", "DB 문제 발생", "DB 입력에 문제가 발생했습니다.");
 			return;
 		}
-
+		// 회원가입 정보 입력 창 닫기
 		Stage stage = (Stage) root.getScene().getWindow();
 		stage.close();
 	}
 
-	// 회원가입 취소버튼
+	// [취소 버튼] 회원가입 정보 입력 도중 취소
 	public void memberShipCancle() {
 		Stage stage = (Stage) root.getScene().getWindow();
 		stage.close();

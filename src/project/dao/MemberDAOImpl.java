@@ -53,7 +53,7 @@ public class MemberDAOImpl implements MemberDAO {
 		return false;
 	}
 
-	// 로그인
+	// 로그인시 아이디 비밀번호 확인 : 맞으면 true
 	public boolean checkLogin(String id, String pw) {
 		try {
 			String sql = "select count(*) from firstmember where id=? and pw=?";
@@ -74,7 +74,7 @@ public class MemberDAOImpl implements MemberDAO {
 		return false;
 	}
 
-	// 유저의 예약내용 출력
+	// 입력된 아이디에 해당하는 모든 정보 출력
 	public Member select(String id) {
 		Member m = new Member();
 		try {
@@ -152,7 +152,7 @@ public class MemberDAOImpl implements MemberDAO {
 		return m;
 	}
 
-	// 진료 예약하기 (DB에 진료예약정보 저장되면 true)
+	// 진료 예약하기
 	@Override         
 	public boolean insertRes(Member m) {
 		try {
@@ -178,7 +178,7 @@ public class MemberDAOImpl implements MemberDAO {
 		return false;
 	}
 
-	// 관리자 예약내역
+	// 관리자 예약출력 (모든 회원정보 불러오기위해 리스트 사용)
 	@Override
 	public List<Member> selectAdmin() {
 		List<Member> memberList = new ArrayList<Member>();	// 모든회원정보 List
@@ -257,7 +257,7 @@ public class MemberDAOImpl implements MemberDAO {
 		return memberList;
 	}
 
-	//  예약여부확인 (예약하기 버튼 비활성화,예약내역 삭제시): 예약내역있음true
+	//  예약여부확인 (예약하기 버튼 비활성화,예약내역 삭제시) : 예약내역있으면 true
 	@Override
 	public boolean checkRes(String id) {
 		try {
@@ -278,7 +278,7 @@ public class MemberDAOImpl implements MemberDAO {
 		return false;
 	}
 
-	// 관리자페이지에서 테이블뷰에서 선택된 회원 강제탈퇴
+	// <관리자페이지> 테이블뷰에서 선택된 회원 강제탈퇴
 	@Override
 	public boolean deleteUser(String id) {
 		try {
@@ -296,7 +296,7 @@ public class MemberDAOImpl implements MemberDAO {
 		return false;
 	}
 
-	// (관리자페이지,유저페이지)테이블뷰에서 선택된 예약내역 삭제
+	// <관리자페이지,유저페이지> 테이블뷰에서 선택된 예약내역 삭제
 	@Override
 	public boolean deleteUserRes(String id) {
 		try {
@@ -317,7 +317,7 @@ public class MemberDAOImpl implements MemberDAO {
 		return false;
 	}
 
-	// 회원가입시에 같은 아이디가있는지 검색 (동일한 아이디 있으면 true)
+	// 회원가입시에 같은 아이디가있는지 검색 : 동일한 아이디 있으면 true
 	@Override
 	public boolean findSameId(String id) {
 		try {

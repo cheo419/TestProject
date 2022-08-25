@@ -29,11 +29,10 @@ public class ManageController extends Controller implements Initializable{
 
 	private Parent root;
 	private LoginService loginServ;
-	CommonService comServ;
-	MemberDAO dao;
+	private CommonService comServ;
+	private MemberDAO dao;
 
-	// 테이블뷰에서 행 선택시 선택된 행의 아이디값 저장을 위한 변수 선언
-	String seleted;
+	private String seleted;		// 테이블뷰에서 행 선택시 선택된 행의 아이디값 저장을 위한 변수 선언
 
 	@FXML private TableView<Member> manageTable;
 	@FXML private TableColumn<Member, String>  nameCol;
@@ -41,6 +40,8 @@ public class ManageController extends Controller implements Initializable{
 	@FXML private TableColumn<Member, String>  idCol;
 	@FXML private TableColumn<Member, String>  pwCol;
 	@FXML private TableColumn<Member, String>  resCol;
+	
+	// <관리자페이지> 관리자가 모든 회원정보 확인 및 관리가능 (버튼: 선택회원 예약취소, 선택회원 삭제, 로그인화면으로) (테이블뷰)
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -76,18 +77,19 @@ public class ManageController extends Controller implements Initializable{
 		this.root = root;
 	}
 
+	// 테이블뷰 통합
 	private ObservableList<Member> getProduct(List<Member> memberList) {
 		ObservableList<Member> adminList =
 				FXCollections.observableArrayList(memberList);
 		return adminList;
 	}
 
-	// 관리자 페이지에서 다시 로그인 화면으로
+	// [로그인화면으로 버튼] 관리자 페이지에서 다시 처음 로그인 화면으로
 	public void backLogin() {
 		loginServ.backLogin(root);
 	}
 
-	// 관리자 페이지에서 선택된 행의 회원 예약내역 삭제
+	// [선택회원 예약취소 버튼] 관리자 페이지에서 선택된 행의 회원 예약내역 삭제
 	public void deleteRes() {
 		System.out.println("예약삭제버튼클릭");
 		System.out.println("예약내역 삭제시키려는 회원아이디: "+seleted);
@@ -120,7 +122,7 @@ public class ManageController extends Controller implements Initializable{
 					}
 					//  예약내역삭제된 후 수정된 내용으로 창 다시 띄우기
 					Stage membershipForm = new Stage();
-					root=comServ.showWindow(membershipForm, "../fxml/ManagePage.fxml");
+					root=comServ.showWindow(membershipForm, "../fxml/Manage.fxml");
 				} else {
 					// 예약여부확인했는데 false : 예약내역없음
 					Alert alert = new Alert(AlertType.INFORMATION);
@@ -139,7 +141,7 @@ public class ManageController extends Controller implements Initializable{
 		}
 	}
 
-	// 관리자 페이지에서 선택된 회원 강제 탈퇴시키기
+	// [선택회원 삭제 버튼] 관리자 페이지에서 선택된 회원 강제 탈퇴
 	public void deleteUser() {
 		System.out.println("삭제버튼클릭");
 		System.out.println("선택된 회원아이디: "+seleted);
@@ -171,7 +173,7 @@ public class ManageController extends Controller implements Initializable{
 				}
 				//  삭제된 후 수정된 내용으로 창 다시 띄우기
 				Stage membershipForm = new Stage();
-				root=comServ.showWindow(membershipForm, "../fxml/ManagePage.fxml");
+				root=comServ.showWindow(membershipForm, "../fxml/Manage.fxml");
 				
 			} else { 	// 강제탈퇴 경고창에서 취소버튼 눌러 탈퇴진행되지 않음.
 				Alert alert = new Alert(AlertType.INFORMATION);
