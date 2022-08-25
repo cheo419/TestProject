@@ -15,11 +15,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
-import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import javafx.util.StringConverter;
 
 
 // <진료 예약 페이지> 로그인한 회원의 진료예약 (입력: 진료과_콤보박스, 진료날짜_데이트피커, 진료시간_콤보박스) (버튼: 확인, 취소)
@@ -30,9 +29,7 @@ public class MyResController extends Controller implements Initializable{
 	private CommonService commonServ;
 
 	@FXML DatePicker cmbDate;
-	@FXML DateCell cmbDateCell;
-
-	StringConverter<LocalDate> lDate;
+	@FXML Button btnResOk;
 
 	// 오늘 날짜
 	LocalDate now = LocalDate.now();	      
@@ -66,13 +63,17 @@ public class MyResController extends Controller implements Initializable{
 					System.out.println("오늘 또는 과거날짜를 선택하셨습니다.");
 					Alert alert = new Alert(AlertType.INFORMATION);
 					alert.setTitle("날짜 선택 오류");
-					alert.setHeaderText("오늘");
-					alert.setContentText("삭제 복구가 불가능합니다. 삭제하시겠습니까?");
+					alert.setHeaderText("오늘날짜 또는 과거날짜는 선택 불가능합니다.");
+					alert.setContentText("원하시는 진료 날짜를 다시 선택해주세요.");
 					alert.showAndWait();
+					btnResOk.setDisable(true);
+					
 					cmbDate.requestFocus();
 					
 				} else {	// 내일이후 날짜 선택한경우 콘솔에 출력
-					System.out.println("내일 이후 날짜를 선택하셨습니다.");
+					System.out.println("내일 이후 날짜를 선택하셨습니다. 확인 버튼이 활성화됩니다.");
+					btnResOk.setDisable(false);
+					
 				}
 			}
 		});
