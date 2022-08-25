@@ -22,7 +22,7 @@ public class MyResServiceImpl implements MyResService{
 	CommonService comServ;
 	LoginController loginController;
 	MyResController myResController;
-
+	
 	public MyResServiceImpl() {
 		dao = new MemberDAOImpl();
 		comServ = new CommonServiceImpl();
@@ -59,14 +59,13 @@ public class MyResServiceImpl implements MyResService{
 		}
 
 		// DB저장을 위해 Member클래스에 값 저장.
+		System.out.println(jinryo+date+time);
 		m.setJinryo(jinryo);
 		m.setDate(date);
 		m.setTime(time);
 
 		String id = loginController.getId(); // 로그인할때 썼던 아이디값을 받아옴.
 		System.out.println("로그인시입력한 아이디값을 받아옴:"+id);
-		
-
 
 		m.setId(id);	// 로그인할때 썼던 아이디값을 Member id값으로 저장
 		System.out.println("가져와서 member에저장된 id값 "+m.getId());
@@ -94,7 +93,6 @@ public class MyResServiceImpl implements MyResService{
 			return;
 		}
 	}
-	
 	
 	// 콤보박스 (예약진료과)
 	public int getComboBoxJinryo(Parent root) {
@@ -126,33 +124,28 @@ public class MyResServiceImpl implements MyResService{
 
 	// 콤보박스 (예약시간)
 	public int getComboBoxTime(Parent root) {
-
 		ComboBox<String> cmbTime = (ComboBox<String>)root.lookup("#cmbTime");
 		if(cmbTime==null) {
 			return -1;
 		}
-
 		String value = cmbTime.getValue().toString();
-		if(value.equals("09:30")) {
+		System.out.println(value);
+		if(value.equals("예약가능: 09:30")) {
 			return 1;
-		} else if(value.equals("10:30")){
+		} else if(value.equals("예약가능: 10:30")){
 			return 2;
-		}else if(value.equals("11:30")){
+		}else if(value.equals("예약가능: 11:30")){
 			return 3;
-		}else if(value.equals("13:30")){
+		}else if(value.equals("예약가능: 13:30")){
 			return 4;
-		}else if(value.equals("14:30")){
+		}else if(value.equals("예약가능: 14:30")){
 			return 5;
-		}else if(value.equals("15:30")){
+		}else if(value.equals("예약가능: 15:30")){
 			return 6;
 		}else {
 			return 7;
 		}
 	}
-	
-	
-
-
 	
 	// 각 진료과(콤보박스),진료날짜(데이트피커),진료시간(콤보박스)에 입력값이 없으면 boolean으로 false 
 	public boolean jComboBox(Parent root) {

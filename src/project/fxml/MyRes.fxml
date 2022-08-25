@@ -52,9 +52,9 @@ fx:controller="project.controller.MyResController">
             <Insets left="50.0" />
          </GridPane.margin></Label>
       <ComboBox fx:id="cmbJinryo" prefHeight="35.0" prefWidth="220.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <ComboBox fx:id="cmbTime" prefHeight="35.0" prefWidth="220.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <ComboBox fx:id="cmbTime" promptText="진료과,날짜 먼저 선택" prefHeight="35.0" prefWidth="220.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
       <DatePicker fx:id="cmbDate" prefHeight="35.0" prefWidth="210.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <DateCell fx:id="cmbDateCell" ></DateCell>
+      
       <Label text="🚑 진료 예약" textFill="WHITE" GridPane.columnSpan="2" GridPane.halignment="CENTER">
          <font>
             <Font name="System Bold" size="48.0" />

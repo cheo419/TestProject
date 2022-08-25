@@ -42,20 +42,11 @@ public class MyPageController extends Controller implements Initializable{
 		Stage myPage = (Stage) root.getScene().getWindow();
 		myPage.close();	
 		Stage membershipForm = new Stage();
-		Parent form = commonServ.showWindow(membershipForm, "../fxml/MyRes.fxml");
-		String[] items = {"정형외과", "이비인후과", "내과"};
+		root = commonServ.showWindow(membershipForm, "../fxml/MyRes.fxml");
+		
 
-		ComboBox<String> cmbjinryo = (ComboBox<String>) form.lookup("#cmbJinryo");
-		for(String item:items) {
-			cmbjinryo.getItems().add(item);
-		}
+		
 
-		String[] items1 = {"09:30", "10:30", "11:30", "13:30", "14:30", "15:30"};
-		ComboBox<String> cmbtime = (ComboBox<String>) form.lookup("#cmbTime");
-
-		for(String item1 : items1) {
-			cmbtime.getItems().add(item1);
-		}
 	}
 	// [예약확인 버튼]
 	public void resOk() {

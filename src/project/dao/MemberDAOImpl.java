@@ -337,6 +337,29 @@ public class MemberDAOImpl implements MemberDAO {
 		}
 		return false;
 	}
+	
+	// 진료 가능여부 확인. : 예약 가능시 true
+	@Override
+	public boolean findSameRes(int value1,String value2,int value3) {
+		try {
+			String sql = "select count(*) from firstmember where resJinryo=? and resDate=? and resTime=?";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, value1);
+			pstmt.setString(2, value2);
+			pstmt.setInt(3, value3);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			rs.next();
+			int result = rs.getInt(1);
+			if(result >= 1) {
+				return false;
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return true;
+	}
 
 
 
