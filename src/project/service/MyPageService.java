@@ -13,6 +13,8 @@ public interface MyPageService {
 	// MyPage<마이페이지> 에서 Login<로그인 페이지>
 	public void Logout(Parent root); 
 	
+
+	
 	
 	
 	

@@ -1,9 +1,5 @@
 package project.service;
 
-import project.controller.LoginController;
-import project.controller.MyResCheckController;
-import project.dao.MemberDAO;
-import project.dao.MemberDAOImpl;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
@@ -11,16 +7,10 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class ManageLoginServiceImpl implements ManageLoginService{
-	MemberDAO dao;
-	CommonService comServ;
-	LoginController loginController;
-	MyResCheckController myResCheckController;
+	private CommonService comServ;
 
 	public ManageLoginServiceImpl() {
-		dao = new MemberDAOImpl();
 		comServ = new CommonServiceImpl();
-		loginController = new LoginController();
-		myResCheckController = new MyResCheckController();
 	}
 
 	// ManageLogin<관리자로그인 페이지> 에서 Manage<관리자 페이지> 
@@ -38,6 +28,8 @@ public class ManageLoginServiceImpl implements ManageLoginService{
 
 			Stage s = (Stage) root.getScene().getWindow();
 			comServ.showWindow(s, "../fxml/Manage.fxml");
+			s.setX(300);
+			s.setY(80);
 		} else {
 			comServ.errorBox("관리자 로그인 실패","잘못 입력 되었습니다.","다시 시도해주세요.");
 		}

@@ -24,7 +24,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
-
 // <진료 예약 페이지> 로그인한 회원의 진료예약 (입력: 진료과_콤보박스, 진료날짜_데이트피커, 진료시간_콤보박스) (버튼: 확인, 취소)
 
 public class MyResController extends Controller implements Initializable{
@@ -90,13 +89,11 @@ public class MyResController extends Controller implements Initializable{
 				// 우선 먼저 콤보박스 아이템들을 초기화해준다. (이전에 추가된 아이템들을 지워줌)
 				cmbTime.getItems().clear();
 				if(value1!=0&&value2!=null) {	// 진료과와 진료날짜가 모두 선택되어있는 경우
-					System.out.println("확인 출력");
 					int cnt=0;	// 숫자 더해가면서 모든 시간 마감된것 카운트용
 					for(int i=1;i<7;i++) {
 						
 						// 진료 가능여부 확인. : 예약 가능시 true
 						if(dao.findSameRes(value1,value2,i)) {	
-							System.out.println(i);
 							// 예약가능으로 조회된 숫자의 순서에맞는 진료시간 배열주머니에서 가져온 값을 시간콤보박스에 저장 및 출력
 							cmbTime.getItems().add("예약가능: "+items1[i-1]);
 						} else {
@@ -170,6 +167,8 @@ public class MyResController extends Controller implements Initializable{
 		// 마이페이지(진료예약,예약확인버튼 있는페이지) 다시 띄우기 
 		Stage membershipForm = new Stage(); 
 		root=commonServ.showWindow(membershipForm, "../fxml/Mypage.fxml");
+		membershipForm.setX(300);
+		membershipForm.setY(80);
 	}
 
 	// 콤보박스_ 선택된 진료과를 이름이아니라 숫자로 반환해주는 메서드

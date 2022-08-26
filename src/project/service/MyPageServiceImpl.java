@@ -1,23 +1,13 @@
 package project.service;
 
-import project.controller.LoginController;
-import project.controller.MyResCheckController;
-import project.dao.MemberDAO;
-import project.dao.MemberDAOImpl;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
 
 public class MyPageServiceImpl implements MyPageService{
-	MemberDAO dao;
-	CommonService comServ;
-	LoginController loginController;
-	MyResCheckController myResCheckController;
+	private CommonService comServ;
 
 	public MyPageServiceImpl() {
-		dao = new MemberDAOImpl();
 		comServ = new CommonServiceImpl();
-		loginController = new LoginController();
-		myResCheckController = new MyResCheckController();
 	}
 
 	// MyPage<마이 페이지>에서 MyRes<진료예약 정보 입력페이지>
@@ -36,6 +26,8 @@ public class MyPageServiceImpl implements MyPageService{
 
 		Stage membershipForm = new Stage();
 		comServ.showWindow(membershipForm, "../fxml/MyResCheck.fxml");
+		membershipForm.setX(300);
+		membershipForm.setY(80);
 	}
 
 	// MyPage<마이페이지> 에서 Login<로그인 페이지>
@@ -43,7 +35,11 @@ public class MyPageServiceImpl implements MyPageService{
 	public void Logout(Parent root) {
 		Stage s = (Stage) root.getScene().getWindow();
 		comServ.showWindow(s, "../fxml/Login.fxml");
+		s.setX(300);
+		s.setY(80);
 	}
+
+
 	
 	
 	

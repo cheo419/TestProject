@@ -26,12 +26,10 @@ import project.service.ManageService;
 import project.service.ManageServiceImpl;
 
 public class ManageController extends Controller implements Initializable{
-
 	private Parent root;
 	private ManageService manageServ;
 	private CommonService comServ;
 	private MemberDAO dao;
-
 	private String seleted;		// 테이블뷰에서 행 선택시 선택된 행의 아이디값 저장을 위한 변수 선언
 
 	@FXML private TableView<Member> manageTable;
@@ -123,6 +121,8 @@ public class ManageController extends Controller implements Initializable{
 					//  예약내역삭제된 후 수정된 내용으로 창 다시 띄우기
 					Stage membershipForm = new Stage();
 					root=comServ.showWindow(membershipForm, "../fxml/Manage.fxml");
+					membershipForm.setX(300);
+					membershipForm.setY(80);
 				} else {
 					// 예약여부확인했는데 false : 예약내역없음
 					Alert alert = new Alert(AlertType.INFORMATION);
@@ -174,6 +174,8 @@ public class ManageController extends Controller implements Initializable{
 				//  삭제된 후 수정된 내용으로 창 다시 띄우기
 				Stage membershipForm = new Stage();
 				root=comServ.showWindow(membershipForm, "../fxml/Manage.fxml");
+				membershipForm.setX(300);
+				membershipForm.setY(80);
 				
 			} else { 	// 강제탈퇴 경고창에서 취소버튼 눌러 탈퇴진행되지 않음.
 				Alert alert = new Alert(AlertType.INFORMATION);

@@ -19,7 +19,6 @@ public class LoginController extends Controller implements Initializable{
 	private Parent root;
 	private LoginService loginServ;
 	private CommonService commonServ;
-	
 	private static String id;	// 로그인할때 입력한 아이디값을 고정으로 저장하기위함.
 	
 	@FXML private TextField lId;
@@ -61,6 +60,8 @@ public class LoginController extends Controller implements Initializable{
 	public void signOk() {
 		Stage membershipForm = new Stage();
 		commonServ.showWindow(membershipForm, "../fxml/SignUp.fxml");
+		membershipForm.setX(300);
+		membershipForm.setY(80);
 	}
 
 	// [관리자버튼] (관리자용 로그인 비밀번호 쳐야하는 페이지 오픈)

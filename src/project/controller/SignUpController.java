@@ -23,7 +23,6 @@ public class SignUpController extends Controller implements Initializable{
 	private CommonService commonServ;
 	private SignUpService signUpServ;
 	private MemberDAO dao;
-	
 	private Member member;	// 입력되는 회원정보 저장
 	
 	@FXML private TextField lId;

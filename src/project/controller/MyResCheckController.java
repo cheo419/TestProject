@@ -24,12 +24,10 @@ import project.service.CommonService;
 import project.service.CommonServiceImpl;
 
 public class MyResCheckController extends Controller implements Initializable{
-
 	private Parent root;
 	private CommonService commonServ;
 	private MemberDAO dao;
 	private static String id;
-	
 	private String seleted;		// 테이블뷰에서 행 선택시 선택된 행의 아이디값 저장을 위한 변수 선언
 
 	@FXML private TableView<Member> myResTable;
@@ -44,10 +42,12 @@ public class MyResCheckController extends Controller implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		commonServ = new CommonServiceImpl();
-
 		dao = new MemberDAOImpl();
-		Member m= dao.select(id);	// 유저의 예약내용 출력하여 Member클래스에 저장
+		
+		// 유저의 예약내용 출력하여 Member클래스에 저장
+		Member m= dao.select(id);	
 
+		// 테이블뷰
 		myResTable.setItems(getProduct(m));
 
 		// 각 칼럼과 매칭되는 클래스 변수명을 지정해 준다
@@ -67,28 +67,12 @@ public class MyResCheckController extends Controller implements Initializable{
 			seleted= myResTable.getSelectionModel().getSelectedItem().getId();
 			System.out.println(myResTable.getSelectionModel().getSelectedItem().getId());
 		});
-
 	}
-
 	private ObservableList<Member> getProduct(Member m) {
 		ObservableList<Member> adminList =
 				FXCollections.observableArrayList(m);
 		return adminList;
 	}
-	
-	@Override
-	public void setRoot(Parent root) {
-		this.root = root;
-		
-	}
-	
-	public void setId(String id) {
-		this.id = id;
-	}
-	public String getId() {
-		return id;
-	}
-
 
 	// [뒤로가기 버튼] 로그인한 회원의 예약내역을 보는 현재 페이지에서 뒤로가서 마이페이지로 
 	public void backMypage2() {
@@ -99,6 +83,8 @@ public class MyResCheckController extends Controller implements Initializable{
 		// 마이페이지(진료예약,예약확인버튼 있는페이지) 다시 띄우기 
 		Stage membershipForm = new Stage(); 
 		root=commonServ.showWindow(membershipForm, "../fxml/Mypage.fxml");
+		membershipForm.setX(300);
+		membershipForm.setY(80);
 
 		// 예약된 내역이있는지 boolean으로 체크하고 버튼비활성화 처리
 		if(dao.checkRes(id)){
@@ -144,6 +130,8 @@ public class MyResCheckController extends Controller implements Initializable{
 					//  예약내역삭제된 후 수정된 내용으로 예약내역보기창 다시 띄우기
 					Stage membershipForm = new Stage();
 					root=commonServ.showWindow(membershipForm, "../fxml/MyResCheck.fxml");
+					membershipForm.setX(300);
+					membershipForm.setY(80);
 				} else {	// 예약여부확인했는데 false : 예약내역없음
 					Alert alert = new Alert(AlertType.INFORMATION);
 					alert.setContentText("아이디: "+seleted+" 회원님은 삭제할 예약내역이 없습니다.");
@@ -160,6 +148,19 @@ public class MyResCheckController extends Controller implements Initializable{
 			alert.show();
 		}
 	}
+	
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getId() {
+		return id;
+	}
+	@Override
+	public void setRoot(Parent root) {
+		this.root = root;
+	}
+	
+
 
 
 

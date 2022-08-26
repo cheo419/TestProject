@@ -12,9 +12,6 @@ public class SignUpServiceImpl implements SignUpService{
 		}
 		return false;
 	}
-	
-	
-	
 
 	// 비밀번호 확인
 	@Override

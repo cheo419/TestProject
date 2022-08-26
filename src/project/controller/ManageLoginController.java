@@ -38,9 +38,6 @@ public class ManageLoginController extends Controller implements Initializable{
 	public void setRoot(Parent root) {
 		this.root = root;
 	}
-	 
-	
-	
 	
 	// [로그인 버튼] 
 	public void manageLogin() {
@@ -50,6 +47,8 @@ public class ManageLoginController extends Controller implements Initializable{
 	public void backL() {
 		Stage s = (Stage) root.getScene().getWindow();
 		commonServ.showWindow(s, "../fxml/Login.fxml");
+		s.setX(300);
+		s.setY(80);
 	}
 
 

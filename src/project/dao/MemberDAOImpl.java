@@ -7,18 +7,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-
 import project.Member;
-import project.service.CommonService;
-import project.service.CommonServiceImpl;
 
 public class MemberDAOImpl implements MemberDAO {
-	Connection con;
-	CommonService comServ;
+	private Connection con;
 
 	// 오라클 연결
 	public MemberDAOImpl() {
-		comServ = new CommonServiceImpl();
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			String url = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
@@ -278,7 +273,7 @@ public class MemberDAOImpl implements MemberDAO {
 		return false;
 	}
 
-	// <관리자페이지> 테이블뷰에서 선택된 회원 강제탈퇴
+	// <관리자페이지>테이블뷰에서 선택된 회원 강제탈퇴 , <회원정보수정 페이지> 정보수정페이지에서 탈퇴
 	@Override
 	public boolean deleteUser(String id) {
 		try {
@@ -360,6 +355,32 @@ public class MemberDAOImpl implements MemberDAO {
 		}
 		return true;
 	}
+	
+	// 회원 정보 수정
+	public boolean updateInfo(Member m, String id) {
+	      try {
+	         String sql = 
+	         "update firstmember set userName=?, phoneNum=?, "
+	         + "pw=? where id = ?";
+	         PreparedStatement pstmt = con.prepareStatement(sql);
+
+	         pstmt.setString(1, m.getUserName());
+	         pstmt.setString(2, m.getPhoneNumber());
+	         pstmt.setString(3, m.getPw());
+	         
+	         pstmt.setString(4, id);
+
+	         int result = pstmt.executeUpdate();
+
+	         if(result >= 1) {
+	            return true;
+	         }
+
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      }
+	      return false;
+	   }
 
 
 

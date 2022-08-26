@@ -24,7 +24,7 @@ public interface MemberDAO {
 	//  예약여부확인 (예약하기 버튼 비활성화,예약내역 삭제시) : 예약내역있으면 true
 	public boolean checkRes(String id); 
 	
-	// <관리자페이지> 테이블뷰에서 선택된 회원 강제탈퇴
+	// <관리자페이지>테이블뷰에서 선택된 회원 강제탈퇴 , <회원정보수정 페이지> 정보수정페이지에서 탈퇴
 	public boolean deleteUser (String id); 
 	
 	// <관리자페이지,유저페이지> 테이블뷰에서 선택된 예약내역 삭제
@@ -35,6 +35,9 @@ public interface MemberDAO {
 	
 	// 진료 가능여부 확인. : 예약 가능시 true
 	public boolean findSameRes(int value1,String value2,int value3) ;
+	
+	// 회원정보 수정
+	public boolean updateInfo(Member m, String id);
 }
 
 

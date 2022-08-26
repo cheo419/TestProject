@@ -2,15 +2,8 @@ package project.service;
 
 import project.controller.LoginController;
 import project.Member;
-import project.controller.MyResCheckController;
-import project.controller.MyResController;
 import project.dao.MemberDAO;
 import project.dao.MemberDAOImpl;
-
-import java.time.LocalDate;
-import java.time.chrono.ChronoLocalDate;
-import java.time.format.DateTimeFormatter;
-
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -18,16 +11,14 @@ import javafx.scene.control.DatePicker;
 import javafx.stage.Stage;
 
 public class MyResServiceImpl implements MyResService{
-	MemberDAO dao;
-	CommonService comServ;
-	LoginController loginController;
-	MyResController myResController;
+	private MemberDAO dao;
+	private CommonService comServ;
+	private LoginController loginController;
 	
 	public MyResServiceImpl() {
 		dao = new MemberDAOImpl();
 		comServ = new CommonServiceImpl();
 		loginController = new LoginController();
-		myResController = new MyResController();
 	}
 
 	// MyRes<내 진료예약 정보입력 페이지> [확인 버튼] 기능 : 입력 오류 체크 및 저장
@@ -64,7 +55,6 @@ public class MyResServiceImpl implements MyResService{
 		}
 
 		// DB저장을 위해 Member클래스에 값 저장.
-		System.out.println(jinryo+date+time);
 		m.setJinryo(jinryo);
 		m.setDate(date);
 		m.setTime(time);
@@ -86,6 +76,8 @@ public class MyResServiceImpl implements MyResService{
 			// 마이페이지(진료예약,예약확인버튼 있는페이지) 다시 띄우기 (새창띄워서 버튼비활성화하기위함)
 			Stage membershipForm = new Stage(); 
 			root=comServ.showWindow(membershipForm, "../fxml/Mypage.fxml");
+			membershipForm.setX(300);
+			membershipForm.setY(80);
 
 			// 예약된 내역이있는지 boolean으로 체크하고 버튼비활성화 처리
 			if(dao.checkRes(id)){
@@ -99,7 +91,7 @@ public class MyResServiceImpl implements MyResService{
 		}
 	}
 	
-	// 콤보박스 (예약진료과)
+	// 콤보박스에서 선택한 내용을 숫자로 변경 (예약진료과)
 	public int getComboBoxJinryo(Parent root) {
 		ComboBox<String> cmbJinryo = (ComboBox<String>)root.lookup("#cmbJinryo");
 		if(cmbJinryo==null) {
@@ -118,7 +110,7 @@ public class MyResServiceImpl implements MyResService{
 		}
 	}
 
-	// 데이트피커 (예약날짜)
+	// 데이트피커로 선택받은 날짜를 스트링값으로 변경 (예약날짜)
 	public String getDatePicker(Parent root) {
 
 		DatePicker cmbDate = (DatePicker)root.lookup("#cmbDate");
@@ -127,14 +119,13 @@ public class MyResServiceImpl implements MyResService{
 		return value;
 	}
 
-	// 콤보박스 (예약시간)
+	// 콤보박스에서 선택한 예약시간을 숫자로 변경 (예약시간)
 	public int getComboBoxTime(Parent root) {
 		ComboBox<String> cmbTime = (ComboBox<String>)root.lookup("#cmbTime");
 		if(cmbTime==null) {
 			return -1;
 		}
 		String value = cmbTime.getValue().toString();
-		System.out.println(value);
 		if(value.equals("예약가능: 09:30")) {
 			return 1;
 		} else if(value.equals("예약가능: 10:30")){
@@ -147,7 +138,7 @@ public class MyResServiceImpl implements MyResService{
 			return 5;
 		}else if(value.equals("예약가능: 15:30")){
 			return 6;
-		}else {	// 예약마감시간들인경우 7이 출력됨.
+		}else {	// '예약마감: 시간' 인경우 7이 출력됨.
 			return 7;
 		}
 	}
@@ -155,7 +146,6 @@ public class MyResServiceImpl implements MyResService{
 	// 각 진료과(콤보박스),진료날짜(데이트피커),진료시간(콤보박스)에 입력값이 없으면 boolean으로 false 
 	public boolean jComboBox(Parent root) {
 		ComboBox<String> cmbJinryo = (ComboBox<String>) root.lookup("#cmbJinryo");
-
 		if(cmbJinryo == null) {
 			return false;
 		} else if(cmbJinryo.getValue() == null) {
@@ -176,7 +166,6 @@ public class MyResServiceImpl implements MyResService{
 	}
 	public boolean tComboBox(Parent root) {
 		ComboBox<String> cmbTime = (ComboBox<String>) root.lookup("#cmbTime");
-
 		if(cmbTime == null) {
 			return false;
 		} else if(cmbTime.getValue() == null) {
