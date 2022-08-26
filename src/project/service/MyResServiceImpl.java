@@ -53,6 +53,11 @@ public class MyResServiceImpl implements MyResService{
 		int time;
 		if(tComboBox(root)) {
 			time = getComboBoxTime(root);
+			// 예약마감 시간이 선택됐을경우 time이 7으로 들어오므로 리턴시킴.
+			if(time==7) {
+				comServ.errorBox("시간 입력오류","마감된 시간으로 예약하셨습니다.","예약가능 시간으로 선택해주세요.");
+				return;
+			}
 		} else {
 			comServ.errorBox("시간 입력오류","시간이 입력되지 않았습니다","예약하실 시간을 선택하세요.");
 			return;
@@ -142,7 +147,7 @@ public class MyResServiceImpl implements MyResService{
 			return 5;
 		}else if(value.equals("예약가능: 15:30")){
 			return 6;
-		}else {
+		}else {	// 예약마감시간들인경우 7이 출력됨.
 			return 7;
 		}
 	}

@@ -103,6 +103,9 @@ public class MyResController extends Controller implements Initializable{
 							// 진료가능여부 확인할때 예약불가능한 경우가 6번이되면
 							// for문 빠져나갔을때 모든시간 마감표시하기 위함.
 							cnt+=1;	
+							
+							// 예약불가능으로 조회된 숫자의 순서에맞는 진료시간 배열주머니에서 가져온 값을 시간콤보박스에 저장 및 출력
+							cmbTime.getItems().add("예약마감: "+items1[i-1]);
 						}
 					}
 					// 예약가능한 시간이 없는경우 모든시간 마감 표기하면서
