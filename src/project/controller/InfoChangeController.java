@@ -97,8 +97,8 @@ public class InfoChangeController extends Controller implements Initializable{
 
 		Stage membershipForm = new Stage();
 		root=commonServ.showWindow(membershipForm, "../fxml/MyPage.fxml");
-		membershipForm.setX(300);
-		membershipForm.setY(80);
+		membershipForm.setX(450);
+		membershipForm.setY(110);
 
 		// <마이페이지> 좌측 상단에 아이디 표기
 		Label myPageId = (Label) root.lookup("#myPageId");

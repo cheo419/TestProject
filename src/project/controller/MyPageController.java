@@ -40,8 +40,8 @@ public class MyPageController extends Controller implements Initializable{
 		myPage.close();	
 		Stage membershipForm = new Stage();
 		root = commonServ.showWindow(membershipForm, "../fxml/MyRes.fxml");
-		membershipForm.setX(300);
-		membershipForm.setY(80);
+		membershipForm.setX(450);
+		membershipForm.setY(110);
 	}
 	
 	// [예약확인 버튼]
@@ -58,8 +58,8 @@ public class MyPageController extends Controller implements Initializable{
 
 		Stage membershipForm = new Stage();
 		root=commonServ.showWindow(membershipForm, "../fxml/InfoChange.fxml");
-		membershipForm.setX(300);
-		membershipForm.setY(80);
+		membershipForm.setX(450);
+		membershipForm.setY(110);
 
 	}
 

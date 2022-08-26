@@ -10,11 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane prefHeight="672.0" prefWidth="1061.0" 
-style="-fx-background-color: NAVY;" xmlns="http://javafx.com/javafx/8" 
-xmlns:fx="http://javafx.com/fxml/1" 
-
-fx:controller="project.controller.ManageController">
+<GridPane prefHeight="750.0" prefWidth="950.0" style="-fx-background-color: NAVY;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.controller.ManageController">
 
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -26,13 +22,13 @@ fx:controller="project.controller.ManageController">
    <children>
       <Label text="예약 확인 및 관리" textFill="WHITE" GridPane.halignment="CENTER">
          <font>
-            <Font name="System Bold" size="33.0" />
+            <Font name="System Bold" size="48.0" />
          </font>
          <GridPane.margin>
-            <Insets />
+            <Insets bottom="20.0" />
          </GridPane.margin>
       </Label>
-      <TableView fx:id="manageTable" prefHeight="567.0" prefWidth="978.0" style="-fx-background-color: LIGHTCYAN;" GridPane.rowIndex="1">
+      <TableView fx:id="manageTable" prefHeight="750.0" prefWidth="950.0" style="-fx-background-color: LIGHTCYAN;" GridPane.rowIndex="1">
         <columns>
           <TableColumn fx:id="nameCol" prefWidth="91.0" style="-fx-background-color: LIGHTSKYBLUE; -fx-font-size: 15px;" text="이름" />
           <TableColumn fx:id="numberCol" prefWidth="171.0" style="-fx-background-color: LIGHTSKYBLUE; -fx-font-size: 15px;" text="전화번호" />
@@ -48,18 +44,21 @@ fx:controller="project.controller.ManageController">
          <GridPane.margin>
             <Insets right="15.0" top="15.0" />
          </GridPane.margin></Button>
-      <Button mnemonicParsing="false" onAction="#deleteRes" style="-fx-background-color: LIGHTSKYBLUE;" text="선택 회원 예약 취소" textFill="WHITE" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+      <Button mnemonicParsing="false" onAction="#deleteRes" prefWidth="150.0" style="-fx-background-color: LIGHTSKYBLUE;" text="선택 회원 예약 취소" textFill="WHITE" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets left="15.0" top="55.0" />
+         </GridPane.margin>
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button mnemonicParsing="false" onAction="#deleteUser" prefWidth="150.0" style="-fx-background-color: LIGHTSKYBLUE;" text="선택 회원 삭제" textFill="WHITE" GridPane.halignment="LEFT" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets left="15.0" top="15.0" />
          </GridPane.margin>
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font size="14.0" />
          </font>
-      </Button>
-      <Button mnemonicParsing="false" onAction="#deleteUser" style="-fx-background-color: LIGHTSKYBLUE;" text="선택 회원 삭제" textFill="WHITE" GridPane.halignment="LEFT">
-         <GridPane.margin>
-            <Insets left="15.0" top="20.0" />
-         </GridPane.margin>
       </Button>
    </children>
 </GridPane>

@@ -28,8 +28,8 @@ public class ManageLoginServiceImpl implements ManageLoginService{
 
 			Stage s = (Stage) root.getScene().getWindow();
 			comServ.showWindow(s, "../fxml/Manage.fxml");
-			s.setX(300);
-			s.setY(80);
+			s.setX(450);
+			s.setY(110);
 		} else {
 			comServ.errorBox("관리자 로그인 실패","잘못 입력 되었습니다.","다시 시도해주세요.");
 		}

@@ -60,8 +60,8 @@ public class LoginController extends Controller implements Initializable{
 	public void signOk() {
 		Stage membershipForm = new Stage();
 		commonServ.showWindow(membershipForm, "../fxml/SignUp.fxml");
-		membershipForm.setX(300);
-		membershipForm.setY(80);
+		membershipForm.setX(450);
+		membershipForm.setY(110);
 	}
 
 	// [관리자버튼] (관리자용 로그인 비밀번호 쳐야하는 페이지 오픈)

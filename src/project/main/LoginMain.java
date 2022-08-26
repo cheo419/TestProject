@@ -10,8 +10,8 @@ public class LoginMain extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		CommonService comServ = new CommonServiceImpl();
 		comServ.showWindow(primaryStage, "../fxml/Login.fxml");
-		primaryStage.setX(300);
-		primaryStage.setY(80);
+		primaryStage.setX(450);
+		primaryStage.setY(110);
 	}
 
 	public static void main(String[] args) {

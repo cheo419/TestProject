@@ -121,8 +121,8 @@ public class ManageController extends Controller implements Initializable{
 					//  예약내역삭제된 후 수정된 내용으로 창 다시 띄우기
 					Stage membershipForm = new Stage();
 					root=comServ.showWindow(membershipForm, "../fxml/Manage.fxml");
-					membershipForm.setX(300);
-					membershipForm.setY(80);
+					membershipForm.setX(450);
+					membershipForm.setY(110);
 				} else {
 					// 예약여부확인했는데 false : 예약내역없음
 					Alert alert = new Alert(AlertType.INFORMATION);
@@ -174,8 +174,8 @@ public class ManageController extends Controller implements Initializable{
 				//  삭제된 후 수정된 내용으로 창 다시 띄우기
 				Stage membershipForm = new Stage();
 				root=comServ.showWindow(membershipForm, "../fxml/Manage.fxml");
-				membershipForm.setX(300);
-				membershipForm.setY(80);
+				membershipForm.setX(450);
+				membershipForm.setY(110);
 				
 			} else { 	// 강제탈퇴 경고창에서 취소버튼 눌러 탈퇴진행되지 않음.
 				Alert alert = new Alert(AlertType.INFORMATION);

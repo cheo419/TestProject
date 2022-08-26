@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<GridPane prefHeight="750.0" prefWidth="1100.0" style="-fx-background-color: NAVY;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.controller.InfoChangeController">
+<GridPane prefHeight="750.0" prefWidth="950.0" style="-fx-background-color: NAVY;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.controller.InfoChangeController">
 
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -61,24 +61,36 @@
             <Insets left="100.0" />
          </GridPane.margin>
       </Label>
-      <TextField fx:id="lPw" maxHeight="50.0" maxWidth="450.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <TextField fx:id="lPw" maxHeight="50.0" maxWidth="450.0" style="-fx-background-color: navy; -fx-border-color: NAVY  NAVY SLATEGREY  NAVY; -fx-border-width: 3 3 3 3; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <font>
-            <Font size="24.0" />
+            <Font size="36.0" />
          </font>
+         <GridPane.margin>
+            <Insets bottom="20.0" />
+         </GridPane.margin>
       </TextField>
-      <TextField fx:id="lPwOk" maxHeight="50.0" maxWidth="450.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <TextField fx:id="lPwOk" maxHeight="50.0" maxWidth="450.0" style="-fx-background-color: navy; -fx-border-color: NAVY  NAVY SLATEGREY  NAVY; -fx-border-width: 3 3 3 3; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <font>
-            <Font size="24.0" />
+            <Font size="36.0" />
          </font>
+         <GridPane.margin>
+            <Insets bottom="20.0" />
+         </GridPane.margin>
       </TextField>
-      <TextField fx:id="lName" maxHeight="50.0" maxWidth="450.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <TextField fx:id="lName" maxHeight="50.0" maxWidth="450.0" style="-fx-background-color: navy; -fx-border-color: NAVY  NAVY SLATEGREY  NAVY; -fx-border-width: 3 3 3 3; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <font>
-            <Font size="24.0" />
-         </font></TextField>
-      <TextField fx:id="lNumber" maxHeight="50.0" maxWidth="450.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <Font size="36.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="20.0" />
+         </GridPane.margin></TextField>
+      <TextField fx:id="lNumber" maxHeight="50.0" maxWidth="450.0" style="-fx-background-color: navy; -fx-border-color: NAVY  NAVY SLATEGREY  NAVY; -fx-border-width: 3 3 3 3; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="5">
          <font>
-            <Font size="24.0" />
-         </font></TextField>
+            <Font size="36.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="20.0" />
+         </GridPane.margin></TextField>
       <Button fx:id="modify" mnemonicParsing="false" onAction="#change" prefWidth="115.0" style="-fx-background-color: LIGHTSKYBLUE;" text="수정" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="6">
          <font>
             <Font size="29.0" />
@@ -110,8 +122,8 @@
       </Button>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MEDIUMTURQUOISE" height="750.0" stroke="BLACK" strokeType="INSIDE" width="15.0" GridPane.halignment="LEFT" GridPane.valignment="TOP" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MEDIUMTURQUOISE" height="750.0" stroke="BLACK" strokeType="INSIDE" width="15.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MEDIUMTURQUOISE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="1100.0" GridPane.halignment="LEFT" GridPane.valignment="TOP" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MEDIUMTURQUOISE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="1100.0" GridPane.rowIndex="6" GridPane.valignment="BOTTOM" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MEDIUMTURQUOISE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="950.0" GridPane.halignment="LEFT" GridPane.valignment="TOP" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MEDIUMTURQUOISE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="950.0" GridPane.rowIndex="6" GridPane.valignment="BOTTOM" />
       <Button mnemonicParsing="false" onAction="#backagain" style="-fx-background-color: LIGHTSTEELBLUE;" text="뒤로가기" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets right="25.0" top="25.0" />
@@ -127,6 +139,14 @@
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
+         <GridPane.margin>
+            <Insets bottom="18.0" left="25.0" />
+         </GridPane.margin>
       </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a2afbc" height="5.0" opacity="0.67" stroke="BLACK" strokeType="INSIDE" width="450.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets top="47.0" />
+         </GridPane.margin>
+      </Rectangle>
    </children>
 </GridPane>

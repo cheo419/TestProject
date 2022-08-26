@@ -77,8 +77,8 @@ public class MyResServiceImpl implements MyResService{
 			// 마이페이지(진료예약,예약확인버튼 있는페이지) 다시 띄우기 (새창띄워서 버튼비활성화하기위함)
 			Stage membershipForm = new Stage(); 
 			root=comServ.showWindow(membershipForm, "../fxml/Mypage.fxml");
-			membershipForm.setX(300);
-			membershipForm.setY(80);
+			membershipForm.setX(450);
+			membershipForm.setY(110);
 
 			// <마이페이지> 좌측 상단에 아이디 표기
 			Label myPageId = (Label) root.lookup("#myPageId");

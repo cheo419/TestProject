@@ -47,8 +47,8 @@ public class ManageLoginController extends Controller implements Initializable{
 	public void backL() {
 		Stage s = (Stage) root.getScene().getWindow();
 		commonServ.showWindow(s, "../fxml/Login.fxml");
-		s.setX(300);
-		s.setY(80);
+		s.setX(450);
+		s.setY(110);
 	}
 
 

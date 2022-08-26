@@ -15,8 +15,8 @@ public class ManageServiceImpl implements ManageService{
 	public void backLogin(Parent root) {
 		Stage s = (Stage) root.getScene().getWindow();
 		comServ.showWindow(s, "../fxml/Login.fxml");
-		s.setX(300);
-		s.setY(80);
+		s.setX(450);
+		s.setY(110);
 	}
 
 

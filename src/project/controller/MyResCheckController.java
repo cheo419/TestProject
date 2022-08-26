@@ -84,8 +84,8 @@ public class MyResCheckController extends Controller implements Initializable{
 		// 마이페이지(진료예약,예약확인버튼 있는페이지) 다시 띄우기 
 		Stage membershipForm = new Stage(); 
 		root=commonServ.showWindow(membershipForm, "../fxml/Mypage.fxml");
-		membershipForm.setX(300);
-		membershipForm.setY(80);
+		membershipForm.setX(450);
+		membershipForm.setY(110);
 
 		// <마이페이지> 좌측 상단에 아이디 표기
 		Label myPageId = (Label) root.lookup("#myPageId");
@@ -135,8 +135,8 @@ public class MyResCheckController extends Controller implements Initializable{
 					//  예약내역삭제된 후 수정된 내용으로 예약내역보기창 다시 띄우기
 					Stage membershipForm = new Stage();
 					root=commonServ.showWindow(membershipForm, "../fxml/MyResCheck.fxml");
-					membershipForm.setX(300);
-					membershipForm.setY(80);
+					membershipForm.setX(450);
+					membershipForm.setY(110);
 				} else {	// 예약여부확인했는데 false : 예약내역없음
 					Alert alert = new Alert(AlertType.INFORMATION);
 					alert.setContentText("아이디: "+seleted+" 회원님은 삭제할 예약내역이 없습니다.");

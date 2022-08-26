@@ -26,8 +26,8 @@ public class MyPageServiceImpl implements MyPageService{
 
 		Stage membershipForm = new Stage();
 		comServ.showWindow(membershipForm, "../fxml/MyResCheck.fxml");
-		membershipForm.setX(300);
-		membershipForm.setY(80);
+		membershipForm.setX(450);
+		membershipForm.setY(110);
 	}
 
 	// MyPage<마이페이지> 에서 Login<로그인 페이지>
@@ -35,8 +35,8 @@ public class MyPageServiceImpl implements MyPageService{
 	public void Logout(Parent root) {
 		Stage s = (Stage) root.getScene().getWindow();
 		comServ.showWindow(s, "../fxml/Login.fxml");
-		s.setX(300);
-		s.setY(80);
+		s.setX(450);
+		s.setY(110);
 	}
 
 
