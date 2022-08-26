@@ -21,9 +21,9 @@ public class LoginController extends Controller implements Initializable{
 	private CommonService commonServ;
 	private static String id;	// 로그인할때 입력한 아이디값을 고정으로 저장하기위함.
 	
-	@FXML private TextField lId;
-	@FXML private PasswordField lPw;
-	@FXML private Button loginBtn;
+	private @FXML TextField lId;
+	private @FXML PasswordField lPw;
+	private @FXML Button loginBtn;
 
 	// <기본 첫 로그인페이지> 회원 아이디 비밀번호 입력 받음 (입력:아이디,비밀번호) (버튼:로그인,회원가입,관리자)
 	

@@ -27,13 +27,13 @@ public class InfoChangeController extends Controller implements Initializable{
 	private String name;
 	private String phoneNumber;
 
-	@FXML Label lId;
-	@FXML TextField lPw;
-	@FXML TextField lPwOk;
-	@FXML TextField lName;
-	@FXML TextField lNumber;
-	@FXML Button modify;
-	
+	private @FXML Label lId;
+	private @FXML TextField lPw;
+	private @FXML TextField lPwOk;
+	private @FXML TextField lName;
+	private @FXML TextField lNumber;
+	private @FXML Button modify;
+
 	// <회원정보 수정 페이지> 아이디제외 모든 정보 수정, 탈퇴가능한 페이지 (입력:비밀번호,비밀번호확인,이름,전화번호) (버튼:수정,취소,탈퇴)
 
 	@Override
@@ -41,7 +41,7 @@ public class InfoChangeController extends Controller implements Initializable{
 		commonServ = new CommonServiceImpl();
 		infoChangeServ = new InfoChangeServiceImpl();
 		dao = new MemberDAOImpl();
-		
+
 		// 창 떴을때 비번 입력칸에 포커스 주고 엔터치면서 수정하고 마지막에 엔터로 수정버튼 눌림.
 		lPw.requestFocus();
 		lPw.setOnAction(e -> lPwOk.requestFocus());
@@ -49,13 +49,13 @@ public class InfoChangeController extends Controller implements Initializable{
 		lName.setOnAction(e -> lNumber.requestFocus());
 		lNumber.setOnAction(e -> modify.requestFocus());
 		modify.setOnKeyPressed(e -> change());
-		
+
 		// 회원정보를 가져오기위해 메서드 처리 ( 회원정보 수정페이지에 이름, 전화번호는 미리 채워두기위함)
 		getInfo(id);
-		
+
 		// 아이디는 수정하지 않을것이므로 라벨로 기존 아이디값을 출력
 		lId.setText(id);
-		
+
 		// 정보 조회된 이름 전화번호를 텍스트필드에 채움
 		lName.setText(name);
 		lNumber.setText(phoneNumber);
@@ -73,24 +73,24 @@ public class InfoChangeController extends Controller implements Initializable{
 	public void setRoot(Parent root) {
 		this.root = root;
 	}
-	
+
 	// [수정 버튼] 수정할 정보 입력 후 누르는 버튼
 	public void change() {
 		System.out.println("정보 입력 후 수정버튼을 눌렀습니다.");
 		infoChangeServ.change(root);
 	}
-	
+
 	// [탈퇴 버튼] 탈퇴를 선택함 회원정보를 지우고 로그인페이지로 돌아감
 	public void out() {
 		System.out.println("탈퇴 버튼을 눌렀습니다.");
 		infoChangeServ.out(root);
 	}
-	
+
 	// [뒤로가기 버튼] 수정을 취소하고 다시 마이페이지로 돌아감
 	public void backagain() {
 		commonServ.errorBox("회원정보 수정 취소", "회원정보 수정을 취소했습니다.", "마이페이지로 돌아갑니다.");
 		System.out.println("뒤로가기 버튼을 눌렀습니다. 마이페이지로 돌아갑니다.");
-		
+
 		// <수정페이지> 창을 끄고 <마이페이지> 창을 다시 띄움
 		Stage myPage = (Stage) root.getScene().getWindow();
 		myPage.close();	
@@ -99,7 +99,11 @@ public class InfoChangeController extends Controller implements Initializable{
 		root=commonServ.showWindow(membershipForm, "../fxml/MyPage.fxml");
 		membershipForm.setX(300);
 		membershipForm.setY(80);
-		
+
+		// <마이페이지> 좌측 상단에 아이디 표기
+		Label myPageId = (Label) root.lookup("#myPageId");
+		myPageId.setText(id+"님 환영합니다!");
+
 		// 예약된 내역이있는지 boolean으로 체크하고 버튼비활성화 처리
 		if(dao.checkRes(id)){
 			System.out.println("예약내용있음");
@@ -114,9 +118,9 @@ public class InfoChangeController extends Controller implements Initializable{
 	public void setId(String id) {
 		this.id = id;
 	}
-	
-	
-	
-	
+
+
+
+
 
 }

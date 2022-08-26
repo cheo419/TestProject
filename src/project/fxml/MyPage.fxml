@@ -56,5 +56,13 @@
             <Insets right="20.0" top="20.0" />
          </GridPane.margin>
       </Button>
+      <Label fx:id="myPageId" text="" textFill="WHITE" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="30.0" top="30.0" />
+         </GridPane.margin>
+      </Label>
    </children>
 </GridPane>

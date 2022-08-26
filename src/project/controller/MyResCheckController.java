@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Alert.AlertType;
@@ -36,14 +37,14 @@ public class MyResCheckController extends Controller implements Initializable{
 	@FXML private TableColumn<Member, String>  idCol;
 	@FXML private TableColumn<Member, String>  pwCol;
 	@FXML private TableColumn<Member, String>  resCol;
-	
+
 	// <회원용 예약확인 페이지> 로그인한 회원의 예약확인 및 예약취소 가능 (버튼: 선택 예약취소, 뒤로가기) (테이블뷰)
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		commonServ = new CommonServiceImpl();
 		dao = new MemberDAOImpl();
-		
+
 		// 유저의 예약내용 출력하여 Member클래스에 저장
 		Member m= dao.select(id);	
 
@@ -86,6 +87,10 @@ public class MyResCheckController extends Controller implements Initializable{
 		membershipForm.setX(300);
 		membershipForm.setY(80);
 
+		// <마이페이지> 좌측 상단에 아이디 표기
+		Label myPageId = (Label) root.lookup("#myPageId");
+		myPageId.setText(id+"님 환영합니다!");
+
 		// 예약된 내역이있는지 boolean으로 체크하고 버튼비활성화 처리
 		if(dao.checkRes(id)){
 			System.out.println("예약내용있음");
@@ -108,13 +113,13 @@ public class MyResCheckController extends Controller implements Initializable{
 			alertWarn.setHeaderText(seleted+"회원님의 예약내역을 삭제합니다.");
 			alertWarn.setContentText("삭제 복구가 불가능합니다. 삭제하시겠습니까?");
 			Optional<ButtonType>result = alertWarn.showAndWait();
-			
+
 			// 예약내역 삭제하기 경고창에서 확인버튼 눌러 삭제 진행
 			if(result.get()==ButtonType.OK) {
-				
+
 				// 예약여부확인 : 예약내역있음true
 				if(dao.checkRes(seleted)) {
-					
+
 					// 삭제되어 테이블뷰 업데이트를 위해 창 닫기
 					Stage myPage = (Stage) root.getScene().getWindow();
 					myPage.close();
@@ -148,7 +153,7 @@ public class MyResCheckController extends Controller implements Initializable{
 			alert.show();
 		}
 	}
-	
+
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -159,7 +164,7 @@ public class MyResCheckController extends Controller implements Initializable{
 	public void setRoot(Parent root) {
 		this.root = root;
 	}
-	
+
 
 
 

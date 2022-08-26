@@ -7,6 +7,7 @@ import project.dao.MemberDAO;
 import project.dao.MemberDAOImpl;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -58,6 +59,10 @@ public class LoginServiceImpl implements LoginService{
 			membershipForm.setX(300);
 			membershipForm.setY(80);
 
+			// <마이페이지> 좌측 상단에 아이디 표기
+			Label myPageId = (Label) root.lookup("#myPageId");
+			myPageId.setText(id+"님 환영합니다!");
+			
 			// 예약된 내역이있는지 boolean으로 체크하고 버튼비활성화 처리
 			if(dao.checkRes(id)){
 				System.out.println("예약내용있음");

@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
@@ -38,14 +39,14 @@ public class InfoChangeServiceImpl implements InfoChangeService {
 		TextField txtPwOk = (TextField) root.lookup("#lPwOk");
 		TextField txtName = (TextField) root.lookup("#lName");
 		TextField txtNumber = (TextField) root.lookup("#lNumber");
-		
+
 		// 비어있는 입력칸이 있으면 알림창띄움
 		String[] txtEmpty = {
-			txtPw.getText(),
-			txtPwOk.getText(),
-			txtName.getText(),
-			txtNumber.getText()
-			};
+				txtPw.getText(),
+				txtPwOk.getText(),
+				txtName.getText(),
+				txtNumber.getText()
+		};
 		String[] txtEmptyName = {"비밀번호","비밀번호 확인","이름","전화번호"};
 		for(int i=0;i<txtEmpty.length;i++) {
 			if(isEmpty(txtEmpty[i])) {
@@ -53,7 +54,7 @@ public class InfoChangeServiceImpl implements InfoChangeService {
 				return;
 			}
 		}
-		
+
 		// 입력한 암호가 다를경우 
 		String newPw = txtPw.getText();
 		String newPwOk = txtPwOk.getText();
@@ -82,6 +83,11 @@ public class InfoChangeServiceImpl implements InfoChangeService {
 		root=commonServ.showWindow(membershipForm, "../fxml/MyPage.fxml");
 		membershipForm.setX(300);
 		membershipForm.setY(80);
+
+		// <마이페이지> 좌측 상단에 아이디 표기
+		Label myPageId = (Label) root.lookup("#myPageId");
+		myPageId.setText(id+"님 환영합니다!");
+
 
 		// 예약된 내역이있는지 boolean으로 체크하고 버튼비활성화 처리
 		if(dao.checkRes(id)){
@@ -125,7 +131,7 @@ public class InfoChangeServiceImpl implements InfoChangeService {
 		membershipForm.setX(300);
 		membershipForm.setY(80);
 	}
-	
+
 	// 비어있으면 진행 안되게
 	public boolean isEmpty(String str) {
 		if(str.isEmpty()) {
