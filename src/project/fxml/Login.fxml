@@ -11,11 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<GridPane prefHeight="750.0" prefWidth="950.0" 
-style="-fx-background-color: NAVY;" xmlns="http://javafx.com/javafx/8" 
-xmlns:fx="http://javafx.com/fxml/1" 
-
-fx:controller="project.controller.LoginController">
+<GridPane prefHeight="750.0" prefWidth="950.0" style="-fx-background-color: NAVY;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.controller.LoginController">
 
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="218.0" minWidth="10.0" prefWidth="171.0" />
@@ -31,12 +27,12 @@ fx:controller="project.controller.LoginController">
     <RowConstraints maxHeight="219.0" minHeight="10.0" prefHeight="187.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" text="아이디" textFill="WHITE" textOverrun="CLIP" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <Label alignment="CENTER" contentDisplay="CENTER" text="아이디" textFill="WHITE" textOverrun="CLIP" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
          <font>
             <Font name="New Gulim" size="36.0" />
          </font>
       </Label>
-      <Label alignment="TOP_LEFT" style="-fx-font-family: Arial Black;" text="비밀번호" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <Label alignment="TOP_LEFT" style="-fx-font-family: Arial Black;" text="비밀번호" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
@@ -49,20 +45,20 @@ fx:controller="project.controller.LoginController">
             <Insets left="55.0" top="20.0" />
          </GridPane.margin>
       </Label>
-      <TextField fx:id="lId" maxHeight="50.0" promptText="아이디 입력" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <TextField fx:id="lId" maxHeight="50.0" style="-fx-background-color: navy; -fx-border-color: NAVY  NAVY #48d1cc  NAVY; -fx-border-width: 3 3 3 3; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <font>
-            <Font size="18.0" />
+            <Font size="26.0" />
          </font>
          <GridPane.margin>
             <Insets bottom="20.0" />
          </GridPane.margin>
          <opaqueInsets>
-            <Insets bottom="1.0" />
+            <Insets />
          </opaqueInsets>
       </TextField>
-      <PasswordField fx:id="lPw" maxHeight="50.0" promptText="비밀번호 입력" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <PasswordField fx:id="lPw" maxHeight="50.0" style="-fx-background-color: NAVY; -fx-border-color: NAVY  NAVY #48d1cc  NAVY; -fx-border-width: 3 3 3 3; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <font>
-            <Font size="18.0" />
+            <Font size="26.0" />
          </font>
          <GridPane.margin>
             <Insets bottom="20.0" />
