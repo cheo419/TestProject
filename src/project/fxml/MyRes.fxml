@@ -46,7 +46,7 @@
          <GridPane.margin>
             <Insets left="100.0" />
          </GridPane.margin></Label>
-      <ComboBox fx:id="cmbJinryo" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <ComboBox fx:id="cmbJinryo" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: white; -fx-font-size: 17px;" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets left="50.0" />
          </GridPane.margin></ComboBox>
@@ -54,7 +54,7 @@
          <GridPane.margin>
             <Insets left="50.0" />
          </GridPane.margin></ComboBox>
-      <DatePicker fx:id="cmbDate" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <DatePicker fx:id="cmbDate" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: white; -fx-font-size: 17px;" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets left="50.0" />
          </GridPane.margin></DatePicker>
