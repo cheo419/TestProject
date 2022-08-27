@@ -8,6 +8,9 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
@@ -29,25 +32,61 @@
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" text="아이디" textFill="WHITE" textOverrun="CLIP" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
          <font>
-            <Font name="New Gulim" size="36.0" />
+            <Font size="39.0" />
          </font>
       </Label>
       <Label alignment="TOP_LEFT" style="-fx-font-family: Arial Black;" text="비밀번호" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
          <font>
-            <Font name="System Bold" size="36.0" />
+            <Font name="System Bold" size="39.0" />
          </font>
       </Label>
-      <Label text="퍼스트 병원 로그인" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+      <Label text="퍼스트 병원 로그인" GridPane.columnIndex="1" GridPane.halignment="CENTER">
          <font>
-            <Font name="Symbol" size="48.0" />
+            <Font name="Symbol" size="56.0" />
          </font>
          <GridPane.margin>
-            <Insets left="55.0" top="20.0" />
+            <Insets left="60.0" top="20.0" />
          </GridPane.margin>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.11374407582938384" startY="0.9052132701421801">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006711409395973154">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.24107873629071858">
+                     <color>
+                        <Color green="1.0" blue="0.20000000298023224" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.4798657718120805">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.7751677852348993">
+                     <color>
+                        <Color green="1.0" blue="0.20000000298023224" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
       </Label>
-      <TextField fx:id="lId" maxHeight="50.0" style="-fx-background-color: navy; -fx-border-color: NAVY  NAVY SLATEGREY  NAVY; -fx-border-width: 3 3 3 3; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <TextField fx:id="lId" style="-fx-background-color: navy; -fx-border-color: NAVY  NAVY SLATEGREY  NAVY; -fx-border-width: 3 3 3 3; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <font>
-            <Font size="30.0" />
+            <Font size="33.0" />
          </font>
          <GridPane.margin>
             <Insets bottom="20.0" />
@@ -56,9 +95,9 @@
             <Insets />
          </opaqueInsets>
       </TextField>
-      <PasswordField fx:id="lPw" maxHeight="50.0" style="-fx-background-color: NAVY; -fx-border-color: NAVY  NAVY SLATEGREY  NAVY; -fx-border-width: 3 3 3 3; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <PasswordField fx:id="lPw" style="-fx-background-color: NAVY; -fx-border-color: NAVY  NAVY SLATEGREY  NAVY; -fx-border-width: 3 3 3 3; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <font>
-            <Font size="30.0" />
+            <Font size="32.0" />
          </font>
          <GridPane.margin>
             <Insets bottom="20.0" />
@@ -72,20 +111,20 @@
             <Font size="17.0" />
          </font>
       </Button>
-      <Button fx:id="loginBtn" mnemonicParsing="false" onAction="#LoginProc" prefHeight="50.0" prefWidth="130.0" style="-fx-background-color: LIGHTSKYBLUE;" text="로그인" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.valignment="TOP">
+      <Button fx:id="loginBtn" mnemonicParsing="false" onAction="#LoginProc" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: LIGHTSKYBLUE;" text="로그인" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="TOP">
          <font>
-            <Font size="24.0" />
+            <Font size="30.0" />
          </font>
          <GridPane.margin>
-            <Insets left="100.0" top="20.0" />
+            <Insets left="50.0" top="20.0" />
          </GridPane.margin>
       </Button>
-      <Button mnemonicParsing="false" onAction="#signOk" prefHeight="50.0" prefWidth="130.0" style="-fx-background-color: LIGHTSKYBLUE;" text="회원가입" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="TOP">
+      <Button mnemonicParsing="false" onAction="#signOk" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: LIGHTSKYBLUE;" text="회원가입" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="TOP">
          <font>
-            <Font size="24.0" />
+            <Font size="30.0" />
          </font>
          <GridPane.margin>
-            <Insets right="100.0" top="20.0" />
+            <Insets right="50.0" top="20.0" />
          </GridPane.margin>
       </Button>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MEDIUMTURQUOISE" height="750.0" stroke="BLACK" strokeType="INSIDE" width="20.0" GridPane.halignment="LEFT" GridPane.valignment="TOP" />
@@ -94,10 +133,10 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MEDIUMTURQUOISE" height="20.0" stroke="BLACK" strokeType="INSIDE" width="950.0" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="BOTTOM" />
       <Label text="🏥" textFill="#00ff33" GridPane.columnIndex="1">
          <font>
-            <Font size="48.0" />
+            <Font size="61.0" />
          </font>
          <GridPane.margin>
-            <Insets left="55.0" top="35.0" />
+            <Insets left="3.0" top="33.0" />
          </GridPane.margin>
       </Label>
    </children>

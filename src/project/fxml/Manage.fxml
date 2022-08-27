@@ -20,12 +20,12 @@
       <RowConstraints maxHeight="594.0" minHeight="10.0" prefHeight="592.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Label text="예약 확인 및 관리" textFill="WHITE" GridPane.halignment="CENTER">
+      <Label text="예약 확인 및 관리  📝" textFill="WHITE" GridPane.halignment="CENTER">
          <font>
             <Font name="System Bold" size="48.0" />
          </font>
          <GridPane.margin>
-            <Insets bottom="20.0" />
+            <Insets bottom="20.0" left="10.0" />
          </GridPane.margin>
       </Label>
       <TableView fx:id="manageTable" prefHeight="750.0" prefWidth="950.0" style="-fx-background-color: LIGHTCYAN;" GridPane.rowIndex="1">

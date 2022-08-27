@@ -136,7 +136,7 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MEDIUMTURQUOISE" height="750.0" stroke="BLACK" strokeType="INSIDE" width="15.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MEDIUMTURQUOISE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="950.0" GridPane.halignment="LEFT" GridPane.valignment="TOP" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MEDIUMTURQUOISE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="950.0" GridPane.rowIndex="6" GridPane.valignment="BOTTOM" />
-      <Button fx:id="sameCheck" onAction="#sameCheck" mnemonicParsing="false" prefHeight="40.0" style="-fx-background-color: LIGHTSTEELBLUE;" text="중복확인" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <Button fx:id="sameCheck" mnemonicParsing="false" onAction="#sameCheck" prefHeight="40.0" style="-fx-background-color: LIGHTSTEELBLUE;" text="중복확인" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets bottom="10.0" right="50.0" />
          </GridPane.margin>
@@ -144,5 +144,24 @@
             <Font size="16.0" />
          </font>
       </Button>
+      <Label text="아이디는 결정 이후 변경이 불가합니다." textFill="SLATEGRAY" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <GridPane.margin>
+            <Insets right="20.0" top="85.0" />
+         </GridPane.margin>
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label text="❗" textFill="#a60c0ccb" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <GridPane.margin>
+            <Insets left="38.0" top="85.0" />
+         </GridPane.margin>
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
    </children>
 </GridPane>

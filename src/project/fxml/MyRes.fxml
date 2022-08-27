@@ -59,12 +59,12 @@
             <Insets left="50.0" />
          </GridPane.margin></DatePicker>
       
-      <Label text="🚑 진료 예약" textFill="WHITE" GridPane.columnSpan="2" GridPane.halignment="CENTER">
+      <Label text="🚑  진료 예약" textFill="WHITE" GridPane.columnSpan="2" GridPane.halignment="CENTER">
          <font>
             <Font name="System Bold" size="64.0" />
          </font>
          <GridPane.margin>
-            <Insets top="10.0" />
+            <Insets right="60.0" top="10.0" />
          </GridPane.margin>
       </Label>
       <Button fx:id="btnResOk" mnemonicParsing="false" onAction="#resCheck" prefWidth="175.0" style="-fx-background-color: LIGHTSKYBLUE;" text="확인" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">

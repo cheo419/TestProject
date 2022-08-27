@@ -19,17 +19,17 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Label text="💎 마이 페이지" textFill="WHITE" GridPane.halignment="CENTER">
+      <Label text="💎  회원정보 및 진료예약  💎" textFill="WHITE" GridPane.halignment="CENTER">
          <font>
-            <Font size="69.0" />
+            <Font size="56.0" />
          </font>
          <GridPane.margin>
-            <Insets right="20.0" top="20.0" />
+            <Insets top="40.0" />
          </GridPane.margin>
       </Label>
-      <Button maxHeight="70.0" mnemonicParsing="false" onAction="#resOk" prefWidth="380.0" style="-fx-background-color: LIGHTSKYBLUE;" text="예약 확인 및 취소" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <Button maxHeight="70.0" mnemonicParsing="false" onAction="#resOk" prefWidth="380.0" style="-fx-background-color: LIGHTSKYBLUE;" text="예약 확인/취소" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <GridPane.margin>
-            <Insets top="50.0" />
+            <Insets top="10.0" />
          </GridPane.margin>
          <font>
             <Font name="System Bold" size="40.0" />
@@ -37,7 +37,7 @@
       </Button>
       <Button fx:id="myResBtn" maxHeight="70.0" mnemonicParsing="false" onAction="#res" prefWidth="380.0" style="-fx-background-color: LIGHTSKYBLUE;" text="진료 예약" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <GridPane.margin>
-            <Insets bottom="220.0" />
+            <Insets bottom="250.0" />
          </GridPane.margin>
          <font>
             <Font name="System Bold" size="40.0" />
@@ -62,13 +62,21 @@
             <Font size="15.0" />
          </font>
       </Button>
-      <Label fx:id="myPageId" text="" textFill="WHITE" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+      <Label fx:id="myPageId" textFill="WHITE" GridPane.halignment="LEFT" GridPane.valignment="TOP">
          <font>
-            <Font name="System Bold Italic" size="15.0" />
+            <Font name="System Bold Italic" size="17.0" />
          </font>
+         <GridPane.margin>
+            <Insets left="40.0" top="50.0" />
+         </GridPane.margin>
+      </Label>
+      <Label text="( 마이페이지 )" textFill="WHITE" GridPane.halignment="LEFT" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets left="30.0" top="30.0" />
          </GridPane.margin>
+         <font>
+            <Font size="13.0" />
+         </font>
       </Label>
    </children>
 </GridPane>

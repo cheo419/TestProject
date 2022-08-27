@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<GridPane prefHeight="750.0" prefWidth="950.0" style="-fx-background-color: NAVY;" 
+xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
+fx:controller="project.controller.ManageCPwController">
+
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="507.0" minWidth="10.0" prefWidth="475.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="485.0" minWidth="10.0" prefWidth="475.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="250.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Label text="🔐  관리자 암호 변경" textFill="WHITE" GridPane.columnSpan="2" GridPane.halignment="CENTER">
+         <font>
+            <Font name="System Bold" size="52.0" />
+         </font>
+      </Label>
+      <Button mnemonicParsing="false" prefWidth="150.0" style="-fx-background-color: LIGHTSKYBLUE;" text="확인" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
+         <GridPane.margin>
+            <Insets bottom="50.0" right="50.0" />
+         </GridPane.margin>
+         <font>
+            <Font size="31.0" />
+         </font></Button>
+      <TextField maxHeight="40.0" maxWidth="350.0" style="-fx-background-color: navy; -fx-border-color: NAVY  NAVY SLATEGREY  NAVY; -fx-border-width: 3 3 3 3; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <font>
+            <Font size="32.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="35.0" top="8.0" />
+         </GridPane.margin>
+      </TextField>
+      <TextField maxHeight="40.0" maxWidth="350.0" style="-fx-background-color: navy; -fx-border-color: NAVY  NAVY SLATEGREY  NAVY; -fx-border-width: 3 3 3 3; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+         <font>
+            <Font size="32.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="35.0" top="8.0" />
+         </GridPane.margin>
+      </TextField>
+      <TextField maxHeight="40.0" maxWidth="350.0" style="-fx-background-color: navy; -fx-border-color: NAVY  NAVY SLATEGREY  NAVY; -fx-border-width: 3 3 3 3; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+         <font>
+            <Font size="32.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="35.0" top="8.0" />
+         </GridPane.margin></TextField>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MEDIUMTURQUOISE" height="750.0" stroke="BLACK" strokeType="INSIDE" width="15.0" GridPane.halignment="LEFT" GridPane.valignment="TOP" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MEDIUMTURQUOISE" height="750.0" stroke="BLACK" strokeType="INSIDE" width="15.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MEDIUMTURQUOISE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="950.0" GridPane.halignment="LEFT" GridPane.valignment="TOP" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MEDIUMTURQUOISE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="950.0" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
+      <Button mnemonicParsing="false" onAction="#cancleMPw" prefWidth="150.0" style="-fx-background-color: LIGHTSKYBLUE;" text="취소" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
+         <font>
+            <Font size="31.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="50.0" left="50.0" />
+         </GridPane.margin>
+      </Button>
+      <Label text="현재 비밀번호 :" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+         <font>
+            <Font size="40.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="20.0" right="60.0" />
+         </GridPane.margin>
+      </Label>
+      <Label text="신규 비밀번호 :" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+         <font>
+            <Font size="40.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="20.0" right="60.0" />
+         </GridPane.margin>
+      </Label>
+      <Label text="비밀번호 확인 :" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+         <font>
+            <Font size="40.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="20.0" right="60.0" />
+         </GridPane.margin>
+      </Label>
+   </children>
+</GridPane>
