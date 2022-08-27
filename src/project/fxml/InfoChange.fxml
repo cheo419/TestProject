@@ -26,7 +26,7 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Label text="아이디 :" textFill="WHITE" GridPane.rowIndex="1">
+      <Label text="아이디 :" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
          <font>
             <Font size="36.0" />
          </font>
@@ -34,62 +34,62 @@
             <Insets />
          </opaqueInsets>
          <GridPane.margin>
-            <Insets left="100.0" />
+            <Insets right="60.0" />
          </GridPane.margin>
       </Label>
-      <Label text="이름 :" textFill="WHITE" GridPane.rowIndex="4">
+      <Label text="이름 :" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
          <font>
             <Font size="36.0" />
          </font>
          <GridPane.margin>
-            <Insets left="100.0" />
+            <Insets right="60.0" />
          </GridPane.margin>
       </Label>
-      <Label text="전화번호 :" textFill="WHITE" GridPane.rowIndex="5">
+      <Label text="전화번호 :" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
          <font>
             <Font size="36.0" />
          </font>
          <GridPane.margin>
-            <Insets left="100.0" />
+            <Insets right="60.0" />
          </GridPane.margin>
       </Label>
-      <Label text="비밀번호 확인 :" textFill="WHITE" GridPane.rowIndex="3">
+      <Label text="비밀번호 확인 :" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
          <font>
             <Font size="36.0" />
          </font>
          <GridPane.margin>
-            <Insets left="100.0" />
+            <Insets right="60.0" />
          </GridPane.margin>
       </Label>
-      <TextField fx:id="lPw" maxHeight="50.0" maxWidth="450.0" style="-fx-background-color: navy; -fx-border-color: NAVY  NAVY SLATEGREY  NAVY; -fx-border-width: 3 3 3 3; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <TextField fx:id="lPw" maxHeight="50.0" maxWidth="450.0" style="-fx-background-color: navy; -fx-border-color: NAVY  NAVY SLATEGREY  NAVY; -fx-border-width: 3 3 3 3; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <font>
             <Font size="36.0" />
          </font>
          <GridPane.margin>
-            <Insets bottom="20.0" />
+            <Insets bottom="10.0" />
          </GridPane.margin>
       </TextField>
-      <TextField fx:id="lPwOk" maxHeight="50.0" maxWidth="450.0" style="-fx-background-color: navy; -fx-border-color: NAVY  NAVY SLATEGREY  NAVY; -fx-border-width: 3 3 3 3; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <TextField fx:id="lPwOk" maxHeight="50.0" maxWidth="450.0" style="-fx-background-color: navy; -fx-border-color: NAVY  NAVY SLATEGREY  NAVY; -fx-border-width: 3 3 3 3; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
          <font>
             <Font size="36.0" />
          </font>
          <GridPane.margin>
-            <Insets bottom="20.0" />
+            <Insets bottom="10.0" />
          </GridPane.margin>
       </TextField>
-      <TextField fx:id="lName" maxHeight="50.0" maxWidth="450.0" style="-fx-background-color: navy; -fx-border-color: NAVY  NAVY SLATEGREY  NAVY; -fx-border-width: 3 3 3 3; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <TextField fx:id="lName" maxHeight="50.0" maxWidth="450.0" style="-fx-background-color: navy; -fx-border-color: NAVY  NAVY SLATEGREY  NAVY; -fx-border-width: 3 3 3 3; -fx-text-fill: white;" text="jjj" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
          <font>
             <Font size="36.0" />
          </font>
          <GridPane.margin>
-            <Insets bottom="20.0" />
+            <Insets bottom="10.0" />
          </GridPane.margin></TextField>
-      <TextField fx:id="lNumber" maxHeight="50.0" maxWidth="450.0" style="-fx-background-color: navy; -fx-border-color: NAVY  NAVY SLATEGREY  NAVY; -fx-border-width: 3 3 3 3; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+      <TextField fx:id="lNumber" maxHeight="50.0" maxWidth="450.0" style="-fx-background-color: navy; -fx-border-color: NAVY  NAVY SLATEGREY  NAVY; -fx-border-width: 3 3 3 3; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
          <font>
             <Font size="36.0" />
          </font>
          <GridPane.margin>
-            <Insets bottom="20.0" />
+            <Insets bottom="10.0" />
          </GridPane.margin></TextField>
       <Button fx:id="modify" mnemonicParsing="false" onAction="#change" prefWidth="115.0" style="-fx-background-color: LIGHTSKYBLUE;" text="수정" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="6">
          <font>
@@ -99,12 +99,12 @@
             <Insets bottom="18.0" />
          </GridPane.margin>
       </Button>
-      <Label text="신규 비밀번호 :" textFill="WHITE" GridPane.rowIndex="2">
+      <Label text="신규 비밀번호 :" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
          <font>
             <Font size="36.0" />
          </font>
          <GridPane.margin>
-            <Insets left="100.0" />
+            <Insets right="60.0" />
          </GridPane.margin>
       </Label>
       <Label text="👨  회원정보  👩" textFill="WHITE" GridPane.columnSpan="2" GridPane.halignment="CENTER">
@@ -132,7 +132,7 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Label fx:id="lId" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <Label fx:id="lId" text="jjj" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <font>
             <Font size="36.0" />
          </font>
@@ -140,12 +140,12 @@
             <Insets />
          </opaqueInsets>
          <GridPane.margin>
-            <Insets bottom="18.0" left="25.0" />
+            <Insets bottom="10.0" left="25.0" />
          </GridPane.margin>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a2afbc" height="5.0" opacity="0.67" stroke="BLACK" strokeType="INSIDE" width="450.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a2afbc" height="5.0" opacity="0.67" stroke="BLACK" strokeType="INSIDE" width="450.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <GridPane.margin>
-            <Insets top="47.0" />
+            <Insets top="60.0" />
          </GridPane.margin>
       </Rectangle>
    </children>
