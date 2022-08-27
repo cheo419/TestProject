@@ -136,7 +136,7 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MEDIUMTURQUOISE" height="750.0" stroke="BLACK" strokeType="INSIDE" width="15.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MEDIUMTURQUOISE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="950.0" GridPane.halignment="LEFT" GridPane.valignment="TOP" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MEDIUMTURQUOISE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="950.0" GridPane.rowIndex="6" GridPane.valignment="BOTTOM" />
-      <Button fx:id="sameCheck" mnemonicParsing="false" prefHeight="40.0" style="-fx-background-color: LIGHTSTEELBLUE;" text="중복확인" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <Button fx:id="sameCheck" onAction="#sameCheck" mnemonicParsing="false" prefHeight="40.0" style="-fx-background-color: LIGHTSTEELBLUE;" text="중복확인" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets bottom="10.0" right="50.0" />
          </GridPane.margin>

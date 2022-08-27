@@ -54,6 +54,7 @@ public class MyResServiceImpl implements MyResService{
 			comServ.errorBox("시간 입력오류","시간이 입력되지 않았습니다","예약하실 시간을 선택하세요.");
 			return;
 		}
+		//if(date)
 
 		// DB저장을 위해 Member클래스에 값 저장.
 		m.setJinryo(jinryo);

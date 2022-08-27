@@ -121,6 +121,13 @@ public class SignUpController extends Controller implements Initializable{
 		Stage stage = (Stage) root.getScene().getWindow();
 		stage.close();
 	}
+	
+	// [중복확인 버튼] 회원가입할 아이디 입력받아서 중복확인해주는 버튼
+	public void sameCheck() {
+		signUpServ.sameCheck(root);
+	}
+	
+	
 
 
 

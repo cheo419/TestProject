@@ -35,10 +35,10 @@ public class MyResController extends Controller implements Initializable{
 	// 진료가능여부 확인을 위해 저장 (예약가능 예약마감 표시 기능)
 	private int value1;		// 진료과
 	private String value2;		// 진료날짜
-	
+
 	//데이트피커에서 선택된 날짜를 인트형으로 저장할때 사용 (오늘날짜랑 크기비교)
 	private int selectedDate;
-	
+
 	// 날짜 표기 변환 (데이트 피커에서 선택된 값을 변환할때 사용)
 	String pattern = "yyyyMMdd";	
 	DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
@@ -59,7 +59,7 @@ public class MyResController extends Controller implements Initializable{
 		dao = new MemberDAOImpl();
 		myResServ = new MyResServiceImpl();
 		commonServ = new CommonServiceImpl();
-		
+
 		String[] items = {"정형외과", "이비인후과", "내과"};
 		String[] items1 = {"09:30", "10:30", "11:30", "13:30", "14:30", "15:30"};
 
@@ -77,42 +77,69 @@ public class MyResController extends Controller implements Initializable{
 				value1 = getComboBoxJinryo();	
 			}
 		});
-		
+
 		// 시간 콤보박스에 마우스 클릭할때 (아이템을 지우고 새로 넣어주고 한다)
 		cmbTime.setOnMouseClicked(new EventHandler<MouseEvent>() 
 		{
 			@Override
 			public void handle(MouseEvent event) 
 			{
-				// 이전에 모든시간마감된 경우를 고려해서 버튼을 활성화시킴
-				btnResOk.setDisable(false);
 				// 우선 먼저 콤보박스 아이템들을 초기화해준다. (이전에 추가된 아이템들을 지워줌)
 				cmbTime.getItems().clear();
-				if(value1!=0&&value2!=null) {	// 진료과와 진료날짜가 모두 선택되어있는 경우
-					int cnt=0;	// 숫자 더해가면서 모든 시간 마감된것 카운트용
-					for(int i=1;i<7;i++) {
+				
+				// 이전에 모든시간마감된 경우를 고려해서 버튼을 활성화시킴
+				if(selectedDate<=today) {
+					System.out.println("오늘 또는 과거날짜를 선택되어있습니다.");
+					Alert alert = new Alert(AlertType.INFORMATION);
+					alert.setTitle("날짜 선택 오류");
+					alert.setHeaderText("오늘날짜 또는 과거날짜가 선택되어있는 경우 시간조회 불가.");
+					alert.setContentText("내일 이후날짜로 진료 날짜를 먼저 선택해주세요.");
+					alert.showAndWait();
+
+				} else {
+					if(value1!=0&&value2!=null) {	// 진료과와 진료날짜가 모두 선택되어있는 경우
+						//선택된 날짜에 문제가없고 진료과도 선택되어있으므로 버튼 활성화
+						btnResOk.setDisable(false);
 						
-						// 진료 가능여부 확인. : 예약 가능시 true
-						if(dao.findSameRes(value1,value2,i)) {	
-							// 예약가능으로 조회된 숫자의 순서에맞는 진료시간 배열주머니에서 가져온 값을 시간콤보박스에 저장 및 출력
-							cmbTime.getItems().add("예약가능: "+items1[i-1]);
-						} else {
-							// 진료가능여부 확인할때 예약불가능한 경우가 6번이되면
-							// for문 빠져나갔을때 모든시간 마감표시하기 위함.
-							cnt+=1;	
+						int cnt=0;	// 숫자 더해가면서 모든 시간 마감된것 카운트용
+						for(int i=1;i<7;i++) {
 							
-							// 예약불가능으로 조회된 숫자의 순서에맞는 진료시간 배열주머니에서 가져온 값을 시간콤보박스에 저장 및 출력
-							cmbTime.getItems().add("예약마감: "+items1[i-1]);
+							// 진료 가능여부 확인. : 예약 가능시 true
+							if(dao.findSameRes(value1,value2,i)) {	
+								// 예약가능으로 조회된 숫자의 순서에맞는 진료시간 배열주머니에서 가져온 값을 시간콤보박스에 저장 및 출력
+								cmbTime.getItems().add("예약가능: "+items1[i-1]);
+							} else {
+								// 진료가능여부 확인할때 예약불가능한 경우가 6번이되면
+								// for문 빠져나갔을때 모든시간 마감표시하기 위함.
+								cnt+=1;	
+								
+								// 예약불가능으로 조회된 숫자의 순서에맞는 진료시간 배열주머니에서 가져온 값을 시간콤보박스에 저장 및 출력
+								cmbTime.getItems().add("예약마감: "+items1[i-1]);
+							}
 						}
-					}
-					// 예약가능한 시간이 없는경우 모든시간 마감 표기하면서
-					// 예약하기 확인버튼을 비활성화.
-					if(cnt>=6) {
-						cmbTime.getItems().add("모든시간 마감입니다.");
-						btnResOk.setDisable(true);
-						
-					}
-				} 
+						// 예약가능한 시간이 없는경우 모든시간 마감 표기하면서
+						// 예약하기 확인버튼을 비활성화.
+						if(cnt>=6) {
+							cmbTime.getItems().add("모든시간 마감입니다.");
+							btnResOk.setDisable(true);
+							
+						}
+					} 
+
+				}
+
+
+
+
+
+
+
+
+
+
+
+
+
 			}
 		});
 
