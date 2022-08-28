@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import project.Member;
@@ -19,7 +20,16 @@ public class InfoChangeServiceImpl implements InfoChangeService {
 	private CommonService commonServ;
 	private static String id;
 	private Member member;
+	private String checkPw;
+	
+	
 
+	public String getCheckPw() {
+		return checkPw;
+	}
+	public void setCheckPw(String checkPw) {
+		this.checkPw = checkPw;
+	}
 	public InfoChangeServiceImpl() {
 		dao = new MemberDAOImpl();
 		commonServ = new CommonServiceImpl();
@@ -59,21 +69,53 @@ public class InfoChangeServiceImpl implements InfoChangeService {
 		String newPw = txtPw.getText();
 		String newPwOk = txtPwOk.getText();
 		if(comparePw(newPw, newPwOk)){
-			commonServ.errorBox("회원정보 수정 오류","입력하신 암호가 다릅니다.");
+			commonServ.errorBox("회원정보 수정 오류","입력하신 암호가 다릅니다.","입력하신 비밀번호를 확인해주세요");
 			txtPw.requestFocus();
 			return;
 		}
-		// 새로 입력받은 정보를 멤버 클래스에 저장
-		member.setPw(txtPw.getText());
-		member.setUserName(txtName.getText());
-		member.setPhoneNumber(txtNumber.getText());
-
-		if(dao.updateInfo(member, id)) {
-			commonServ.errorBox("회원정보 수정", "수정 완료", "회원정보가 정상적으로 수정되었습니다.");
-		} else {
-			commonServ.errorBox("에러","에러","에러");
+		
+		// 기존비밀번호와 새로변경할 비번다른지 확인
+		Member member = dao.select(id);
+		if(member.getPw().equals(newPw)) {
+			commonServ.errorBox("회원정보 수정 오류","신규비밀번호가 기존비밀번호와 동일합니다.","입력하신 비밀번호를 확인해주세요");
+			txtPw.requestFocus();
 			return;
 		}
+		
+		TextInputDialog tid = new TextInputDialog("기존비밀번호 입력");
+		tid.setTitle("회원정보 수정");
+		tid.setHeaderText("기존 비밀번호를 확인합니다.");
+		tid.setContentText("기존 비밀번호를 입력해주세요.");
+		Optional<String> result = tid.showAndWait();
+		result.ifPresent(name -> {
+			System.out.println("기존비밀번호: " + name);
+			setCheckPw(name);
+		});
+		
+		if(member.getPw().equals(getCheckPw())) {
+			// 새로 입력받은 정보를 멤버 클래스에 저장
+			member.setPw(txtPw.getText());
+			member.setUserName(txtName.getText());
+			member.setPhoneNumber(txtNumber.getText());
+			
+			if(dao.updateInfo(member, id)) {
+				commonServ.errorBox("회원정보 수정", "수정 완료", "회원정보가 정상적으로 수정되었습니다.");
+			} else {
+				commonServ.errorBox("회원정보 수정 오류","데이터베이스에 저장되지 않았습니다.","오류를 확인해주세요.");
+				return;
+			}
+		} else {
+			commonServ.errorBox("회원정보 수정 오류","입력하신 기존 비밀번호가 틀립니다.","기존 비밀번호를 확인해주세요.");
+			txtPw.requestFocus();
+			return;
+		}
+			
+		
+		
+		
+		
+		
+		
 
 		// 기존 <회원정보 수정> 창을 닫고 <마이페이지> 창을 띄움
 		Stage page = (Stage) root.getScene().getWindow();
@@ -84,9 +126,11 @@ public class InfoChangeServiceImpl implements InfoChangeService {
 		s.setX(300);
 		s.setY(80);
 
-		// <마이페이지> 좌측 상단에 아이디 표기
+		// <마이페이지> 좌측 상단 표기
 		Label myPageId = (Label) root.lookup("#myPageId");
-		myPageId.setText(id+"님 환영합니다!");
+		String userName=member.getUserName();	//멤버클래스에 저장된 이름저장.
+
+		myPageId.setText(userName+"님 환영합니다!");
 
 
 		// 예약된 내역이있는지 boolean으로 체크하고 버튼비활성화 처리
@@ -96,6 +140,7 @@ public class InfoChangeServiceImpl implements InfoChangeService {
 			myResBtn.setDisable(true);
 		}
 	}
+
 
 	// [탈퇴 버튼] InfoChange<회원정보 수정 페이지> 에서 Login<첫 기본 로그인페이지> 회원정보를 모두 삭제하고 로그인페이지로 돌아갑니다.
 	@Override

@@ -4,6 +4,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import project.Member;
 import project.dao.MemberDAO;
 import project.dao.MemberDAOImpl;
 import project.service.CommonService;
@@ -30,9 +31,14 @@ public class MyResCheckServiceImpl implements MyResCheckService{
 		s.setX(450);
 		s.setY(110);
 
-		// <마이페이지> 좌측 상단에 아이디 표기
+		// <마이페이지> 좌측 상단 표기
 		Label myPageId = (Label) root.lookup("#myPageId");
-		myPageId.setText(id+"님 환영합니다!");
+		
+		// 마이페이지 좌상단에 이름을 출력해주기위해서 이름을 가져옴.
+		Member member = dao.select(id);
+		String userName=member.getUserName();
+		
+		myPageId.setText(userName+"님 환영합니다!");
 
 		// 예약된 내역이있는지 boolean으로 체크하고 버튼비활성화 처리
 		if(dao.checkRes(id)){

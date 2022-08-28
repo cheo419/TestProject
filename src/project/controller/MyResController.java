@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import project.service.CommonServiceImpl;
 import project.service.MyResService;
 import project.service.MyResServiceImpl;
+import project.Member;
 import project.dao.MemberDAO;
 import project.dao.MemberDAOImpl;
 import project.service.CommonService;
@@ -18,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -31,6 +33,9 @@ public class MyResController extends Controller implements Initializable{
 	private MyResService myResServ;
 	private CommonService commonServ;
 	private MemberDAO dao;
+	
+	private static String id;
+
 
 	// 진료가능여부 확인을 위해 저장 (예약가능 예약마감 표시 기능)
 	private int value1;		// 진료과
@@ -182,6 +187,17 @@ public class MyResController extends Controller implements Initializable{
 		root=commonServ.showWindow(s, "../fxml/Mypage.fxml");
 		s.setX(450);
 		s.setY(110);
+		
+		// <마이페이지> 좌측 상단 표기
+		Label myPageId = (Label) root.lookup("#myPageId");
+		
+		// 마이페이지 좌상단에 이름을 출력해주기위해서 이름을 가져옴.
+		Member member = dao.select(id);
+		String userName=member.getUserName();
+		
+		myPageId.setText(userName+"님 환영합니다!");
+		
+		
 	}
 
 	// 콤보박스_ 선택된 진료과를 이름이아니라 숫자로 반환해주는 메서드
@@ -210,7 +226,13 @@ public class MyResController extends Controller implements Initializable{
 		return value;
 	}
 
-
+	
+	public static String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 
 
 

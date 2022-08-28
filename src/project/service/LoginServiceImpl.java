@@ -1,8 +1,10 @@
 package project.service;
 
+import project.Member;
 import project.controller.InfoChangeController;
 import project.controller.LoginController;
 import project.controller.MyResCheckController;
+import project.controller.MyResController;
 import project.dao.MemberDAO;
 import project.dao.MemberDAOImpl;
 import javafx.scene.Parent;
@@ -16,6 +18,7 @@ public class LoginServiceImpl implements LoginService{
 	private MemberDAO dao;
 	private CommonService comServ;
 	private LoginController loginController;
+	private MyResController myResController;
 	private MyResCheckController myResCheckController;
 	private InfoChangeService infoChangeService;
 	private InfoChangeController infoChangeController;
@@ -24,6 +27,7 @@ public class LoginServiceImpl implements LoginService{
 		dao = new MemberDAOImpl();
 		comServ = new CommonServiceImpl();
 		loginController = new LoginController();
+		myResController = new MyResController();
 		myResCheckController = new MyResCheckController();
 		infoChangeService = new InfoChangeServiceImpl();
 		infoChangeController = new InfoChangeController();
@@ -38,16 +42,27 @@ public class LoginServiceImpl implements LoginService{
 		String id = idTxt.getText();
 		String pw = pwTxt.getText();
 		
+
+		
 		// 입력받은 아이디 비밀번호로 회원이 있는지 조회하여 로그인
 		if(dao.checkLogin(id, pw)) {
-			comServ.errorBox("로그인", "로그인 성공하였습니다.", id+"님 환영합니다.");
-			System.out.println("로그인할때 입력한 아이디값:"+id);
 
 			// 로그인할때 쓴 아이디값을 필요한 클래스로 보내줌
-			loginController.setId(id);	
+			loginController.setId(id);
+			myResController.setId(id);
 			myResCheckController.setId(id);
 			infoChangeService.setId(id);
 			infoChangeController.setId(id);
+			
+			// 마이페이지 좌상단에 이름을 출력해주기위해서 이름을 가져옴.
+			Member m = dao.select(id);
+			String userName=m.getUserName();
+			
+			// 로그인한사람의 이름 출력과 환영 메세지
+			comServ.errorBox("로그인", "로그인 성공하였습니다.", userName+"님 환영합니다.");
+			
+			System.out.println("로그인할때 입력한 아이디값:"+id);
+			System.out.println("해당아이디에 해당하는 회원 이름:"+userName);
 
 			// 로그인 후 아이디비번쓰는 창 닫음
 			Stage page = (Stage) root.getScene().getWindow(); 
@@ -59,9 +74,9 @@ public class LoginServiceImpl implements LoginService{
 			s.setX(450);
 			s.setY(110);
 
-			// <마이페이지> 좌측 상단에 아이디 표기
+			// <마이페이지> 좌측 상단 표기
 			Label myPageId = (Label) root.lookup("#myPageId");
-			myPageId.setText(id+"님 환영합니다!");
+			myPageId.setText(userName+"님 환영합니다!");
 			
 			// 예약된 내역이있는지 boolean으로 체크하고 버튼비활성화 처리
 			if(dao.checkRes(id)){
