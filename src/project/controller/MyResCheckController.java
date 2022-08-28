@@ -149,7 +149,7 @@ public class MyResCheckController extends Controller implements Initializable{
 	}
 	
 	
-	public void plusRes() {
+	public void addRes() {
 		// 진료 추가 예약 란
 	}
 

@@ -50,7 +50,7 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Button mnemonicParsing="false" onAction="#plusRes" prefHeight="25.0" style="-fx-background-color: LIGHTSKYBLUE;" text="진료 추가 예약" textFill="WHITE" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+      <Button mnemonicParsing="false" onAction="#addRes" prefHeight="25.0" style="-fx-background-color: LIGHTSKYBLUE;" text="진료 추가 예약" textFill="WHITE" GridPane.halignment="LEFT" GridPane.valignment="TOP">
          <font>
             <Font size="14.0" />
          </font>
