@@ -1,6 +1,7 @@
 package project.controller;
 
 import java.net.URL;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -31,7 +32,9 @@ public class MyResCheckController extends Controller implements Initializable{
 	private MyResCheckService myResCheckServ;
 	private static String id;
 	private String seleted;		// 테이블뷰에서 행 선택시 선택된 행의 아이디값 저장을 위한 변수 선언
-
+	private int seletedJinryo;
+	private String seletedRes;
+	
 	@FXML private TableView<Member> myResTable;
 	@FXML private TableColumn<Member, String>  nameCol;
 	@FXML private TableColumn<Member, String> numberCol;
@@ -47,11 +50,11 @@ public class MyResCheckController extends Controller implements Initializable{
 		myResCheckServ = new MyResCheckServiceImpl();
 		dao = new MemberDAOImpl();
 
-		// 유저의 예약내용 출력하여 Member클래스에 저장
-		Member m= dao.select(id);	
+		// 유저의 모든 예약내용 출력하여 Member 리스트에 저장
+		List<Member> memberList = dao.selectIdRes(id);	// 관리자 예약출력으로 모든 저장된 값을 리스트로 저장
 
 		// 테이블뷰
-		myResTable.setItems(getProduct(m));
+		myResTable.setItems(getProduct(memberList));
 
 		// 각 칼럼과 매칭되는 클래스 변수명을 지정해 준다
 		nameCol.setCellValueFactory 		   
@@ -68,12 +71,23 @@ public class MyResCheckController extends Controller implements Initializable{
 		// 테이블뷰에서 선택된 행
 		myResTable.setOnMouseClicked(e->{
 			seleted= myResTable.getSelectionModel().getSelectedItem().getId();
+			seletedRes=myResTable.getSelectionModel().getSelectedItem().getRes();
+			
+			// 선택된 행의 진료과를 인트형으로 저장
+			if(seletedRes.contains("정형외과")) {
+				seletedJinryo=1;
+			} else if(seletedRes.contains("이비인후과")) {
+				seletedJinryo=2;
+			} else if(seletedRes.contains("내과")) {
+				seletedJinryo=3;
+			}
+			
 			System.out.println(myResTable.getSelectionModel().getSelectedItem().getId());
 		});
 	}
-	private ObservableList<Member> getProduct(Member m) {
+	private ObservableList<Member> getProduct(List<Member> memberList) {
 		ObservableList<Member> adminList =
-				FXCollections.observableArrayList(m);
+				FXCollections.observableArrayList(memberList);
 		return adminList;
 	}
 
@@ -81,6 +95,12 @@ public class MyResCheckController extends Controller implements Initializable{
 	public void backMypage2() {
 		myResCheckServ.backMypage2(root,id);
 	}
+	
+	// [추가 진료 예약 버튼] 예약내역보는 페이지에서 추가진료예약 진행
+	public void addRes() {
+		myResCheckServ.addRes(root,id);
+	}
+	
 
 	// [선택 예약 삭제 버튼]
 	public void deleteMyRes() {
@@ -108,7 +128,7 @@ public class MyResCheckController extends Controller implements Initializable{
 					myPage.close();
 
 					// 예약내역보기 테이블뷰에서 선택된 회원 예약내역 삭제
-					if(dao.deleteUserRes(seleted)){
+					if(dao.deleteResSelect(seleted,seletedJinryo)){
 						System.out.println("아이디: "+seleted+"의 회원님 예약내역삭제");
 
 						Alert alert = new Alert(AlertType.INFORMATION);
@@ -146,11 +166,6 @@ public class MyResCheckController extends Controller implements Initializable{
 	@Override
 	public void setRoot(Parent root) {
 		this.root = root;
-	}
-	
-	
-	public void addRes() {
-		// 진료 추가 예약 란
 	}
 
 

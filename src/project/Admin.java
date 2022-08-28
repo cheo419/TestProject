@@ -8,9 +8,6 @@ public class Admin {
 	private String newMPw;			// 관리자 새 비밀번호
 	
 	
-	
-	
-
 	public String getMPw() {
 		return mPw;
 	}

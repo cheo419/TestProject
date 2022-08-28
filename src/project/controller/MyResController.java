@@ -33,7 +33,7 @@ public class MyResController extends Controller implements Initializable{
 	private MyResService myResServ;
 	private CommonService commonServ;
 	private MemberDAO dao;
-	
+
 	private static String id;
 
 
@@ -65,23 +65,44 @@ public class MyResController extends Controller implements Initializable{
 		myResServ = new MyResServiceImpl();
 		commonServ = new CommonServiceImpl();
 
-		String[] items = {"정형외과", "이비인후과", "내과"};
+		// 시간선택 콤보박스에 넣어줄 값 미리 저장
 		String[] items1 = {"09:30", "10:30", "11:30", "13:30", "14:30", "15:30"};
 
-		// 진료과 콤보박스 아이템 이름으로 저장
-		for(String item:items) {
-			cmbJinryo.getItems().add(item);
-		}
+		// 진료과에 마우스 찍었을때 진료과 콤보박스에 예약되지 않은 진료과들을 추가
+		cmbJinryo.setOnMouseClicked(new EventHandler<MouseEvent>() 
+		{
+			@Override
+			public void handle(MouseEvent event)  
+			{
+				// 우선 먼저 콤보박스 아이템들을 초기화해준다. (이전에 추가된 아이템들을 지워줌)
+				cmbJinryo.getItems().clear();
 
-		// 진료과 선택됐을때 메서드처리로 해당되는 숫자값으로 저장
+				// 해당진료과로 예약내역이 있는지 확인 (추가진료예약시에 사용) 없으면 true
+				// 예약내역 없으면 콤보박스에 선택아이템으로 저장
+				if(dao.noJinryo(id, 1)) {
+					cmbJinryo.getItems().add("정형외과");
+				}
+				if(dao.noJinryo(id, 2)) {
+					cmbJinryo.getItems().add("이비인후과");
+				}
+				if(dao.noJinryo(id, 3)) {
+					cmbJinryo.getItems().add("내과");
+				}
+			}
+		});
+
+		// 진료과 선택되었을때 메서드처리로 해당되는 숫자값으로 저장
 		cmbJinryo.setOnAction(new EventHandler<ActionEvent>() 
 		{
 			@Override
 			public void handle(ActionEvent event) 
 			{
+				// 선택된 진료과를 저장
 				value1 = getComboBoxJinryo();	
 			}
 		});
+
+
 
 		// 시간 콤보박스에 마우스 클릭할때 (아이템을 지우고 새로 넣어주고 한다)
 		cmbTime.setOnMouseClicked(new EventHandler<MouseEvent>() 
@@ -91,7 +112,7 @@ public class MyResController extends Controller implements Initializable{
 			{
 				// 우선 먼저 콤보박스 아이템들을 초기화해준다. (이전에 추가된 아이템들을 지워줌)
 				cmbTime.getItems().clear();
-				
+
 				// 이전에 모든시간마감된 경우를 고려해서 버튼을 활성화시킴
 				if(selectedDate<=today) {
 					System.out.println("오늘 또는 과거날짜를 선택되어있습니다.");
@@ -105,10 +126,10 @@ public class MyResController extends Controller implements Initializable{
 					if(value1!=0&&value2!=null) {	// 진료과와 진료날짜가 모두 선택되어있는 경우
 						//선택된 날짜에 문제가없고 진료과도 선택되어있으므로 버튼 활성화
 						btnResOk.setDisable(false);
-						
+
 						int cnt=0;	// 숫자 더해가면서 모든 시간 마감된것 카운트용
 						for(int i=1;i<7;i++) {
-							
+
 							// 진료 가능여부 확인. : 예약 가능시 true
 							if(dao.findSameRes(value1,value2,i)) {	
 								// 예약가능으로 조회된 숫자의 순서에맞는 진료시간 배열주머니에서 가져온 값을 시간콤보박스에 저장 및 출력
@@ -117,7 +138,7 @@ public class MyResController extends Controller implements Initializable{
 								// 진료가능여부 확인할때 예약불가능한 경우가 6번이되면
 								// for문 빠져나갔을때 모든시간 마감표시하기 위함.
 								cnt+=1;	
-								
+
 								// 예약불가능으로 조회된 숫자의 순서에맞는 진료시간 배열주머니에서 가져온 값을 시간콤보박스에 저장 및 출력
 								cmbTime.getItems().add("예약마감: "+items1[i-1]);
 							}
@@ -127,7 +148,7 @@ public class MyResController extends Controller implements Initializable{
 						if(cnt>=6) {
 							cmbTime.getItems().add("모든시간 마감입니다.");
 							btnResOk.setDisable(true);
-							
+
 						}
 					} 
 				}
@@ -187,17 +208,17 @@ public class MyResController extends Controller implements Initializable{
 		root=commonServ.showWindow(s, "../fxml/Mypage.fxml");
 		s.setX(450);
 		s.setY(110);
-		
+
 		// <마이페이지> 좌측 상단 표기
 		Label myPageId = (Label) root.lookup("#myPageId");
-		
+
 		// 마이페이지 좌상단에 이름을 출력해주기위해서 이름을 가져옴.
 		Member member = dao.select(id);
 		String userName=member.getUserName();
-		
+
 		myPageId.setText(userName+"님 환영합니다!");
-		
-		
+
+
 	}
 
 	// 콤보박스_ 선택된 진료과를 이름이아니라 숫자로 반환해주는 메서드
@@ -226,7 +247,7 @@ public class MyResController extends Controller implements Initializable{
 		return value;
 	}
 
-	
+
 	public static String getId() {
 		return id;
 	}

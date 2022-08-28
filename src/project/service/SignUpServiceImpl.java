@@ -37,9 +37,6 @@ public class SignUpServiceImpl implements SignUpService{
 	// [중복체크 버튼]
 	@Override
 	public void sameCheck(Parent root) {
-		
-		
-		
 		TextField txtId = (TextField) root.lookup("#lId");
 		TextField txtPw = (TextField) root.lookup("#lPw");
 		String id = txtId.getText();

@@ -31,6 +31,8 @@ public class ManageController extends Controller implements Initializable{
 	private CommonService comServ;
 	private MemberDAO dao;
 	private String seleted;		// 테이블뷰에서 행 선택시 선택된 행의 아이디값 저장을 위한 변수 선언
+	private String seletedRes;		
+	private int seletedJinryo;		
 
 	@FXML private TableView<Member> manageTable;
 	@FXML private TableColumn<Member, String>  nameCol;
@@ -66,8 +68,22 @@ public class ManageController extends Controller implements Initializable{
 		// 테이블뷰에서 선택된 행
 		manageTable.setOnMouseClicked(e->{
 			seleted= manageTable.getSelectionModel().getSelectedItem().getId();
+			
+			// 선택된 행의 진료과를 인트형으로 변경 저장
+			seletedRes=manageTable.getSelectionModel().getSelectedItem().getRes();
+			if(seletedRes.contains("정형외과")) {
+				seletedJinryo=1;
+			} else if(seletedRes.contains("이비인후과")) {
+				seletedJinryo=2;
+			} else if(seletedRes.contains("내과")) {
+				seletedJinryo=3;
+			}
+			
 			System.out.println(manageTable.getSelectionModel().getSelectedItem().getId());
+			System.out.println("선택된 진료예약내용 :"+seletedRes);
+			System.out.println("선택된 진료과 :"+seletedJinryo);
 		});
+		
 	}
 
 	@Override
@@ -106,18 +122,19 @@ public class ManageController extends Controller implements Initializable{
 			if(result.get()==ButtonType.OK) {
 				// 예약여부확인 : 예약내역있음true
 				if(dao.checkRes(seleted)) {
-					// 삭제되어 테이블뷰 업데이트를 위해 창 닫기
-					Stage myPage = (Stage) root.getScene().getWindow();
-					myPage.close();
+					System.out.println("삭제진료과: "+seletedJinryo);
 
 					// 관리자페이지에서 테이블뷰에서 선택된 회원 예약내역 삭제
-					if(dao.deleteUserRes(seleted)){
+					if(dao.deleteResSelect(seleted,seletedJinryo)){
 						System.out.println("아이디: "+seleted+"의 회원님 예약내역삭제");
-
 						Alert alert = new Alert(AlertType.INFORMATION);
 						alert.setContentText("아이디: "+seleted+"의 회원님의 예약내역이 삭제되었습니다.");
 						alert.showAndWait();	//알림창 띄우고 잠시 기다리기
 					}
+					// 삭제되어 테이블뷰 업데이트를 위해 창 닫기
+					Stage myPage = (Stage) root.getScene().getWindow();
+					myPage.close();
+					
 					//  예약내역삭제된 후 수정된 내용으로 창 다시 띄우기
 					Stage s = new Stage();
 					root=comServ.showWindow(s, "../fxml/Manage.fxml");
@@ -164,6 +181,13 @@ public class ManageController extends Controller implements Initializable{
 				page.close();
 
 				// 관리자페이지에서 테이블뷰에서 선택된 회원 강제탈퇴
+				// 반드시 예약내역 삭제가 선행되어야함.
+				
+				// 예약여부 확인하고 예약이 있으면 예약 삭제
+				if(dao.checkRes(seleted)) {
+					dao.deleteUserResAll(seleted);
+				}
+				// 회원 탈퇴
 				if(dao.deleteUser(seleted)){
 					System.out.println("아이디: "+seleted+"의 회원님 강제탈퇴");
 

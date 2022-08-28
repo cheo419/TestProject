@@ -157,6 +157,8 @@ public class InfoChangeServiceImpl implements InfoChangeService {
 		if(member.getPw().equals(getCheckPw())) {
 			System.out.println("회원탈퇴를 경고하는 알림창에서 확인버튼을 클릭");
 
+			// 회원삭제를 위해서 모든 예약 내역 삭제
+			dao.deleteUserResAll(id);
 			// 데이터베이스에서 정보를 삭제함.
 			if(dao.deleteUser(id)) {
 				System.out.println("아이디: "+id+"의 회원님 탈퇴됨.");
