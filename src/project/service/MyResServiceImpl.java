@@ -54,7 +54,6 @@ public class MyResServiceImpl implements MyResService{
 			comServ.errorBox("시간 입력오류","시간이 입력되지 않았습니다","예약하실 시간을 선택하세요.");
 			return;
 		}
-		//if(date)
 
 		// DB저장을 위해 Member클래스에 값 저장.
 		m.setJinryo(jinryo);
@@ -72,14 +71,14 @@ public class MyResServiceImpl implements MyResService{
 			comServ.errorBox("진료예약", "진료예약성공", "진료예약이 정상적으로 이루어졌습니다.");
 
 			// 진료예약성공 후 진료과,예약날짜,시간선택하는 창 닫음
-			Stage myPage = (Stage) root.getScene().getWindow();
-			myPage.close();	
+			Stage page = (Stage) root.getScene().getWindow();
+			page.close();	
 
 			// 마이페이지(진료예약,예약확인버튼 있는페이지) 다시 띄우기 (새창띄워서 버튼비활성화하기위함)
-			Stage membershipForm = new Stage(); 
-			root=comServ.showWindow(membershipForm, "../fxml/Mypage.fxml");
-			membershipForm.setX(450);
-			membershipForm.setY(110);
+			Stage s = new Stage(); 
+			root=comServ.showWindow(s, "../fxml/Mypage.fxml");
+			s.setX(450);
+			s.setY(110);
 
 			// <마이페이지> 좌측 상단에 아이디 표기
 			Label myPageId = (Label) root.lookup("#myPageId");

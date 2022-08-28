@@ -38,10 +38,14 @@ public interface MemberDAO {
 	
 	// 회원정보 수정
 	public boolean updateInfo(Member m, String id);
+	
 }
 
-
 /*
+ *  1. firstmember create 하기
+ *  2. firstAdmin create 하기
+ *  3. update fisrtAdmin 하기 : 초기 비밀번호 '1111'설정. (꼭 해야함)
+ *  4. commit 하기
 
 create table firstmember (
     userName varchar2(50) not null,
@@ -55,28 +59,25 @@ create table firstmember (
     
 );
 
+create table firstAdmin (
+    mPw varchar2(20) not null
+);
+update firstAdmin set mPw= '1111';
+
+
+
 commit;
 
-drop table firstmember;
+
 
 select * from firstmember;
+select * from firstAdmin;
 
-select count(*) from firstmember where id='nj';
-
-select count(resJinryo) from firstmember where id='nj';
-
-select count(*) from firstmember where resJinryo='3' and resDate='20220824' and resTime='5';
+drop table firstmember;
+drop table firstAdmin;
 
 
 
-
-insert into firstmember (userName,phoneNum,id,pw) values ('김나진','010-0000-0000','nj','1026');
-
-update firstmember set resJinryo= '1',resDate='20220819',resTime='1' where id='nj';
-
-delete from firstmember where id='nj4';
-
-update firstmember set resJinryo= '',resDate='',resTime='' where id='nj';
 
 
 */

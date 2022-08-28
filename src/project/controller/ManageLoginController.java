@@ -53,6 +53,7 @@ public class ManageLoginController extends Controller implements Initializable{
 
 	// [관리자 암호변경 버튼]
 	public void manageChangePassword() {
+		// <관리자 암호변경 페이지>
 		Stage s = (Stage) root.getScene().getWindow();
 		commonServ.showWindow(s, "../fxml/ManageChangePw.fxml");
 		s.setX(450);

@@ -38,10 +38,10 @@ public class MyPageController extends Controller implements Initializable{
 	public void res() {
 		Stage myPage = (Stage) root.getScene().getWindow();
 		myPage.close();	
-		Stage membershipForm = new Stage();
-		root = commonServ.showWindow(membershipForm, "../fxml/MyRes.fxml");
-		membershipForm.setX(450);
-		membershipForm.setY(110);
+		Stage s = new Stage();
+		root = commonServ.showWindow(s, "../fxml/MyRes.fxml");
+		s.setX(450);
+		s.setY(110);
 	}
 	
 	// [예약확인 버튼]
@@ -56,10 +56,10 @@ public class MyPageController extends Controller implements Initializable{
 		Stage myPage = (Stage) root.getScene().getWindow();
 		myPage.close();	
 
-		Stage membershipForm = new Stage();
-		root=commonServ.showWindow(membershipForm, "../fxml/InfoChange.fxml");
-		membershipForm.setX(450);
-		membershipForm.setY(110);
+		Stage s = new Stage();
+		root=commonServ.showWindow(s, "../fxml/InfoChange.fxml");
+		s.setX(450);
+		s.setY(110);
 
 	}
 

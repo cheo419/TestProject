@@ -16,7 +16,7 @@ public interface InfoChangeService {
 	// 입력창 비어있는것 확인
 	public boolean isEmpty(String str);
 
-	// 아이디 비밀번호 확인하기
+	// 비밀번호 확인하기
 	public boolean comparePw(String pw1, String pw2); 
 	
 

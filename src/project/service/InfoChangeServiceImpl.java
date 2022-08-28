@@ -76,13 +76,13 @@ public class InfoChangeServiceImpl implements InfoChangeService {
 		}
 
 		// 기존 <회원정보 수정> 창을 닫고 <마이페이지> 창을 띄움
-		Stage myPage = (Stage) root.getScene().getWindow();
-		myPage.close();	
+		Stage page = (Stage) root.getScene().getWindow();
+		page.close();	
 
-		Stage membershipForm = new Stage();
-		root=commonServ.showWindow(membershipForm, "../fxml/MyPage.fxml");
-		membershipForm.setX(300);
-		membershipForm.setY(80);
+		Stage s = new Stage();
+		root=commonServ.showWindow(s, "../fxml/MyPage.fxml");
+		s.setX(300);
+		s.setY(80);
 
 		// <마이페이지> 좌측 상단에 아이디 표기
 		Label myPageId = (Label) root.lookup("#myPageId");
@@ -123,13 +123,13 @@ public class InfoChangeServiceImpl implements InfoChangeService {
 			return;
 		}
 		// 기존 <회원정보수정>창을 닫고 맨처음 <기본 첫 로그인페이지>으로 돌아감
-		Stage myPage = (Stage) root.getScene().getWindow();
-		myPage.close();	
+		Stage page = (Stage) root.getScene().getWindow();
+		page.close();	
 
-		Stage membershipForm = new Stage();
-		root=commonServ.showWindow(membershipForm, "../fxml/Login.fxml");
-		membershipForm.setX(300);
-		membershipForm.setY(80);
+		Stage s = new Stage();
+		root=commonServ.showWindow(s, "../fxml/Login.fxml");
+		s.setX(300);
+		s.setY(80);
 	}
 
 	// 비어있으면 진행 안되게

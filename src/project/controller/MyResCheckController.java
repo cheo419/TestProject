@@ -23,11 +23,14 @@ import project.dao.MemberDAOImpl;
 import project.Member;
 import project.service.CommonService;
 import project.service.CommonServiceImpl;
+import project.service.MyResCheckService;
+import project.service.MyResCheckServiceImpl;
 
 public class MyResCheckController extends Controller implements Initializable{
 	private Parent root;
 	private CommonService commonServ;
 	private MemberDAO dao;
+	private MyResCheckService myResCheckServ;
 	private static String id;
 	private String seleted;		// 테이블뷰에서 행 선택시 선택된 행의 아이디값 저장을 위한 변수 선언
 
@@ -43,6 +46,7 @@ public class MyResCheckController extends Controller implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		commonServ = new CommonServiceImpl();
+		myResCheckServ = new MyResCheckServiceImpl();
 		dao = new MemberDAOImpl();
 
 		// 유저의 예약내용 출력하여 Member클래스에 저장
@@ -77,26 +81,7 @@ public class MyResCheckController extends Controller implements Initializable{
 
 	// [뒤로가기 버튼] 로그인한 회원의 예약내역을 보는 현재 페이지에서 뒤로가서 마이페이지로 
 	public void backMypage2() {
-		// 내 예약내역 확인 페이지 닫힘
-		Stage myPage = (Stage) root.getScene().getWindow();
-		myPage.close();	
-
-		// 마이페이지(진료예약,예약확인버튼 있는페이지) 다시 띄우기 
-		Stage membershipForm = new Stage(); 
-		root=commonServ.showWindow(membershipForm, "../fxml/Mypage.fxml");
-		membershipForm.setX(450);
-		membershipForm.setY(110);
-
-		// <마이페이지> 좌측 상단에 아이디 표기
-		Label myPageId = (Label) root.lookup("#myPageId");
-		myPageId.setText(id+"님 환영합니다!");
-
-		// 예약된 내역이있는지 boolean으로 체크하고 버튼비활성화 처리
-		if(dao.checkRes(id)){
-			System.out.println("예약내용있음");
-			Button myResBtn = (Button) root.lookup("#myResBtn");
-			myResBtn.setDisable(true);
-		}
+		myResCheckServ.backMypage2(root,id);
 	}
 
 	// [선택 예약 삭제 버튼]
@@ -133,10 +118,10 @@ public class MyResCheckController extends Controller implements Initializable{
 						alert.showAndWait();	//알림창 띄우고 잠시 기다리기
 					}
 					//  예약내역삭제된 후 수정된 내용으로 예약내역보기창 다시 띄우기
-					Stage membershipForm = new Stage();
-					root=commonServ.showWindow(membershipForm, "../fxml/MyResCheck.fxml");
-					membershipForm.setX(450);
-					membershipForm.setY(110);
+					Stage s = new Stage();
+					root=commonServ.showWindow(s, "../fxml/MyResCheck.fxml");
+					s.setX(450);
+					s.setY(110);
 				} else {	// 예약여부확인했는데 false : 예약내역없음
 					Alert alert = new Alert(AlertType.INFORMATION);
 					alert.setContentText("아이디: "+seleted+" 회원님은 삭제할 예약내역이 없습니다.");

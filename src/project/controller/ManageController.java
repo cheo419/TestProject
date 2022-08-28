@@ -119,10 +119,10 @@ public class ManageController extends Controller implements Initializable{
 						alert.showAndWait();	//알림창 띄우고 잠시 기다리기
 					}
 					//  예약내역삭제된 후 수정된 내용으로 창 다시 띄우기
-					Stage membershipForm = new Stage();
-					root=comServ.showWindow(membershipForm, "../fxml/Manage.fxml");
-					membershipForm.setX(450);
-					membershipForm.setY(110);
+					Stage s = new Stage();
+					root=comServ.showWindow(s, "../fxml/Manage.fxml");
+					s.setX(450);
+					s.setY(110);
 				} else {
 					// 예약여부확인했는데 false : 예약내역없음
 					Alert alert = new Alert(AlertType.INFORMATION);
@@ -160,8 +160,8 @@ public class ManageController extends Controller implements Initializable{
 			if(result.get()==ButtonType.OK) {
 
 				// 강제탈퇴시 테이블뷰 업데이트를 위해 창 닫기
-				Stage myPage = (Stage) root.getScene().getWindow();
-				myPage.close();
+				Stage page = (Stage) root.getScene().getWindow();
+				page.close();
 
 				// 관리자페이지에서 테이블뷰에서 선택된 회원 강제탈퇴
 				if(dao.deleteUser(seleted)){
@@ -172,10 +172,10 @@ public class ManageController extends Controller implements Initializable{
 					alert.showAndWait();	//알림창 띄우고 잠시 기다리기
 				}
 				//  삭제된 후 수정된 내용으로 창 다시 띄우기
-				Stage membershipForm = new Stage();
-				root=comServ.showWindow(membershipForm, "../fxml/Manage.fxml");
-				membershipForm.setX(450);
-				membershipForm.setY(110);
+				Stage s = new Stage();
+				root=comServ.showWindow(s, "../fxml/Manage.fxml");
+				s.setX(450);
+				s.setY(110);
 				
 			} else { 	// 강제탈퇴 경고창에서 취소버튼 눌러 탈퇴진행되지 않음.
 				Alert alert = new Alert(AlertType.INFORMATION);

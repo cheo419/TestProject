@@ -125,21 +125,7 @@ public class MyResController extends Controller implements Initializable{
 							
 						}
 					} 
-
 				}
-
-
-
-
-
-
-
-
-
-
-
-
-
 			}
 		});
 
@@ -188,14 +174,14 @@ public class MyResController extends Controller implements Initializable{
 	// [취소 버튼] 진료예약(진료과,날짜,시간 선택) 입력하던 중 취소 후 마이페이지로
 	public void backMyPage() {
 		// 진료예약페이지 닫힘
-		Stage myPage = (Stage) root.getScene().getWindow();
-		myPage.close();	
+		Stage page = (Stage) root.getScene().getWindow();
+		page.close();	
 
 		// 마이페이지(진료예약,예약확인버튼 있는페이지) 다시 띄우기 
-		Stage membershipForm = new Stage(); 
-		root=commonServ.showWindow(membershipForm, "../fxml/Mypage.fxml");
-		membershipForm.setX(450);
-		membershipForm.setY(110);
+		Stage s = new Stage(); 
+		root=commonServ.showWindow(s, "../fxml/Mypage.fxml");
+		s.setX(450);
+		s.setY(110);
 	}
 
 	// 콤보박스_ 선택된 진료과를 이름이아니라 숫자로 반환해주는 메서드
