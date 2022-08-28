@@ -5,7 +5,6 @@ import java.util.Optional;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
@@ -19,28 +18,28 @@ public class InfoChangeServiceImpl implements InfoChangeService {
 	private MemberDAO dao;
 	private CommonService commonServ;
 	private static String id;
-	private Member member;
 	private String checkPw;
 	
-	
+	public InfoChangeServiceImpl() {
+		dao = new MemberDAOImpl();
+		commonServ = new CommonServiceImpl();
+	}
 
+	// 메세지알림창에서 입력받은 비밀번호를 저장하고 보내줌
 	public String getCheckPw() {
 		return checkPw;
 	}
 	public void setCheckPw(String checkPw) {
 		this.checkPw = checkPw;
 	}
-	public InfoChangeServiceImpl() {
-		dao = new MemberDAOImpl();
-		commonServ = new CommonServiceImpl();
-		member = new Member();
-	}
+	// 로그인할때 입력받은 아이디를 받아오고 사용
 	public void setId(String id) {
 		this.id = id;
 	}
 	public String getId() {
 		return id;
 	}
+	
 
 	// [수정 버튼] InfoChange<회원정보 수정 페이지> 에서 MyPage<마이페이지> 회원정보를 수정하고 마이페이지로 돌아갑니다.
 	@Override
@@ -82,6 +81,7 @@ public class InfoChangeServiceImpl implements InfoChangeService {
 			return;
 		}
 		
+		// 텍스트 입력받는 메세지창을 띄워서 기존비밀번호와 확인하기
 		TextInputDialog tid = new TextInputDialog("기존비밀번호 입력");
 		tid.setTitle("회원정보 수정");
 		tid.setHeaderText("기존 비밀번호를 확인합니다.");
@@ -109,13 +109,6 @@ public class InfoChangeServiceImpl implements InfoChangeService {
 			txtPw.requestFocus();
 			return;
 		}
-			
-		
-		
-		
-		
-		
-		
 
 		// 기존 <회원정보 수정> 창을 닫고 <마이페이지> 창을 띄움
 		Stage page = (Stage) root.getScene().getWindow();
@@ -145,16 +138,26 @@ public class InfoChangeServiceImpl implements InfoChangeService {
 	// [탈퇴 버튼] InfoChange<회원정보 수정 페이지> 에서 Login<첫 기본 로그인페이지> 회원정보를 모두 삭제하고 로그인페이지로 돌아갑니다.
 	@Override
 	public void out(Parent root) {
-		Alert alertWarn = new Alert(AlertType.CONFIRMATION);
-		alertWarn.setTitle(id+"님 탈퇴하기");
-		alertWarn.setHeaderText(id+"회원님의 모든 정보를 삭제하고 회원탈퇴 됩니다.");
-		alertWarn.setContentText("탈퇴시 모든 정보는 복구가 불가능합니다. 탈퇴하시겠습니까?");
-		Optional<ButtonType>result = alertWarn.showAndWait();
+		// 탈퇴확인시에 기존비밀번호와 맞는지 확인을하기위해 저장
+		Member member = dao.select(id);
+		
+		// 텍스트 입력받는 메세지창을 띄워서 기존비밀번호와 확인하기
+		TextInputDialog tid2 = new TextInputDialog("기존비밀번호 입력");
+		tid2.setTitle("아이디 :"+id+"님 탈퇴를 위해 기존비밀번호를 확인합니다.");
+		tid2.setHeaderText("아이디 :"+id+"님의 탈퇴시 정보는 복구되지 않습니다.");
+		tid2.setContentText("탈퇴를 원하시면 기존 비밀번호를 입력해주세요.");
+		Optional<String> result2 = tid2.showAndWait();
+		result2.ifPresent(name -> {
+			System.out.println("기존비밀번호: " + name);
+			setCheckPw(name);
+		});
 
-		// 회원 탈퇴하기 경고창에서 확인버튼 눌러 탈퇴 진행
-		if(result.get()==ButtonType.OK) {
+		// 회원 탈퇴하기 기존비밀번호 확인 알림창에서 비번입력후 확인버튼 눌름
+		// 입력하신 기존비밀번호가 실제 비밀번호와 같으므로 탈퇴가 진행됨.
+		if(member.getPw().equals(getCheckPw())) {
 			System.out.println("회원탈퇴를 경고하는 알림창에서 확인버튼을 클릭");
 
+			// 데이터베이스에서 정보를 삭제함.
 			if(dao.deleteUser(id)) {
 				System.out.println("아이디: "+id+"의 회원님 탈퇴됨.");
 				Alert alert = new Alert(AlertType.INFORMATION);
@@ -162,7 +165,10 @@ public class InfoChangeServiceImpl implements InfoChangeService {
 				alert.showAndWait();	//알림창 띄우고 잠시 기다리기
 			}
 		} else {
+			// 알림창에서 입력된 비밀번호가 다른경우
 			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("탈퇴가 취소되었습니다.");
+			alert.setHeaderText("기존비밀번호가 입력되지않았거나 입력된 비밀번호가 기존비밀번호와 다릅니다.");;
 			alert.setContentText("아이디: "+id+"님의 회원님의 회원탈퇴가 취소되었습니다.");
 			alert.showAndWait();
 			return;

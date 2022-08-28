@@ -8,8 +8,6 @@ import javafx.stage.Stage;
 import project.Admin;
 import project.dao.AdminDAO;
 import project.dao.AdminDAOImpl;
-import project.dao.MemberDAO;
-import project.dao.MemberDAOImpl;
 
 public class ManageLoginServiceImpl implements ManageLoginService{
 	private CommonService comServ;

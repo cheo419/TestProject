@@ -7,8 +7,6 @@ import javafx.stage.Stage;
 import project.Member;
 import project.dao.MemberDAO;
 import project.dao.MemberDAOImpl;
-import project.service.CommonService;
-import project.service.CommonServiceImpl;
 
 public class MyResCheckServiceImpl implements MyResCheckService{
 	private CommonService comServ;
