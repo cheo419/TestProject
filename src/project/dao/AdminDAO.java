@@ -15,7 +15,7 @@ public interface AdminDAO {
 /*
  *  1. firstmember create 하기
  *  2. firstAdmin create 하기
- *  3. update fisrtAdmin 하기 : 초기 비밀번호 '1111'설정. (꼭 해야함)
+ *  3. insert fisrtAdmin 하기 : 초기 비밀번호 '1111'설정. (꼭 해야함)
  *  4. commit 하기
 
 create table firstmember (
@@ -33,7 +33,7 @@ create table firstmember (
 create table firstAdmin (
     mPw varchar2(20) not null
 );
-update firstAdmin set mPw= '1111';
+insert firstAdmin set mPw= '1111';
 
 
 
