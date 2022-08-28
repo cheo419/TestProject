@@ -147,6 +147,11 @@ public class MyResCheckController extends Controller implements Initializable{
 	public void setRoot(Parent root) {
 		this.root = root;
 	}
+	
+	
+	public void plusRes() {
+		// 진료 추가 예약 란
+	}
 
 
 
