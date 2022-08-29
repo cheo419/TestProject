@@ -85,9 +85,18 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="CORNSILK" height="739.0" stroke="BLACK" strokeType="INSIDE" width="8.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="CORNSILK" height="12.0" stroke="BLACK" strokeType="INSIDE" width="499.0" GridPane.halignment="LEFT" GridPane.valignment="TOP" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="CORNSILK" height="3.0" stroke="BLACK" strokeType="INSIDE" width="499.0" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
-            <ComboBox fx:id="cmbJinryo" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: grey; -fx-font-size: 13px;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ComboBox fx:id="cmbTime" prefHeight="30.0" prefWidth="200.0" promptText="진료과,날짜 먼저 선택" style="-fx-background-color: grey; -fx-font-size: 13px;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <DatePicker fx:id="cmbDate" prefHeight="30.0" prefWidth="200.0" style="-fx-control-inner-background: grey; -fx-font-size: 13px; -fx-background-color: grey; -fx-focus-color: grey; -fx-primary-color: grey; -fx-secondary-color: grey; -fx-light-grey-color: grey;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ComboBox fx:id="cmbJinryo" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: grey; -fx-font-size: 13px; -fx-color: black; -fx-selection-bar: #2f597c; -jfx-unfocus-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets top="3.0" />
+               </GridPane.margin></ComboBox>
+            <ComboBox fx:id="cmbTime" prefHeight="30.0" prefWidth="200.0" promptText="진료과,날짜 먼저 선택" style="-fx-background-color: grey; -fx-font-size: 13px; -fx-color: black; -fx-selection-bar: #2f597c; -jfx-unfocus-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets top="3.0" />
+               </GridPane.margin></ComboBox>
+            <DatePicker fx:id="cmbDate" prefHeight="30.0" prefWidth="200.0" style="-fx-control-inner-background: grey; -fx-font-size: 13px; -fx-background-color: grey; -fx-focus-color: grey; -fx-primary-color: grey; -fx-secondary-color: grey; -fx-light-grey-color: grey; -fx-selection-bar: #2f597c;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets top="3.0" />
+               </GridPane.margin></DatePicker>
          </children>
       </GridPane>
    </children>

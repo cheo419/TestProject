@@ -116,8 +116,8 @@ public class InfoChangeServiceImpl implements InfoChangeService {
 
 		Stage s = new Stage();
 		root=commonServ.showWindow(s, "../fxml/MyPage.fxml");
-		s.setX(300);
-		s.setY(80);
+		s.setX(450);
+		s.setY(110);
 
 		// <마이페이지> 좌측 상단 표기
 		Label myPageId = (Label) root.lookup("#myPageId");
@@ -181,8 +181,8 @@ public class InfoChangeServiceImpl implements InfoChangeService {
 
 		Stage s = new Stage();
 		root=commonServ.showWindow(s, "../fxml/Login.fxml");
-		s.setX(300);
-		s.setY(80);
+		s.setX(450);
+		s.setY(110);
 	}
 
 	// 비어있으면 진행 안되게
