@@ -70,19 +70,24 @@ public class MyResCheckController extends Controller implements Initializable{
 
 		// 테이블뷰에서 선택된 행
 		myResTable.setOnMouseClicked(e->{
-			seleted= myResTable.getSelectionModel().getSelectedItem().getId();
-			seletedRes=myResTable.getSelectionModel().getSelectedItem().getRes();
-			
-			// 선택된 행의 진료과를 인트형으로 저장
-			if(seletedRes.contains("정형외과")) {
-				seletedJinryo=1;
-			} else if(seletedRes.contains("이비인후과")) {
-				seletedJinryo=2;
-			} else if(seletedRes.contains("내과")) {
-				seletedJinryo=3;
+			// 비어있는 행이 클릭되면 콘솔에 널포인트 에러가나는것을 방지
+			try {
+				seleted= myResTable.getSelectionModel().getSelectedItem().getId();
+				seletedRes=myResTable.getSelectionModel().getSelectedItem().getRes();
+				
+				// 선택된 행의 진료과를 인트형으로 저장
+				if(seletedRes.contains("정형외과")) {
+					seletedJinryo=1;
+				} else if(seletedRes.contains("이비인후과")) {
+					seletedJinryo=2;
+				} else if(seletedRes.contains("내과")) {
+					seletedJinryo=3;
+				}
+				System.out.println(myResTable.getSelectionModel().getSelectedItem().getId());
+				
+			} catch (NullPointerException e1) {
+				System.out.println("테이블뷰에서 빈 행이 선택되었습니다.");
 			}
-			
-			System.out.println(myResTable.getSelectionModel().getSelectedItem().getId());
 		});
 	}
 	private ObservableList<Member> getProduct(List<Member> memberList) {

@@ -40,7 +40,7 @@ public class ManageController extends Controller implements Initializable{
 	@FXML private TableColumn<Member, String>  idCol;
 	@FXML private TableColumn<Member, String>  pwCol;
 	@FXML private TableColumn<Member, String>  resCol;
-	
+
 	// <관리자페이지> 관리자가 모든 회원정보 확인 및 관리가능 (버튼: 선택회원 예약취소, 선택회원 삭제, 로그인화면으로) (테이블뷰)
 
 	@Override
@@ -48,7 +48,7 @@ public class ManageController extends Controller implements Initializable{
 		comServ = new CommonServiceImpl();	
 		manageServ = new ManageServiceImpl();
 		dao = new MemberDAOImpl();
-		
+
 		List<Member> memberList = dao.selectAdmin();	// 관리자 예약출력으로 모든 저장된 값을 리스트로 저장
 
 		manageTable.setItems(getProduct(memberList));
@@ -67,23 +67,28 @@ public class ManageController extends Controller implements Initializable{
 
 		// 테이블뷰에서 선택된 행
 		manageTable.setOnMouseClicked(e->{
-			seleted= manageTable.getSelectionModel().getSelectedItem().getId();
-			
-			// 선택된 행의 진료과를 인트형으로 변경 저장
-			seletedRes=manageTable.getSelectionModel().getSelectedItem().getRes();
-			if(seletedRes.contains("정형외과")) {
-				seletedJinryo=1;
-			} else if(seletedRes.contains("이비인후과")) {
-				seletedJinryo=2;
-			} else if(seletedRes.contains("내과")) {
-				seletedJinryo=3;
+			// 비어있는 행이 클릭되면 콘솔에 널포인트 에러가나는것을 방지
+			try {
+				// 선택된 행의 아이디를 저장
+				seleted= manageTable.getSelectionModel().getSelectedItem().getId();
+
+				// 선택된 행의 진료과를 인트형으로 변경 저장
+				seletedRes=manageTable.getSelectionModel().getSelectedItem().getRes();
+				if(seletedRes.contains("정형외과")) {
+					seletedJinryo=1;
+				} else if(seletedRes.contains("이비인후과")) {
+					seletedJinryo=2;
+				} else if(seletedRes.contains("내과")) {
+					seletedJinryo=3;
+				}
+				System.out.println(manageTable.getSelectionModel().getSelectedItem().getId());
+				System.out.println("선택된 진료예약내용 :"+seletedRes);
+				System.out.println("선택된 진료과 :"+seletedJinryo);
+
+			} catch (NullPointerException e1) {
+				System.out.println("비어있는 행이 선택되었습니다.");
 			}
-			
-			System.out.println(manageTable.getSelectionModel().getSelectedItem().getId());
-			System.out.println("선택된 진료예약내용 :"+seletedRes);
-			System.out.println("선택된 진료과 :"+seletedJinryo);
 		});
-		
 	}
 
 	@Override
@@ -134,7 +139,7 @@ public class ManageController extends Controller implements Initializable{
 					// 삭제되어 테이블뷰 업데이트를 위해 창 닫기
 					Stage myPage = (Stage) root.getScene().getWindow();
 					myPage.close();
-					
+
 					//  예약내역삭제된 후 수정된 내용으로 창 다시 띄우기
 					Stage s = new Stage();
 					root=comServ.showWindow(s, "../fxml/Manage.fxml");
@@ -182,7 +187,7 @@ public class ManageController extends Controller implements Initializable{
 
 				// 관리자페이지에서 테이블뷰에서 선택된 회원 강제탈퇴
 				// 반드시 예약내역 삭제가 선행되어야함.
-				
+
 				// 예약여부 확인하고 예약이 있으면 예약 삭제
 				if(dao.checkRes(seleted)) {
 					dao.deleteUserResAll(seleted);
@@ -200,7 +205,7 @@ public class ManageController extends Controller implements Initializable{
 				root=comServ.showWindow(s, "../fxml/Manage.fxml");
 				s.setX(450);
 				s.setY(110);
-				
+
 			} else { 	// 강제탈퇴 경고창에서 취소버튼 눌러 탈퇴진행되지 않음.
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setContentText("아이디: "+seleted+"의 회원님이 강제탈퇴가 취소되었습니다.");
