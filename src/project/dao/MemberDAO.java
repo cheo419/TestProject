@@ -24,6 +24,7 @@ public interface MemberDAO {
 	public boolean insertRes (Member m); 
 	
 	// 관리자 모든회원정보 출력 (모든 회원정보 불러오기위해 리스트 사용)
+	// 날짜순서대로 출력됨.
 	public List<Member> selectAdmin(); 
 	
 	//  예약여부확인 (예약하기 버튼 비활성화,예약내역 삭제시) : 예약내역있으면 true

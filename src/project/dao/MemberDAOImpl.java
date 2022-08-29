@@ -117,11 +117,12 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	// 관리자 모든회원정보 출력 (모든 회원정보 불러오기위해 리스트 사용)
+	// 날짜순서대로 출력됨.
 	@Override
 	public List<Member> selectAdmin() {
 		List<Member> memberList = new ArrayList<Member>();	// 모든회원정보 List
 		try {
-			String sql = "select m.userName, m.phoneNum, m.id, m.pw, r.resJinryo, r.resDate, r.resTime from firstmember m, firstmemberRes r where m.id=r.id(+)";
+			String sql = "select m.userName, m.phoneNum, m.id, m.pw, r.resJinryo, r.resDate, r.resTime from firstmember m, firstmemberRes r where m.id=r.id(+) order by resDate";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
 
