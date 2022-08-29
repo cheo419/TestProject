@@ -97,8 +97,14 @@ public class MyResController extends Controller implements Initializable{
 			@Override
 			public void handle(ActionEvent event) 
 			{
-				// 선택된 진료과를 저장
-				value1 = getComboBoxJinryo();	
+				
+				try {
+					// 선택된 진료과를 저장
+					value1 = getComboBoxJinryo();
+				} catch (NullPointerException e1) {
+					System.out.println("진료과가 재선택되었습니다.");
+				}
+				
 			}
 		});
 

@@ -5,87 +5,90 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<GridPane prefHeight="750.0" prefWidth="950.0" style="-fx-background-color: NAVY;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.controller.MyResController">
-
-  <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="500.0" minWidth="10.0" prefWidth="470.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="480.0" minWidth="10.0" prefWidth="480.0" />
-  </columnConstraints>
-  <rowConstraints>
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-  </rowConstraints>
+<Pane prefHeight="730.0" prefWidth="487.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.controller.MyResController">
    <children>
-      <Label text="진료과 선택 ▽" textFill="WHITE" GridPane.rowIndex="1">
-         <font>
-            <Font name="System Italic" size="40.0" />
-         </font>
-         <GridPane.margin>
-            <Insets left="100.0" />
-         </GridPane.margin></Label>
-      <Label text="날짜 선택 ▦" textFill="WHITE" GridPane.rowIndex="2">
-         <font>
-            <Font name="System Italic" size="40.0" />
-         </font>
-         <GridPane.margin>
-            <Insets left="100.0" />
-         </GridPane.margin></Label>
-      <Label text="진료 시간 선택 ▽" textFill="WHITE" GridPane.rowIndex="3">
-         <font>
-            <Font name="System Italic" size="40.0" />
-         </font>
-         <GridPane.margin>
-            <Insets left="100.0" />
-         </GridPane.margin></Label>
-      <ComboBox fx:id="cmbJinryo" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: white; -fx-font-size: 17px;" GridPane.columnIndex="1" GridPane.rowIndex="1">
-         <GridPane.margin>
-            <Insets left="50.0" />
-         </GridPane.margin></ComboBox>
-      <ComboBox fx:id="cmbTime" prefHeight="50.0" prefWidth="300.0" promptText="진료과,날짜 먼저 선택" style="-fx-background-color: white; -fx-font-size: 17px;" GridPane.columnIndex="1" GridPane.rowIndex="3">
-         <GridPane.margin>
-            <Insets left="50.0" />
-         </GridPane.margin></ComboBox>
-      <DatePicker fx:id="cmbDate" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: white; -fx-font-size: 17px;" GridPane.columnIndex="1" GridPane.rowIndex="2">
-         <GridPane.margin>
-            <Insets left="50.0" />
-         </GridPane.margin></DatePicker>
-      
-      <Label text="🚑  진료 예약" textFill="WHITE" GridPane.columnSpan="2" GridPane.halignment="CENTER">
-         <font>
-            <Font name="System Bold" size="64.0" />
-         </font>
-         <GridPane.margin>
-            <Insets right="60.0" top="10.0" />
-         </GridPane.margin>
-      </Label>
-      <Button fx:id="btnResOk" mnemonicParsing="false" onAction="#resCheck" prefWidth="175.0" style="-fx-background-color: LIGHTSKYBLUE;" text="확인" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
-         <font>
-            <Font size="35.0" />
-         </font>
-         <GridPane.margin>
-            <Insets bottom="20.0" right="60.0" />
-         </GridPane.margin>
-      </Button>
-      <Button mnemonicParsing="false" onAction="#backMyPage" prefWidth="175.0" style="-fx-background-color: LIGHTSKYBLUE;" text="취소" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
-         <font>
-            <Font size="35.0" />
-         </font>
-         <GridPane.margin>
-            <Insets bottom="20.0" left="60.0" />
-         </GridPane.margin>
-      </Button>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MEDIUMTURQUOISE" height="750.0" stroke="BLACK" strokeType="INSIDE" width="20.0" GridPane.halignment="LEFT" GridPane.valignment="TOP" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MEDIUMTURQUOISE" height="750.0" stroke="BLACK" strokeType="INSIDE" width="20.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MEDIUMTURQUOISE" height="20.0" stroke="BLACK" strokeType="INSIDE" width="950.0" GridPane.halignment="LEFT" GridPane.valignment="TOP" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MEDIUMTURQUOISE" height="20.0" stroke="BLACK" strokeType="INSIDE" width="950.0" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
+      <ImageView fitHeight="730.0" fitWidth="750.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/back2.jpg" />
+         </image></ImageView>
+      <GridPane layoutX="-6.0" layoutY="-9.0" prefHeight="740.0" prefWidth="499.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="511.0" minWidth="10.0" prefWidth="475.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="676.0" minWidth="10.0" prefWidth="475.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="5.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="🚑  진료 예약" textFill="#fff8de" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="48.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="12.0" right="10.0" top="40.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="진료과 선택 ▽" textFill="CORNSILK" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="40.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="날짜 선택 ▦" textFill="CORNSILK" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="40.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="진료 시간 선택 ▽" textFill="CORNSILK" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="40.0" />
+               </GridPane.margin>
+            </Label>
+            <Button fx:id="btnResOk" mnemonicParsing="false" onAction="#resCheck" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #2f597c;" text="확인" textFill="CORNSILK" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets bottom="15.0" right="40.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#backMyPage" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #2f597c;" text="취소" textFill="CORNSILK" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets bottom="15.0" left="40.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Button>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="CORNSILK" height="739.0" stroke="BLACK" strokeType="INSIDE" width="8.0" GridPane.halignment="LEFT" GridPane.valignment="TOP" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="CORNSILK" height="739.0" stroke="BLACK" strokeType="INSIDE" width="8.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="CORNSILK" height="12.0" stroke="BLACK" strokeType="INSIDE" width="499.0" GridPane.halignment="LEFT" GridPane.valignment="TOP" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="CORNSILK" height="3.0" stroke="BLACK" strokeType="INSIDE" width="499.0" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
+            <ComboBox fx:id="cmbJinryo" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: grey; -fx-font-size: 13px;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ComboBox fx:id="cmbTime" prefHeight="30.0" prefWidth="200.0" promptText="진료과,날짜 먼저 선택" style="-fx-background-color: grey; -fx-font-size: 13px;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <DatePicker fx:id="cmbDate" prefHeight="30.0" prefWidth="200.0" style="-fx-control-inner-background: grey; -fx-font-size: 13px; -fx-background-color: grey; -fx-focus-color: grey; -fx-primary-color: grey; -fx-secondary-color: grey; -fx-light-grey-color: grey;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         </children>
+      </GridPane>
    </children>
-</GridPane>
+</Pane>

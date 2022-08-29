@@ -7,56 +7,60 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane prefHeight="750.0" prefWidth="950.0" style="-fx-background-color: NAVY;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.controller.MyResCheckController">
-
-  <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-  </columnConstraints>
-  <rowConstraints>
-    <RowConstraints maxHeight="195.0" minHeight="10.0" prefHeight="146.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="604.0" minHeight="10.0" prefHeight="604.0" vgrow="SOMETIMES" />
-  </rowConstraints>
+<Pane prefHeight="730.0" prefWidth="810.0" style="-fx-background-color: #212121;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.controller.MyResCheckController">
    <children>
-      <Label text="내 예약 확인  📂" textFill="WHITE" GridPane.halignment="CENTER">
-         <font>
-            <Font size="47.0" />
-         </font>
-      </Label>
-      <TableView fx:id="myResTable" prefHeight="500.0" prefWidth="1055.0" style="-fx-background-color: LIGHTCYAN;" GridPane.rowIndex="1">
-        <columns>
-          <TableColumn fx:id="nameCol" prefWidth="96.0" style="-fx-background-color: LIGHTSKYBLUE; -fx-font-size: 15px;" text="이름" />
-          <TableColumn fx:id="numberCol" prefWidth="177.0" style="-fx-background-color: LIGHTSKYBLUE; -fx-font-size: 15px;" text="전화번호" />
-            <TableColumn fx:id="idCol" prefWidth="98.0" style="-fx-background-color: LIGHTSKYBLUE; -fx-font-size: 15px;" text="아이디" />
-            <TableColumn fx:id="pwCol" prefWidth="142.0" style="-fx-background-color: LIGHTSKYBLUE; -fx-font-size: 15px;" text="비밀번호" />
-            <TableColumn fx:id="resCol" prefWidth="436.0" style="-fx-background-color: LIGHTSKYBLUE; -fx-font-size: 15px;" text="예약내용" />
-        </columns>
-      </TableView>
-      <Button mnemonicParsing="false" onAction="#backMypage2" style="-fx-background-color: LIGHTSTEELBLUE;" text="뒤로가기" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
-         <GridPane.margin>
-            <Insets right="10.0" top="10.0" />
-         </GridPane.margin>
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
-      <Button mnemonicParsing="false" onAction="#deleteMyRes" prefHeight="25.0" style="-fx-background-color: LIGHTSKYBLUE;" text="선택 예약 취소" textFill="WHITE" GridPane.halignment="LEFT" GridPane.valignment="TOP">
-         <GridPane.margin>
-            <Insets left="10.0" top="10.0" />
-         </GridPane.margin>
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
-      <Button mnemonicParsing="false" onAction="#addRes" prefHeight="25.0" style="-fx-background-color: LIGHTSKYBLUE;" text="진료 추가 예약" textFill="WHITE" GridPane.halignment="LEFT" GridPane.valignment="TOP">
-         <font>
-            <Font size="14.0" />
-         </font>
-         <GridPane.margin>
-            <Insets left="10.0" top="50.0" />
-         </GridPane.margin>
-      </Button>
+      <GridPane prefHeight="740.0" prefWidth="810.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="810.0" minWidth="10.0" prefWidth="475.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="365.0" minHeight="10.0" prefHeight="123.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="637.0" minHeight="10.0" prefHeight="617.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="내 예약 확인  📂" textFill="#fff8de" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="33.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="12.0" left="10.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <TableView fx:id="myResTable" prefHeight="605.0" prefWidth="789.0" style="-fx-background-color: grey; -fx-focus-color: yellow;" GridPane.rowIndex="1">
+              <columns>
+                <TableColumn fx:id="nameCol" prefWidth="75.0" style="-fx-background-color: grey; -fx-font-size: 12px; -fx-text-fill: CORNSILK;" text="이름" />
+                <TableColumn fx:id="numberCol" prefWidth="123.0" style="-fx-background-color: grey; -fx-font-size: 12px; -fx-text-fill: CORNSILK;" text="전화번호" />
+                  <TableColumn fx:id="idCol" prefWidth="79.0" style="-fx-background-color: grey; -fx-font-size: 12px;" text="아이디" />
+                  <TableColumn fx:id="pwCol" prefWidth="106.0" style="-fx-background-color: grey; -fx-font-size: 12px;" text="비밀번호" />
+                  <TableColumn fx:id="resCol" prefWidth="426.0" style="-fx-background-color: grey; -fx-font-size: 12px; -fx-text-fill: CORNSILK;" text="예약내역" />
+              </columns>
+            </TableView>
+            <Button mnemonicParsing="false" onAction="#addRes" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #2f597c;" text="진료 추가 예약" textFill="CORNSILK" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="20.0" top="55.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#deleteMyRes" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #2f597c;" text="선택 예약 취소" textFill="CORNSILK" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="20.0" top="15.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#backMypage2" prefHeight="25.0" prefWidth="110.0" style="-fx-background-color: black;" text="뒤로가기" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets right="10.0" top="10.0" />
+               </GridPane.margin>
+            </Button>
+         </children>
+      </GridPane>
    </children>
-</GridPane>
+</Pane>

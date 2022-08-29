@@ -3,66 +3,72 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<GridPane prefHeight="750.0" prefWidth="950.0" style="-fx-background-color: NAVY;"
- xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
- fx:controller="project.controller.ManageLoginController">
-
-  <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-  </columnConstraints>
-  <rowConstraints>
-    <RowConstraints maxHeight="345.0" minHeight="10.0" prefHeight="327.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="700.0" minHeight="10.0" prefHeight="423.0" vgrow="SOMETIMES" />
-  </rowConstraints>
+<Pane prefHeight="730.0" prefWidth="487.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.controller.ManageLoginController">
    <children>
-      <Label text="👨‍⚕️  관리자 로그인" textFill="WHITE" GridPane.halignment="CENTER">
-         <font>
-            <Font name="System Bold" size="64.0" />
-         </font>
-         <GridPane.margin>
-            <Insets right="20.0" top="55.0" />
-         </GridPane.margin>
-      </Label>
-      <Button fx:id="mBtn" mnemonicParsing="false" onAction="#manageLogin" prefWidth="200.0" style="-fx-background-color: LIGHTSKYBLUE;" text="로그인" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-         <GridPane.margin>
-            <Insets right="280.0" top="65.0" />
-         </GridPane.margin>
-         <font>
-            <Font size="33.0" />
-         </font></Button>
-      <TextField fx:id="mPw" alignment="CENTER" maxHeight="40.0" maxWidth="500.0" style="-fx-background-color: navy; -fx-border-color: NAVY  NAVY SLATEGREY  NAVY; -fx-border-width: 3 3 3 3; -fx-text-fill: white;" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
-         <font>
-            <Font size="38.0" />
-         </font>
-         <GridPane.margin>
-            <Insets top="10.0" />
-         </GridPane.margin></TextField>
-      <Button mnemonicParsing="false" onAction="#backL" prefWidth="200.0" style="-fx-background-color: LIGHTSKYBLUE;" text="취소" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-         <GridPane.margin>
-            <Insets left="280.0" top="65.0" />
-         </GridPane.margin>
-         <font>
-            <Font size="32.0" />
-         </font>
-      </Button>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MEDIUMTURQUOISE" height="750.0" stroke="BLACK" strokeType="INSIDE" width="15.0" GridPane.halignment="LEFT" GridPane.valignment="TOP" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MEDIUMTURQUOISE" height="750.0" stroke="BLACK" strokeType="INSIDE" width="15.0" GridPane.halignment="RIGHT" GridPane.valignment="TOP" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MEDIUMTURQUOISE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="950.0" GridPane.halignment="LEFT" GridPane.valignment="TOP" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MEDIUMTURQUOISE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="950.0" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-      <Button mnemonicParsing="false" onAction="#manageChangePassword" style="-fx-background-color: LIGHTSTEELBLUE;" text="관리자 암호 변경" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
-         <font>
-            <Font size="17.0" />
-         </font>
-         <GridPane.margin>
-            <Insets right="25.0" top="25.0" />
-         </GridPane.margin>
-      </Button>
+      <ImageView fitHeight="730.0" fitWidth="750.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/back2.jpg" />
+         </image></ImageView>
+      <GridPane layoutX="-6.0" layoutY="-9.0" prefHeight="740.0" prefWidth="499.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="511.0" minWidth="10.0" prefWidth="475.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="676.0" minWidth="10.0" prefWidth="475.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="👨‍⚕️  관리자 로그인" textFill="#fff8de" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="44.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" top="40.0" />
+               </GridPane.margin>
+            </Label>
+            <PasswordField fx:id="mPw" alignment="CENTER" maxHeight="60.0" maxWidth="400.0" promptText="OOOO" style="-fx-background-color: grey;" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </PasswordField>
+            <Button fx:id="mBtn" mnemonicParsing="false" onAction="#manageLogin" prefHeight="50.0" prefWidth="130.0" style="-fx-background-color: #2f597c;" text="로그인" textFill="CORNSILK" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets bottom="35.0" right="40.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#backL" prefHeight="50.0" prefWidth="130.0" style="-fx-background-color: #2f597c;" text="취소" textFill="CORNSILK" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets bottom="35.0" left="40.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Button>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="CORNSILK" height="739.0" stroke="BLACK" strokeType="INSIDE" width="8.0" GridPane.halignment="LEFT" GridPane.valignment="TOP" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="CORNSILK" height="739.0" stroke="BLACK" strokeType="INSIDE" width="8.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="CORNSILK" height="12.0" stroke="BLACK" strokeType="INSIDE" width="499.0" GridPane.halignment="LEFT" GridPane.valignment="TOP" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="CORNSILK" height="3.0" stroke="BLACK" strokeType="INSIDE" width="499.0" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+            <Button mnemonicParsing="false" onAction="#manageChangePassword" style="-fx-background-color: black;" text="관리자 암호 변경" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets right="20.0" top="20.0" />
+               </GridPane.margin>
+            </Button>
+         </children>
+      </GridPane>
    </children>
-</GridPane>
+</Pane>

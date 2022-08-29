@@ -33,6 +33,7 @@ create table firstmember (
     id varchar2(20) not null primary key,
     pw varchar2(20) not null
 );
+
 create table firstmemberRes (
     resJinryo char(1),
     resDate date,
@@ -40,6 +41,7 @@ create table firstmemberRes (
     id varchar2(20) not null,
     foreign key(id) references firstmember(id)
 );
+
 
 create table firstAdmin (
     mPw varchar2(20) not null

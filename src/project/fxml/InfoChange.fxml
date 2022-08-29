@@ -4,157 +4,171 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<GridPane prefHeight="750.0" prefWidth="950.0" style="-fx-background-color: NAVY;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.controller.InfoChangeController">
-
-  <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="250.0" />
-  </columnConstraints>
-  <rowConstraints>
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-  </rowConstraints>
+<Pane prefHeight="730.0" prefWidth="487.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.controller.InfoChangeController">
    <children>
-      <Label text="아이디 :" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
-         <font>
-            <Font size="36.0" />
-         </font>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <GridPane.margin>
-            <Insets right="60.0" />
-         </GridPane.margin>
-      </Label>
-      <Label text="이름 :" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
-         <font>
-            <Font size="36.0" />
-         </font>
-         <GridPane.margin>
-            <Insets right="60.0" />
-         </GridPane.margin>
-      </Label>
-      <Label text="전화번호 :" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
-         <font>
-            <Font size="36.0" />
-         </font>
-         <GridPane.margin>
-            <Insets right="60.0" />
-         </GridPane.margin>
-      </Label>
-      <Label text="비밀번호 확인 :" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
-         <font>
-            <Font size="36.0" />
-         </font>
-         <GridPane.margin>
-            <Insets right="60.0" />
-         </GridPane.margin>
-      </Label>
-      <TextField fx:id="lPw" maxHeight="50.0" maxWidth="450.0" style="-fx-background-color: navy; -fx-border-color: NAVY  NAVY SLATEGREY  NAVY; -fx-border-width: 3 3 3 3; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-         <font>
-            <Font size="36.0" />
-         </font>
-         <GridPane.margin>
-            <Insets bottom="10.0" />
-         </GridPane.margin>
-      </TextField>
-      <TextField fx:id="lPwOk" maxHeight="50.0" maxWidth="450.0" style="-fx-background-color: navy; -fx-border-color: NAVY  NAVY SLATEGREY  NAVY; -fx-border-width: 3 3 3 3; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
-         <font>
-            <Font size="36.0" />
-         </font>
-         <GridPane.margin>
-            <Insets bottom="10.0" />
-         </GridPane.margin>
-      </TextField>
-      <TextField fx:id="lName" maxHeight="50.0" maxWidth="450.0" style="-fx-background-color: navy; -fx-border-color: NAVY  NAVY SLATEGREY  NAVY; -fx-border-width: 3 3 3 3; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
-         <font>
-            <Font size="36.0" />
-         </font>
-         <GridPane.margin>
-            <Insets bottom="10.0" />
-         </GridPane.margin></TextField>
-      <TextField fx:id="lNumber" maxHeight="50.0" maxWidth="450.0" style="-fx-background-color: navy; -fx-border-color: NAVY  NAVY SLATEGREY  NAVY; -fx-border-width: 3 3 3 3; -fx-text-fill: white;" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
-         <font>
-            <Font size="36.0" />
-         </font>
-         <GridPane.margin>
-            <Insets bottom="10.0" />
-         </GridPane.margin></TextField>
-      <Button fx:id="modify" mnemonicParsing="false" onAction="#change" prefWidth="115.0" style="-fx-background-color: LIGHTSKYBLUE;" text="수정" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="6">
-         <font>
-            <Font size="29.0" />
-         </font>
-         <GridPane.margin>
-            <Insets bottom="18.0" />
-         </GridPane.margin>
-      </Button>
-      <Label text="신규 비밀번호 :" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
-         <font>
-            <Font size="36.0" />
-         </font>
-         <GridPane.margin>
-            <Insets right="60.0" />
-         </GridPane.margin>
-      </Label>
-      <Label text="👨  회원정보  👩" textFill="WHITE" GridPane.columnSpan="2" GridPane.halignment="CENTER">
-         <font>
-            <Font size="48.0" />
-         </font>
-         <GridPane.margin>
-            <Insets top="15.0" />
-         </GridPane.margin>
-      </Label>
-      <Button mnemonicParsing="false" onAction="#out" style="-fx-background-color: LIGHTSKYBLUE;" text="탈퇴" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="6">
-         <GridPane.margin>
-            <Insets bottom="18.0" left="280.0" />
-         </GridPane.margin>
-         <font>
-            <Font size="29.0" />
-         </font>
-      </Button>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MEDIUMTURQUOISE" height="750.0" stroke="BLACK" strokeType="INSIDE" width="15.0" GridPane.halignment="LEFT" GridPane.valignment="TOP" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MEDIUMTURQUOISE" height="750.0" stroke="BLACK" strokeType="INSIDE" width="15.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MEDIUMTURQUOISE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="950.0" GridPane.halignment="LEFT" GridPane.valignment="TOP" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MEDIUMTURQUOISE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="950.0" GridPane.rowIndex="6" GridPane.valignment="BOTTOM" />
-      <Button mnemonicParsing="false" onAction="#backagain" style="-fx-background-color: LIGHTSTEELBLUE;" text="뒤로가기" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
-         <GridPane.margin>
-            <Insets right="25.0" top="25.0" />
-         </GridPane.margin>
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Button>
-      <Label fx:id="lId" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
-         <font>
-            <Font size="36.0" />
-         </font>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <GridPane.margin>
-            <Insets bottom="10.0" left="25.0" />
-         </GridPane.margin>
-      </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a2afbc" height="5.0" opacity="0.67" stroke="BLACK" strokeType="INSIDE" width="450.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-         <GridPane.margin>
-            <Insets top="60.0" />
-         </GridPane.margin>
-      </Rectangle>
-      <Label text="( 변경 불가 )" textFill="#a2afbc" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-         <GridPane.margin>
-            <Insets right="30.0" top="40.0" />
-         </GridPane.margin>
-      </Label>
+      <ImageView fitHeight="730.0" fitWidth="750.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/back2.jpg" />
+         </image></ImageView>
+      <GridPane layoutX="-6.0" layoutY="-9.0" prefHeight="740.0" prefWidth="499.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="511.0" minWidth="10.0" prefWidth="475.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="676.0" minWidth="10.0" prefWidth="475.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="5.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text=" 회원정보 " textFill="#fff8de" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="39.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="12.0" top="40.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField fx:id="lPw" maxHeight="30.0" maxWidth="220.0" style="-fx-background-color: grey;" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets top="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="lPwOk" maxHeight="30.0" maxWidth="220.0" style="-fx-background-color: grey;" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets top="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="lName" maxHeight="30.0" maxWidth="220.0" style="-fx-background-color: grey;" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets top="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="lNumber" maxHeight="30.0" maxWidth="220.0" style="-fx-background-color: grey;" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets top="5.0" />
+               </GridPane.margin>
+            </TextField>
+            <Label text="아이디 :" textFill="CORNSILK" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="40.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="신규 비밀번호 :" textFill="CORNSILK" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="40.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="비밀번호 확인 :" textFill="CORNSILK" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="40.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="이름 :" textFill="CORNSILK" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="40.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="전화번호 :" textFill="CORNSILK" GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="40.0" />
+               </GridPane.margin>
+            </Label>
+            <Button fx:id="modify" mnemonicParsing="false" onAction="#change" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #2f597c;" text="수정" textFill="CORNSILK" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets bottom="15.0" right="40.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#out" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #2f597c;" text="탈퇴" textFill="CORNSILK" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets bottom="15.0" left="40.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Button>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="CORNSILK" height="739.0" stroke="BLACK" strokeType="INSIDE" width="8.0" GridPane.halignment="LEFT" GridPane.valignment="TOP" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="CORNSILK" height="739.0" stroke="BLACK" strokeType="INSIDE" width="8.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="CORNSILK" height="12.0" stroke="BLACK" strokeType="INSIDE" width="499.0" GridPane.halignment="LEFT" GridPane.valignment="TOP" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="CORNSILK" height="3.0" stroke="BLACK" strokeType="INSIDE" width="499.0" GridPane.rowIndex="6" GridPane.valignment="BOTTOM" />
+            <Button mnemonicParsing="false" onAction="#backagain" style="-fx-background-color: black;" text="뒤로가기" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets right="20.0" top="20.0" />
+               </GridPane.margin>
+            </Button>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="GREY" height="35.0" stroke="BLACK" strokeType="INSIDE" width="220.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets top="5.0" />
+               </GridPane.margin>
+            </Rectangle>
+            <Label fx:id="lId" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" top="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="( 변경 불가 )" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets right="30.0" top="55.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="97.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:///E:/java-file/javafx_workspace/TestProjectPretice3/src/project/img/backkk.png" />
+               </image>
+               <GridPane.margin>
+                  <Insets left="50.0" top="25.0" />
+               </GridPane.margin>
+            </ImageView>
+         </children>
+      </GridPane>
    </children>
-</GridPane>
+</Pane>
