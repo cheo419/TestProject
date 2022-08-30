@@ -162,7 +162,7 @@
             </Label>
             <ImageView fitHeight="97.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="file:///E:/java-file/javafx_workspace/TestProjectPretice3/src/project/img/backkk.png" />
+                  <Image url="@../img/backkk.png" />
                </image>
                <GridPane.margin>
                   <Insets left="50.0" top="25.0" />
