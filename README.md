@@ -16,7 +16,7 @@
 
 <img width="368" alt="진료예약페이지 예약마감" src="https://user-images.githubusercontent.com/106979267/187935848-76198ead-5c78-458c-a3c0-8b66a6d72411.png">
 
-### 5. 관리자 ㄹ로그인 페이지
+### 5. 관리자 로그인 페이지
 
 <img width="368" alt="관리자로그인페이지" src="https://user-images.githubusercontent.com/106979267/187936630-e3daea37-a81f-414d-b146-4bf8248be223.png">
 
