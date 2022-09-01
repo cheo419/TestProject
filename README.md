@@ -10,7 +10,7 @@
 
 ### 3. 마이 페이지
 
-<img width="368" alt="마이페이지(진료예약버튼 활성화)" src="https://user-images.githubusercontent.com/106979267/187935689-37b3df77-c8b6-4840-bc7e-c2abe41b708a.png">
+
 
 ### 4. 진료 예약 페이지
 
